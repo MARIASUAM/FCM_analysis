@@ -1,0 +1,172 @@
+---
+title: "Relationships comparison"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+di <- "/Users/maria.suarez.munoz/Google Drive/ms_FuzzyCognitiveMapping/FCM_analysis" # Mac
+output_folder <- "/output_files/"
+
+library(dplyr)
+library(FCMapper)
+```
+
+Load files
+
+```{r}
+agg_relations_dic <- read.csv(paste(di, output_folder, "4.2 agg_relations_dic.csv", sep = ""), sep = ";")
+
+res_relations_dic <- read.csv(paste(di, output_folder, "7.1 researchers_relations_dic.csv", sep = ""), sep = ";")
+
+man_relations_dic <- read.csv(paste(di, output_folder, "7.3 managers_rel_dic.csv", sep = ""), sep = ";")
+
+others_relations_dic <- read.csv(paste(di, output_folder, "7.5 others_rel_dic.csv", sep = ""), sep = ";")
+```
+
+Add column with sign and create a column with source, target and sign to be used as "concept.names" in comp.maps {FCMapper}
+*Note!* Relationships with opposite signs are duplicated, one as positive and one as negative
+
+```{r}
+select_rel <- agg_relations_dic %>% filter(minimum * maximum < 0)
+added_rows <- data.frame()
+for (i in 1:length(select_rel$source_label)) {
+  plus <- select_rel[i,] %>%
+    mutate(sign = "positive",
+           whole_relationship = paste(source_label, target_label, sign, sep = "-"))
+  minus <- select_rel[i,] %>%
+    mutate(sign = "negative",
+           whole_relationship = paste(source_label, target_label, sign, sep = "-"))
+  added_rows <- rbind(added_rows, plus, minus)
+}
+added_rows[,c(3:11)] <- c(rep(NA, length(added_rows$source_label)))
+
+agg_relations_dic <- agg_relations_dic %>%
+  mutate(sign = ifelse(minimum * maximum < 0,
+                       "*",
+                       ifelse(mean < 0,
+                          "negative",
+                          "positive")),
+         whole_relationship = paste(source_label, target_label, sign, sep = "-")) %>%
+  filter(sign != "*")
+
+agg_relations_dic <- rbind(agg_relations_dic, added_rows)
+```
+
+```{r}
+select_rel <- res_relations_dic %>% filter(minimum * maximum < 0)
+added_rows <- data.frame()
+for (i in 1:length(select_rel$source_label)) {
+  plus <- select_rel[i,] %>%
+    mutate(sign = "positive",
+           whole_relationship = paste(source_label, target_label, sign, sep = "-"))
+  minus <- select_rel[i,] %>%
+    mutate(sign = "negative",
+           whole_relationship = paste(source_label, target_label, sign, sep = "-"))
+  added_rows <- rbind(added_rows, plus, minus)
+}
+added_rows[,c(3:11)] <- c(rep(NA, length(added_rows$source_label)))
+
+res_relations_dic <- res_relations_dic %>%
+  mutate(sign = ifelse(minimum * maximum < 0,
+                       "*",
+                       ifelse(mean < 0,
+                          "negative",
+                          "positive")),
+         whole_relationship = paste(source_label, target_label, sign, sep = "-")) %>%
+  filter(sign != "*")
+
+res_relations_dic <- rbind(res_relations_dic, added_rows)
+```
+
+
+```{r}
+select_rel <- man_relations_dic %>% filter(minimum * maximum < 0)
+added_rows <- data.frame()
+for (i in 1:length(select_rel$source_label)) {
+  plus <- select_rel[i,] %>%
+    mutate(sign = "positive",
+           whole_relationship = paste(source_label, target_label, sign, sep = "-"))
+  minus <- select_rel[i,] %>%
+    mutate(sign = "negative",
+           whole_relationship = paste(source_label, target_label, sign, sep = "-"))
+  added_rows <- rbind(added_rows, plus, minus)
+}
+added_rows[,c(3:11)] <- c(rep(NA, length(added_rows$source_label)))
+
+man_relations_dic <- man_relations_dic %>%
+  mutate(sign = ifelse(minimum * maximum < 0,
+                       "*",
+                       ifelse(mean < 0,
+                          "negative",
+                          "positive")),
+         whole_relationship = paste(source_label, target_label, sign, sep = "-")) %>%
+  filter(sign != "*")
+
+man_relations_dic <- rbind(man_relations_dic, added_rows)
+```
+
+```{r}
+select_rel <- others_relations_dic %>% filter(minimum * maximum < 0)
+added_rows <- data.frame()
+for (i in 1:length(select_rel$source_label)) {
+  plus <- select_rel[i,] %>%
+    mutate(sign = "positive",
+           whole_relationship = paste(source_label, target_label, sign, sep = "-"))
+  minus <- select_rel[i,] %>%
+    mutate(sign = "negative",
+           whole_relationship = paste(source_label, target_label, sign, sep = "-"))
+  added_rows <- rbind(added_rows, plus, minus)
+}
+added_rows[,c(3:11)] <- c(rep(NA, length(added_rows$source_label)))
+
+others_relations_dic <- others_relations_dic %>%
+  mutate(sign = ifelse(minimum * maximum < 0,
+                       "*",
+                       ifelse(mean < 0,
+                          "negative",
+                          "positive")),
+         whole_relationship = paste(source_label, target_label, sign, sep = "-")) %>%
+  filter(sign != "*")
+
+others_relations_dic <- rbind(others_relations_dic, added_rows)
+```
+
+Compare maps
+
+```{r}
+# Each com. map with whole community
+comp.maps(agg_relations_dic$whole_relationship,
+          res_relations_dic$whole_relationship)[2]
+comp.maps(agg_relations_dic$whole_relationship,
+          man_relations_dic$whole_relationship)[2]
+comp.maps(agg_relations_dic$whole_relationship,
+          others_relations_dic$whole_relationship)[2]
+
+# per-group community maps against each other
+comp.maps(man_relations_dic$whole_relationship,
+          res_relations_dic$whole_relationship)[2]
+comp.maps(others_relations_dic$whole_relationship,
+          res_relations_dic$whole_relationship)[2]
+comp.maps(man_relations_dic$whole_relationship,
+          others_relations_dic$whole_relationship)[2]
+```
+
+# Find common relationships among community map pairs
+
+```{r}
+res_man <- inner_join(res_relations_dic, man_relations_dic, by = c("source_label", "target_label", "whole_relationship"))
+
+res_other <- inner_join(res_relations_dic, others_relations_dic, by = c("source_label", "target_label", "whole_relationship"))
+
+others_man <- inner_join(others_relations_dic, man_relations_dic, by = c("source_label", "target_label", "whole_relationship"))
+```
+
+Common relationships among all three comm. maps
+
+```{r}
+all_three <- inner_join(res_man, others_relations_dic, by = c("source_label", "target_label", "whole_relationship"))
+```
+
+

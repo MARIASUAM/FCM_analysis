@@ -1,0 +1,303 @@
+---
+title: "Figures"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+di <- "/Users/maria.suarez.munoz/Google Drive/ms_FuzzyCognitiveMapping/FCM_analysis"
+input_folder <- "input_files"
+output_folder <- "output_files"
+
+library(dplyr)
+library(reshape2)
+library(ggplot2)
+library(plotly)
+library(ggalluvial)
+library(GGally)
+library(scales)
+
+# Color-blind palette: "#999999", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7"
+
+orange <- "#E69F00" # ORANGE
+green <- "#009E73" # GREEN
+blue <- "#0072B2" # DARK BLUE
+red <- "#D55E00" # RED
+```
+
+# [Figure_FCM_scheme]
+
+Manual
+
+# Figure_stakeholders_alluvial
+
+```{r}
+stakeholders <- read.csv(paste(di, input_folder, "interviews_info_clean.csv", sep = "/"), sep = ";") %>%
+  mutate(freq = 1,
+         Type = New_stakeholders_classification)
+stakeholders %>% group_by(Type, Knowledge.area...clean, Action.level) %>%
+  summarise(n = sum(freq)) -> stakeholders3d
+
+ggplot(stakeholders3d, aes(y = n, axis2 = Type, axis3 = Knowledge.area...clean, axis1 = Action.level)) +
+  geom_alluvium(col = green, fill = green, alpha = 0.3) +
+  geom_stratum(fill = green, color = "grey") +
+  geom_text(stat = "stratum", label.strata = TRUE, size = 2) +
+  scale_x_continuous(breaks = 1:3, labels = c("Action level", "Stakeholder type", "Knowledge area")) +
+  scale_y_continuous(NULL, breaks = NULL) +
+  theme_minimal()
+```
+
+# Figure_accumulation_curves
+
+```{r, include=FALSE}
+# load files
+acc_table_whole <- read.csv(paste(di, output_folder, "3.0 acc_table_whole_community.csv", sep = "/"))
+data <- acc_table_whole
+title <- "A. All individual maps"
+ggplot(data) +
+  ggtitle(title) +
+  stat_summary(aes(x = matrix_nr, y = acc_concepts_mean), geom = "point", size = 1, fun.y = mean, color = red) +
+  stat_summary(aes(x = matrix_nr, y = acc_non_duplicated_mean), geom = "point", size = 1, fun.y = mean, color = "lightskyblue3") +
+  stat_summary(aes(x = matrix_nr, y = acc_concepts_mean), geom = "line", fun.y = mean, color = red, alpha = 0.6, linetype = "dashed") +
+  stat_summary(aes(x = matrix_nr, y = acc_non_duplicated_mean), geom = "line", fun.y = mean, color = "lightskyblue3", alpha = 0.6) +
+  geom_ribbon(aes(x = matrix_nr, ymin = acc_concepts_mean - acc_concepts_sd, ymax = acc_concepts_mean + acc_concepts_sd, alpha = 0.2, fill = red)) +
+  geom_ribbon(aes(x = matrix_nr, ymin = acc_non_duplicated_mean - acc_non_duplicated_sd, ymax = acc_non_duplicated_mean + acc_non_duplicated_sd, alpha = 0.2, fill = "lightskyblue3")) +
+  xlab("Number of maps") +
+  ylab("Number of concepts") +
+  scale_fill_manual(values = c(red, green), name="", labels=c("Accumulated concepts", "Unique concepts")) +
+  scale_alpha(NULL) +
+  theme_minimal() +
+  theme(legend.position = "bottom")
+
+# acc_table_researchers <- read.csv(paste(di, output_folder, "3.2.1 acc_table_researchers.csv", sep = "/"))
+# data <- acc_table_researchers
+# title <- "D. Researchers individual maps"
+# ggplot(data) +
+#   ggtitle(title) +
+#   stat_summary(aes(x = matrix_nr, y = acc_concepts_mean), geom = "point", size = 1, fun.y = mean, color = red) +
+#   stat_summary(aes(x = matrix_nr, y = acc_non_duplicated_mean), geom = "point", size = 1, fun.y = mean, color = "lightskyblue3") +
+#   stat_summary(aes(x = matrix_nr, y = acc_concepts_mean), geom = "line", fun.y = mean, color = red, alpha = 0.6, linetype = "dashed") +
+#   stat_summary(aes(x = matrix_nr, y = acc_non_duplicated_mean), geom = "line", fun.y = mean, color = "lightskyblue3", alpha = 0.6) +
+#   geom_ribbon(aes(x = matrix_nr, ymin = acc_concepts_mean - acc_concepts_sd, ymax = acc_concepts_mean + acc_concepts_sd, alpha = 0.2, fill = red)) +
+#   geom_ribbon(aes(x = matrix_nr, ymin = acc_non_duplicated_mean - acc_non_duplicated_sd, ymax = acc_non_duplicated_mean + acc_non_duplicated_sd, alpha = 0.2, fill = "lightskyblue3")) +
+#   xlab("Number of maps") +
+#   ylab("Number of concepts") +
+#   scale_fill_manual(values = c(red, green), name="", labels=c("Accumulated concepts", "Unique concepts")) +
+#   scale_alpha(NULL) +
+#   theme_minimal() +
+#   theme(legend.position = "bottom")
+# 
+# acc_table_forestry <- read.csv(paste(di, output_folder, "3.2.2 acc_table_forestry.csv", sep = "/"))
+# data <- acc_table_forestry
+# title <- "B. Forestry managers individual maps"
+# ggplot(data) +
+#   ggtitle(title) +
+#   stat_summary(aes(x = matrix_nr, y = acc_concepts_mean), geom = "point", size = 1, fun.y = mean, color = red) +
+#   stat_summary(aes(x = matrix_nr, y = acc_non_duplicated_mean), geom = "point", size = 1, fun.y = mean, color = "lightskyblue3") +
+#   stat_summary(aes(x = matrix_nr, y = acc_concepts_mean), geom = "line", fun.y = mean, color = red, alpha = 0.6, linetype = "dashed") +
+#   stat_summary(aes(x = matrix_nr, y = acc_non_duplicated_mean), geom = "line", fun.y = mean, color = "lightskyblue3", alpha = 0.6) +
+#   geom_ribbon(aes(x = matrix_nr, ymin = acc_concepts_mean - acc_concepts_sd, ymax = acc_concepts_mean + acc_concepts_sd, alpha = 0.2, fill = red)) +
+#   geom_ribbon(aes(x = matrix_nr, ymin = acc_non_duplicated_mean - acc_non_duplicated_sd, ymax = acc_non_duplicated_mean + acc_non_duplicated_sd, alpha = 0.2, fill = "lightskyblue3")) +
+#   xlab("Number of maps") +
+#   ylab("Number of concepts") +
+#   scale_fill_manual(values = c(red, green), name="", labels=c("Accumulated concepts", "Unique concepts")) +
+#   scale_alpha(NULL) +
+#   theme_minimal() +
+#   theme(legend.position = "bottom")
+# 
+# acc_table_key_stakeholders <- read.csv(paste(di, output_folder, "3.2.3 acc_table_key_stakeholders.csv", sep = "/"))
+# data <- acc_table_key_stakeholders
+# title <- "C. Key stakeholders individual maps"
+# ggplot(data) +
+#   ggtitle(title) +
+#   stat_summary(aes(x = matrix_nr, y = acc_concepts_mean), geom = "point", size = 1, fun.y = mean, color = red) +
+#   stat_summary(aes(x = matrix_nr, y = acc_non_duplicated_mean), geom = "point", size = 1, fun.y = mean, color = "lightskyblue3") +
+#   stat_summary(aes(x = matrix_nr, y = acc_concepts_mean), geom = "line", fun.y = mean, color = red, alpha = 0.6, linetype = "dashed") +
+#   stat_summary(aes(x = matrix_nr, y = acc_non_duplicated_mean), geom = "line", fun.y = mean, color = "lightskyblue3", alpha = 0.6) +
+#   geom_ribbon(aes(x = matrix_nr, ymin = acc_concepts_mean - acc_concepts_sd, ymax = acc_concepts_mean + acc_concepts_sd, alpha = 0.2, fill = red)) +
+#   geom_ribbon(aes(x = matrix_nr, ymin = acc_non_duplicated_mean - acc_non_duplicated_sd, ymax = acc_non_duplicated_mean + acc_non_duplicated_sd, alpha = 0.2, fill = "lightskyblue3")) +
+#   xlab("Number of maps") +
+#   ylab("Number of concepts") +
+#   scale_fill_manual(values = c(red, green), name="", labels=c("Accumulated concepts", "Unique concepts")) +
+#   scale_alpha(NULL) +
+#   scale_x_continuous(breaks = c(0, 5, 10), limits = c(0,10))+
+#   theme_minimal() +
+#   theme(legend.position = "bottom")
+```
+
+# Figure_inout_concepts - not distinguishing in and out degree
+
+Whole community
+```{r}
+per_group_concept_indices <- read.csv(paste(di, output_folder, "8.2 per_group_concept_indices.csv", sep = "/"), sep = ";")
+
+n <- 10 
+title <- "A. Social map"
+
+filt_degrees <- per_group_concept_indices %>%
+  select(Concept, Centrality_agg) %>%
+  top_n(n, Centrality_agg) %>%
+  mutate(Centrality = Centrality_agg) %>%
+  select(Concept, Centrality)
+filt_melted <- melt(filt_degrees, id.vars=c("Concept"))
+colnames(filt_melted) <- c("Concept", "Variable", "Centrality")
+filt_melted <- within(filt_melted, {
+  Concept <- factor(Concept, levels = names(sort(tapply(Centrality, Concept, sum))))
+})
+
+ggplot(filt_melted, aes(x= Concept, y = Centrality, fill = Variable)) +
+  scale_fill_manual(values = c(green, red)) +
+  geom_bar(stat = "identity") +
+  ggtitle(title) +
+  coord_flip() +
+  theme_minimal() +
+  theme(axis.text.x = element_text(), legend.position = "bottom")
+```
+
+# Figure_inout_concepts - not distinguishing in and out degree and all concepts in all groups
+
+```{r}
+per_group_concept_indices <- read.csv(paste(di, input_folder, "8.2 filtered_top_10_across_communities.csv", sep = "/"), sep = ";", dec = ",")
+per_group_concept_indices[is.na(per_group_concept_indices) == TRUE] <- 0
+```
+
+Socio-economic agents'
+```{r}
+title <- "Socio-economic agents' map"
+
+filt_degrees <- per_group_concept_indices %>%
+  select(Concept, Centrality_O)
+filt_melted <- melt(filt_degrees, id.vars=c("Concept"))
+colnames(filt_melted) <- c("Concept", "Variable", "Centrality")
+filt_melted <- within(filt_melted, {
+  Concept <- factor(Concept, levels = names(sort(tapply(Centrality, Concept, sum))))
+})
+
+ggplot(filt_melted, aes(x= Concept, y = Centrality, fill = Variable)) +
+  scale_fill_manual(values = c(green, red)) +
+  geom_bar(stat = "identity") +
+  ggtitle(title) +
+  coord_flip() +
+  theme_minimal() +
+  theme(axis.text.x = element_text(), legend.position = "bottom") +
+  ylim(0, 35)
+```
+
+Researchers'
+```{r}
+title <- "Researchers' map"
+
+filt_degrees <- per_group_concept_indices %>%
+  select(Concept, Centrality_R)
+filt_melted <- melt(filt_degrees, id.vars=c("Concept"))
+colnames(filt_melted) <- c("Concept", "Variable", "Centrality")
+filt_melted <- within(filt_melted, {
+  Concept <- factor(Concept, levels = names(sort(tapply(Centrality, Concept, sum))))
+})
+
+ggplot(filt_melted, aes(x= Concept, y = Centrality, fill = Variable)) +
+  scale_fill_manual(values = c(green, red)) +
+  geom_bar(stat = "identity") +
+  ggtitle(title) +
+  coord_flip() +
+  theme_minimal() +
+  theme(axis.text.x = element_text(), legend.position = "bottom") +
+  ylim(0, 35)
+```
+
+Forestry managers'
+```{r}
+title <- "Forestry managers' map"
+
+filt_degrees <- per_group_concept_indices %>%
+  select(Concept, Centrality_FM)
+filt_melted <- melt(filt_degrees, id.vars=c("Concept"))
+colnames(filt_melted) <- c("Concept", "Variable", "Centrality")
+filt_melted <- within(filt_melted, {
+  Concept <- factor(Concept, levels = names(sort(tapply(Centrality, Concept, sum))))
+})
+
+ggplot(filt_melted, aes(x= Concept, y = Centrality, fill = Variable)) +
+  scale_fill_manual(values = c(green, red)) +
+  geom_bar(stat = "identity") +
+  ggtitle(title) +
+  coord_flip() +
+  theme_minimal() +
+  theme(axis.text.x = element_text(), legend.position = "bottom") +
+  ylim(0, 35)
+```
+
+# Figure_relations_occurrence_histogram
+
+```{r}
+occ_melted <- read.csv(paste(di, output_folder, "5.0 occ_melted.csv", sep = "/"))
+
+ggplot(occ_melted, aes(x = occurrences, y = value)) +
+  geom_col(fill = green) +
+  theme_minimal() +
+  xlab("What number of times") +
+  ylab("How many relationships happened")
+```
+
+# [Figure_community_map]
+
+Manual
+
+# Figure_per_group_classification
+
+```{r}
+# Load data
+whole_group <- read.csv(paste(di, output_folder, "5.4 dpsir_concept_classification.csv", sep = "/"), sep = ";")
+per_group <- read.csv(paste(di, output_folder, "8.3 per_group_dpsir_classification.csv", sep = "/"), sep = ";")
+
+all_data <- left_join(whole_group, per_group) %>%
+  mutate(Whole_community = percentage_classes,
+         Researchers = res_percentage_dpsir_classes,
+         Forest_managers = man_percentage_dpsir_classes,
+         Key_stakeholders = other_percentage_dpsir_classes) %>%
+  select(DPSIR, Whole_community, Researchers, Forest_managers, Key_stakeholders) %>%
+  mutate(DPSIR_alphabetic = as.character(c("E", "B", "D", "A", "C")))
+
+all_data <- all_data[,-1]
+all_data <- all_data[order(all_data$DPSIR_alphabetic),]
+rownames(all_data) <- all_data[,5]
+all_data <- as.data.frame(t(as.matrix(all_data[,c(1:4)])))
+# all_data$Stakeholder <- rownames(all_data)
+all_data$Stakeholder <- c("Social map", "Researchers' community map", "Forest managers' community map", "Key stakeholders' community map")
+```
+
+# Figure_per_group_classification - all comm. maps, no social map
+
+```{r}
+# Load data
+all_data <- left_join(whole_group, per_group) %>%
+  mutate(Whole_community = percentage_classes,
+         Researchers = res_percentage_dpsir_classes,
+         Forest_managers = man_percentage_dpsir_classes,
+         Key_stakeholders = other_percentage_dpsir_classes) %>%
+  select(DPSIR, Researchers, Forest_managers, Key_stakeholders) %>%
+  mutate(DPSIR_alphabetic = as.character(c("E", "B", "D", "A", "C")))
+
+all_data <- all_data[,-1]
+all_data <- all_data[order(all_data$DPSIR_alphabetic),]
+rownames(all_data) <- all_data[,4]
+all_data <- as.data.frame(t(as.matrix(all_data[,c(1:3)])))
+# all_data$Stakeholder <- rownames(all_data)
+all_data$Stakeholder <- c("Researchers' community map", "Forest managers' community map", "Key stakeholders' community map")
+
+all_data %>% 
+     ggparcoord(
+         columns = 1:5, groupColumn = 6, order = c("allClass"),
+         scale = "globalminmax",
+         showPoints = TRUE,
+         alphaLines = 0.3) +
+  scale_color_manual(values = c("Researchers' community map" = green, "Forest managers' community map" = blue, "Key stakeholders' community map" = orange)) +
+  coord_flip() +
+  theme_minimal() +
+  theme() +
+  ylab("Percentage (%)") +
+  xlab(NULL)
+```
+
+# [Figure_implications]

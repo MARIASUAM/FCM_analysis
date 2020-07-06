@@ -1,0 +1,251 @@
+---
+title: "Aggregated matrix analysis"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(reshape)
+library(FCMapper)
+library(ggplot2)
+library(dplyr)
+
+di <- "/Users/maria.suarez.munoz/Google Drive/ms_FuzzyCognitiveMapping/FCM_analysis" # Mac
+
+files_folder <- "output_files"
+input_folder <- "input_files"
+output_folder <- "/output_files/"
+```
+
+Load files
+
+```{r}
+concepts_dic <- read.csv(paste(di, files_folder, "4.3 agg_concepts_dic.csv", sep = "/"), sep = ";")
+relations_dic <- read.csv(paste(di, files_folder, "4.2 agg_relations_dic.csv", sep = "/"), sep = ";")
+```
+
+# Relationships analysis
+
+Plot: Histogram with number of relationships which occurred 1, 2, 3,... times (nr of occurrences of relationships per nr of times) - See Olazabal_2018 for interpretation (section "Individual maps after homogenisation")
+
+```{r}
+occurrences_tb <- data.frame(occurrences = as.factor(relations_dic$occurrences)) # extract number of occurrences per relationships (Source-Target)
+
+occurrences_count <- occurrences_tb %>%
+  group_by(occurrences) %>%
+  summarise(count = n())
+
+occurrences_count$count # how many relationships happened
+occurrences_count$occurrences # what number of times
+
+occ_melted <- melt(occurrences_count)
+
+write.csv(occ_melted, paste(di, output_folder, "5.0 occ_melted.csv", sep = ""), sep = ";")
+
+ggplot(occ_melted, aes(x = occurrences, y = value)) +
+  geom_col() +
+  theme_minimal() +
+  xlab("What number of times") +
+  ylab("How many relationships happened")
+```
+
+*Analyse types of relationships: % negative vs positive, occurrences, sd of the weights, sign changes, % strong vs weak weights...*
+
+# Build aggregated matrix
+
+```{r}
+empty_agg_matrix <- data.frame(matrix(NA, 
+                                      nrow = length(concepts_dic$ID), 
+                                      ncol = length(concepts_dic$ID)))
+colnames(empty_agg_matrix) <- concepts_dic$Label
+rownames(empty_agg_matrix) <- concepts_dic$Label
+```
+
+Fill in empty agg matrix 
+
+for (i in 1:length(relations_dic$source_label)), find coordinate (x,y) in agg_matrix, being x relations_dic$Source_ID[i] and y relations_dic$Target_ID[i], and give it value relations_dic$mean[i]
+  
+```{r}
+agg_matrix <- empty_agg_matrix
+for (i in 1:length(relations_dic$source_label)) {
+# for (i in 1:5) {
+  x <- as.numeric(relations_dic$Source_ID[i])
+  y <- as.numeric(relations_dic$Target_ID[i])
+  # weight_value <- relations_dic$mean[i]
+  agg_matrix[x, y] <- relations_dic$mean[i]
+}
+```
+
+
+```{r}
+write.table(agg_matrix, paste(di, output_folder, "5.1 agg_matrix.csv", sep = ""), sep = ";", row.names = TRUE)
+```
+
+# Matrix indices
+ 
+```{r, echo = FALSE}
+agg_matrix[is.na(agg_matrix)] <- 0
+
+# write.table(agg_matrix, paste(di, output_folder, "5.1 agg_matrix_0values.csv", sep = ""), sep = ";", row.names = TRUE) # Export agg_matrix for FCMapper (0 values instead of NA)
+
+agg_matrix_indices <- matrix.indices(as.matrix(agg_matrix)) #FCMapper
+
+D_self <- as.numeric(agg_matrix_indices$Value[1]) / as.numeric(agg_matrix_indices$Value[3])^2
+Percentage_T <- as.numeric(agg_matrix_indices$Value[4]) * 100 / as.numeric(agg_matrix_indices$Value[3])
+Percentage_R <- as.numeric(agg_matrix_indices$Value[5]) * 100 / as.numeric(agg_matrix_indices$Value[3])
+Percentage_O <- as.numeric(agg_matrix_indices$Value[7]) * 100 / as.numeric(agg_matrix_indices$Value[3])
+  
+agg_matrix_indices$Index <- as.character(agg_matrix_indices$Index)
+agg_matrix_indices <- rbind(agg_matrix_indices, c("Density with loops", D_self))
+agg_matrix_indices <- rbind(agg_matrix_indices, c("Percentage_T", Percentage_T))
+agg_matrix_indices <- rbind(agg_matrix_indices, c("Percentage_R", Percentage_R))
+agg_matrix_indices <- rbind(agg_matrix_indices, c("Percentage_O", Percentage_O))
+
+names <- agg_matrix_indices$Index
+t_agg_matrix_indices <- t(as.matrix(agg_matrix_indices$Value))
+colnames(t_agg_matrix_indices) <- names
+```
+
+```{r}
+write.table(t_agg_matrix_indices, paste(di, output_folder, "5.2 agg_matrix_indices.csv", sep = ""), sep = ";", row.names = FALSE)
+```
+
+**Note on density**
+
+Connection density = Number of connections / Number of concepts
+
+Density as [@Ozesmi2004]: Number of connections / Number of possible connections
+  with self loops: Number of connections / (Number of concepts^2)
+  without self loops: Number of connections / (Number of concepts * (Number of concepts - 1))
+  
+We consider that self-loops are possible, and add this index in the table ("Density with loops")
+
+# Concepts indices
+
+Include also concept ocurrence (taken from my_concepts_dic)
+```{r, echo = FALSE}
+concept_indices <- concept.indices(agg_matrix, colnames(agg_matrix)) #FCMapper
+
+occurrencestojoin <- data.frame(Concept = concepts_dic$Label, Occurrence = concepts_dic$occurrence)
+
+concept_indices <- inner_join(concept_indices, occurrencestojoin, by = c("Concept"))
+```
+
+Include classification of each concept
+```{r}
+concepts_dic$Concept <- concepts_dic$Label
+concept_indices <- left_join(concept_indices, concepts_dic)
+
+concept_indices <- concept_indices %>%
+  select(ID, Concept, DPSIR, Occurrence, Outdegree, Indegree, Centrality, Transmitter, Receiver, Ordinary)
+```
+
+```{r}
+write.table(concept_indices, paste(di, output_folder, "5.3 agg_matrix_concept_indices.csv", sep = ""), sep = ";", row.names = FALSE)
+```
+
+## Plots
+
+Plot: occurrences - centrality
+
+*Nr occurrences of a concepts vs variable weighting its importance (degree, out/indegree, ...) - maybe need to "normalize" the importance --> next plot*
+
+```{r}
+plot(concept_indices$Occurrence, concept_indices$Centrality, xlab = "Concept occurrence", ylab = "Concept centrality", main = "Aggregated matrix")
+```
+
+Plot: occurrences - centrality/occurrences ("unbias" centrality)
+
+```{r}
+# plot(concept_indices$Occurrence, (concept_indices$Centrality/concept_indices$Occurrence))
+```
+
+Plot: Centrality value per concept differentiating between out and in degree
+
+```{r}
+degrees <- concept_indices %>%
+  select(Concept, Outdegree, Indegree)
+
+# degrees <- degrees[1:10,] # select only a few concepts
+
+melted <- melt(degrees, id.vars=c("Concept"))
+colnames(melted) <- c("Concept", "Variable", "Centrality")
+
+melted <- within(melted, {
+  Concept <- factor(Concept, levels = names(rev(sort(tapply(Centrality, Concept, sum)))))
+})
+
+ggplot(melted, aes(x= Concept, y = Centrality, fill = Variable)) + 
+  geom_bar(stat = "identity") +
+  theme(axis.text.x = element_text(angle = 75, hjust = 1))
+```
+
+Plot: Centrality value per concept differentiating between out and in degree - top 20% or whatever percentage of centrality
+
+```{r}
+n <- 10
+title <- "Aggregated map"
+
+filt_degrees <- concept_indices %>%
+  select(Concept, Outdegree, Indegree, Centrality) %>%
+  top_n(n, Centrality)
+
+filt_degrees <- filt_degrees %>%
+  select(Concept, Outdegree, Indegree)
+
+filt_melted <- melt(filt_degrees, id.vars=c("Concept"))
+colnames(filt_melted) <- c("Concept", "Variable", "Centrality")
+
+filt_melted <- within(filt_melted, {
+  Concept <- factor(Concept, levels = names(sort(tapply(Centrality, Concept, sum))))
+})
+
+ggplot(filt_melted, aes(x= Concept, y = Centrality, fill = Variable)) + 
+  geom_bar(stat = "identity") +
+  theme(axis.text.x = element_text()) +
+  ggtitle(title) +
+  coord_flip()
+```
+
+# Concepts classification analysis
+
+```{r}
+total_nr_concepts <- length(concepts_dic$Label)
+dpsir_classes <- concepts_dic %>%
+  select(DPSIR) %>%
+  group_by(DPSIR) %>%
+  summarise(abs_dpsir_classes = n()) %>%
+  mutate(percentage_classes = (abs_dpsir_classes * 100) / total_nr_concepts)
+
+# other_classes <- concepts_dic %>%
+#   select(Posibilidad_B) %>%
+#   group_by(Posibilidad_B) %>%
+#   summarise(abs_other_classes = n()) %>%
+#   mutate(percentage_classes = (abs_other_classes * 100) / total_nr_concepts)
+```
+
+Export
+
+```{r}
+write.table(dpsir_classes, paste(di, output_folder, "5.4 dpsir_concept_classification.csv", sep = ""), sep = ";", row.names = TRUE)
+
+# write.table(other_classes, paste(di, output_folder, "5.5 other_concept_classification.csv", sep = ""), sep = ";", row.names = TRUE)
+```
+
+# DPSIR - R/T/O relationship
+
+```{r}
+RTO_DPSIR <- concept_indices %>% 
+  mutate(RTO = ifelse(Ordinary == 1, "Ordinary", 
+                      ifelse(Receiver == 1, "Receiver", 
+                             ifelse(Transmitter == 1, "Transmitter", NA)))) %>%
+  select(RTO, DPSIR) %>%
+  group_by(RTO, DPSIR) %>%
+  summarise(count = n())
+
+plot(RTO_DPSIR$count)
+```
+

@@ -1,0 +1,63 @@
+---
+title: "Generate files for visualization with Gephi"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+di <- "/Users/maria.suarez.munoz/Google Drive/ms_FuzzyCognitiveMapping/FCM_analysis" # Mac
+
+homogenised_maps_folder <- "input_files/homogenised_matrices/"
+
+files <- list.files(paste(di, homogenised_maps_folder, sep = "/"), pattern = "*.csv")
+```
+
+# Generate files for visualization with Gephi
+
+```{r}
+output_folder <- "/output_files/files_for_Gephi_plotting/homogenised/"
+```
+
+```{r}
+for (i in 1:length(files)) {
+  my_map <- read.csv(paste(di, homogenised_maps_folder, files[i], sep = "/"), sep = ";", na.strings=c("","NA"), dec = ",")
+
+  # GENERATE NODES TABLE
+  nodes_table <- data.frame(ID = 1:length(my_map[,1]),
+                          Label = my_map[,1])
+  # optional: Adding column to nodes_table with concept type
+  
+  # GENERATE EDGES TABLE
+  my_map <- my_map[,-1] # discard first column for matrix (concept names)
+  colnames(my_map) <- 1:length(my_map[,1])
+  
+  edges_table <- data.frame(Source = character(), # row
+                          Target = character(), # column
+                          Weight = integer())
+  
+  for (g in 1:dim(my_map)[1]) {
+    for (j in 1:dim(my_map)[2]) {
+      ifelse(is.na(my_map[g, j]) == FALSE,
+             edges_table <- rbind(edges_table,
+                                  data.frame(Source = colnames(my_map)[g], Target = colnames(my_map)[j], Weight = my_map[g, j])),
+             "")
+    }
+  }
+  
+  # Add column of weight type and modify weight to absolute weight - (for arrows thickness)
+  edges_table$Weight_type <- c()
+  for (h in 1:length(edges_table$Weight)) {
+    ifelse(edges_table$Weight[h] < 0,
+           edges_table$Weight_type[h] <- "negative",
+           edges_table$Weight_type[h] <- "positive")
+    }
+  edges_table$Weight <- abs(edges_table$Weight)
+  edges_table <- rbind(edges_table, c(NA, NA, 0), c(NA, NA, 1)) # Add empty edges to consider thickness scale 0-1
+  
+  # WRITE FILES
+  write.table(nodes_table, paste(di, output_folder, "nodes_table_", i, ".csv", sep = ""), sep = ";", row.names = FALSE)
+write.table(edges_table, paste(di, output_folder, "edges_table_", i, ".csv", sep = ""), sep = ";", row.names = FALSE)
+  print("printing files")
+}
+```

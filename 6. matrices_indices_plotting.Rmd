@@ -1,0 +1,92 @@
+---
+title: "Indices plots"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(include = TRUE)
+
+library(stringi)
+library(FCMapper)
+library("rlist")
+library(dplyr)
+library(knitr)
+library(ggplot2)
+library(reshape)
+
+di <- "/Users/maria.suarez.munoz/Google Drive/ms_FuzzyCognitiveMapping/FCM_analysis" # Mac
+
+output_folder <- "/output_files/"
+```
+
+Load indices
+```{r}
+original_maps_indices <- read.csv(paste(di, output_folder, "1.1. original_maps_indices.csv", sep = ""), sep = ";")
+
+homogenised_matrices_indices <- read.csv(paste(di, output_folder, "3.1 homogenised_matrices_indices.csv", sep = ""), sep = ";")
+
+agg_matrix_indices <- read.csv(paste(di, output_folder, "5.2 agg_matrix_indices.csv", sep = ""), sep = ";")
+```
+
+## Exploratory plots - to be interpreted once homogenisation is finished!
+
+Plot: Number concepts - Density
+
+```{r, echo = FALSE}
+ggplot() +
+  geom_point(data = original_maps_indices, aes(x = original_maps_indices[,3], y = original_maps_indices[,12]), color = "indianred4", shape = 16, alpha = 0.7) +
+  geom_point(data = homogenised_matrices_indices, aes(x = homogenised_matrices_indices[,3], y = homogenised_matrices_indices[,12]), color = "lightskyblue3", shape = 17, alpha = 0.7) +
+  # geom_point(data = agg_matrix_indices, aes(x = agg_matrix_indices[,3], y = agg_matrix_indices[,12]), color = "orange") + - transform to log axis if applied
+  theme_minimal() +
+  xlab("Number of concepts") + 
+  ylab("Density with loops") +
+  geom_segment(mapping=aes(x = original_maps_indices[,3], y = original_maps_indices[,12], xend = homogenised_matrices_indices[,3], yend = homogenised_matrices_indices[,12]), size = 0.2, color="grey")
+```
+
+Plot: Number of concepts - number of connections
+
+```{r, echo = FALSE}
+ggplot() +
+  geom_point(data = original_maps_indices, aes(x = original_maps_indices[,3], y = original_maps_indices[,1]), color = "indianred4", shape = 16, alpha = 0.7) +
+  geom_point(data = homogenised_matrices_indices, aes(x = homogenised_matrices_indices[,3], y = homogenised_matrices_indices[,1]), color = "lightskyblue3", shape = 17, alpha = 0.7) +
+  # geom_point(data = agg_matrix_indices, aes(x = agg_matrix_indices[,3], y = agg_matrix_indices[,1]), color = "orange") + - transform to log axis if applied
+  theme_minimal() +
+  xlab("Number of concepts") + 
+  ylab("Number of connections") + geom_segment(mapping=aes(x = original_maps_indices[,3], y = original_maps_indices[,1], xend = homogenised_matrices_indices[,3], yend = homogenised_matrices_indices[,1]), size = 0.2, color="grey")
+```
+
+Plot: Connections - density
+
+```{r, echo = FALSE}
+ggplot() +
+  geom_point(data = original_maps_indices, aes(x = original_maps_indices[,1], y = original_maps_indices[,12]), color = "indianred4", shape = 16, alpha = 0.7) +
+  geom_point(data = homogenised_matrices_indices, aes(x = homogenised_matrices_indices[,1], y = homogenised_matrices_indices[,12]), color = "lightskyblue3", shape = 17, alpha = 0.7) +
+  # geom_point(data = agg_matrix_indices, aes(x = agg_matrix_indices[,1], y = agg_matrix_indices[,2]), color = "orange") + - transform to log axis if applied
+  theme_minimal() +
+  xlab("Number of connections") + 
+  ylab("Density with loops") + geom_segment(mapping=aes(x = original_maps_indices[,1], y = original_maps_indices[,12], xend = homogenised_matrices_indices[,1], yend = homogenised_matrices_indices[,12]), size = 0.2, color="grey")
+```
+
+Indices variations 
+
+```{r}
+indexes <- c("Number of connections", "Connection density", "Number of concepts", "Number of transmitters", "Number of receivers", "Number of no connections", "Number of ordinary", "Number of self loops", "Connections/variable", "Complexity (R/T)", "Hierarchy", "Density with loops")
+original_data <- original_maps_indices[1:41,1:12]
+colnames(original_data)  <- indexes
+original_data$type <- "original"
+original_melt <- melt(original_data)
+
+homog_data <- homogenised_matrices_indices[1:41,1:12]
+colnames(homog_data)  <- indexes
+homog_data$type <- "homogenised"
+homog_melt <- melt(homog_data)
+
+all_data <- rbind(original_melt, homog_melt)
+```
+
+```{r}
+ggplot(all_data, aes(x = variable, y = value, fill = type)) + geom_boxplot() +
+    facet_wrap(~variable, scale="free")
+```

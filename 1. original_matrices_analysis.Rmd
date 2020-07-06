@@ -1,0 +1,249 @@
+---
+title: "Analysis of original individuals maps"
+output:
+  word_document: default
+  html_document: default
+  pdf_document: default
+editor_options:
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(include = TRUE)
+
+library(stringi)
+library(FCMapper)
+library("rlist")
+library(dplyr)
+library(knitr)
+library(ggplot2)
+
+di <- "/Users/maria.suarez.munoz/Google Drive/ms_FuzzyCognitiveMapping/FCM_analysis" # Mac
+
+original_maps_folder <- "/input_files/original_matrices/"
+input_folder <- "/input_files/"
+
+files <- list.files(paste(di, original_maps_folder, sep = "/"), pattern = "*.csv")
+
+output_folder <- "/output_files/"
+```
+
+# Reference table
+
+To identify which interview corresponds to which map within the analysis (as maps are not loaded in order).
+
+```{r}
+stakeholders_types <- read.csv(paste(di, input_folder, "interviews_info_clean.csv", sep = ""), sep = ";")
+
+stakeholders_types <- stakeholders_types %>%
+  mutate(Entrevista = paste(ID_interview, ".", sep = ""),
+         Stakeholders_type = New_stakeholders_classification) %>%
+  select(Entrevista, Stakeholders_type)
+```
+
+```{r, include=FALSE}
+ref_table <- data.frame(Entrevista = numeric(),
+                        File = character(),
+                        Matrix_nr = numeric())
+
+for (i in 1:length(files)) {
+  new_row <- data.frame(Entrevista = strsplit(strsplit(as.character(files[[i]]), "_")[[1]][2], "c")[[1]][1],
+                        File = as.character(files[[i]]),
+                        Matrix_nr = i)
+  
+  ref_table <- rbind(ref_table, new_row)
+}
+
+ref_table <- full_join(ref_table, stakeholders_types) %>%
+  select(Entrevista, File, Matrix_nr, Stakeholders_type)
+```
+
+```{r, echo=FALSE}
+# kable(ref_table, digits = 2)
+write.table(ref_table, paste(di, output_folder, "1.0. maps_to_matrices_ref_table.csv", sep = ""), sep = ";", row.names = FALSE)
+```
+
+# Read maps 
+
+```{r, include=FALSE}
+# Load maps
+original_maps_list <- list()
+
+for (i in 1:length(files)) {
+  my_map <- read.csv(paste(di, original_maps_folder, files[i], sep = ""), sep = ";", na.strings=c("","NA"), dec = ",")
+  my_map[is.na(my_map)] <- 0
+  assign('concept_names', as.character(my_map[,1])) # extract concept names
+  my_map <- my_map[,-1] # discard first column for matrix (concept names)
+  colnames(my_map) <- concept_names # to avoid spaces being replaced by dots
+  check.matrix(my_map) # check if square
+  
+  original_maps_list <- list.append(original_maps_list, my_map)
+}
+```
+
+# Maps indices
+
+```{r, include=FALSE}
+original_maps_indices <- data.frame(Index = c("Number of connections", "Connection density", "Number of concepts", "Number of transmitters", "Number of receivers", "Number of no connections", "Number of ordinary", "Number of self loops", "Connections/variable", "Complexity (R/T)", "Hierarchy", "Density with loops", "Percentage_T", "Percentage_R", "Percentage_O"))
+  
+for (i in 1:length(original_maps_list)) {
+  map_indexes <- matrix.indices(original_maps_list[[i]])
+  D_self <- as.numeric(map_indexes$Value[1]) / as.numeric(map_indexes$Value[3])^2
+  Percentage_T <- as.numeric(map_indexes$Value[4]) * 100 / as.numeric(map_indexes$Value[3])
+  Percentage_R <- as.numeric(map_indexes$Value[5]) * 100 / as.numeric(map_indexes$Value[3])
+  Percentage_O <- as.numeric(map_indexes$Value[7]) * 100 / as.numeric(map_indexes$Value[3])
+  
+  map_indexes$Index <- as.character(map_indexes$Index)
+  map_indexes <- rbind(map_indexes, c("Density with loops", D_self))
+  map_indexes <- rbind(map_indexes, c("Percentage_T", Percentage_T))
+  map_indexes <- rbind(map_indexes, c("Percentage_R", Percentage_R))
+  map_indexes <- rbind(map_indexes, c("Percentage_O", Percentage_O))
+  
+  map_indexes$Index <- as.factor(map_indexes$Index)
+  map_indexes$Value <- as.numeric(map_indexes$Value)
+
+  map_indexes <- map_indexes %>%
+    select(Value)
+  colnames(map_indexes) <- paste("matrix_", i, sep = "")
+  original_maps_indices <- cbind(original_maps_indices, map_indexes)
+}
+
+column_names <- original_maps_indices$Index
+
+original_maps_indices <- original_maps_indices[,2:length(original_maps_indices)]
+original_maps_indices <- as.matrix(t(original_maps_indices))
+colnames(original_maps_indices) <- column_names
+original_maps_indices <- as.data.frame(original_maps_indices)
+
+original_maps_indices$Stakeholder_type <- ref_table$Stakeholders_type
+
+original_maps_indices <- original_maps_indices[with(original_maps_indices, order(Stakeholder_type)), ]
+# kable(original_maps_indices, digits = 2)
+```
+
+Summary table
+
+```{r, include=FALSE}
+original_maps_indices_notype <- original_maps_indices[,1:15]
+
+mean_tb <- summarise_all(original_maps_indices_notype, mean)
+sd_tb <- summarise_all(original_maps_indices_notype, sd)
+min_tb <- summarise_all(original_maps_indices_notype, min)
+max_tb <- summarise_all(original_maps_indices_notype, max)
+
+summary_tb <- rbind(mean_tb, sd_tb, min_tb, max_tb)
+rownames(summary_tb) <- c("Mean_all", "SD_all", "Minimum_all", "Maximum_all")
+summary_tb$Stakeholder_type <- NA
+
+original_maps_indices <- rbind(original_maps_indices, summary_tb)
+```
+
+```{r}
+write.table(original_maps_indices, paste(di, output_folder, "1.1. original_maps_indices.csv", sep = ""), sep = ";", row.names = TRUE)
+```
+
+Summary tables per group
+```{r}
+# Other stakeholders
+other_indices <- original_maps_indices %>% filter(Stakeholder_type == "Socio-economic agents")
+other_indices <- other_indices[,1:15]
+mean_tb <- summarise_all(other_indices, mean)
+sd_tb <- summarise_all(other_indices, sd)
+min_tb <- summarise_all(other_indices, min)
+max_tb <- summarise_all(other_indices, max)
+summary_other <- rbind(mean_tb, sd_tb, min_tb, max_tb)
+rownames(summary_other) <- c("Mean_socio-economic_agents", "SD_socio-economic_agents", "Minimum_socio-economic_agents", "Maximum_socio-economic_agents")
+
+# Forestry managers
+managers_indices <- original_maps_indices %>%
+  filter(Stakeholder_type == "Forestry managers")
+managers_indices <- managers_indices[,1:15]
+mean_tb <- summarise_all(managers_indices, mean)
+sd_tb <- summarise_all(managers_indices, sd)
+min_tb <- summarise_all(managers_indices, min)
+max_tb <- summarise_all(managers_indices, max)
+summary_managers <- rbind(mean_tb, sd_tb, min_tb, max_tb)
+rownames(summary_managers) <- c("Mean_managers", "SD_managers", "Minimum_managers", "Maximum_managers")
+
+# Researchers
+researchers_indices <- original_maps_indices %>%
+  filter(Stakeholder_type == "Researchers")
+researchers_indices <- researchers_indices[,1:15]
+mean_tb <- summarise_all(researchers_indices, mean)
+sd_tb <- summarise_all(researchers_indices, sd)
+min_tb <- summarise_all(researchers_indices, min)
+max_tb <- summarise_all(researchers_indices, max)
+summary_researchers <- rbind(mean_tb, sd_tb, min_tb, max_tb)
+rownames(summary_researchers) <- c("Mean_researchers", "SD_researchers", "Minimum_researchers", "Maximum_researchers")
+
+per_group_summary <- rbind(summary_other, summary_managers)
+per_group_summary <- rbind(per_group_summary, summary_researchers)
+```
+
+```{r}
+write.table(per_group_summary, paste(di, output_folder, "1.2. per_group_summary_indices_original.csv", sep = ""), sep = ";", row.names = TRUE)
+```
+
+# Visual analysis
+
+```{r}
+data <- original_maps_indices[1:41,]
+
+boxplot (data[,1] ~ data[,13], data = data, boxwex = 0.25, ylab = "Number of connections")
+boxplot (data[,2] ~ data[,13], data = data, boxwex = 0.25, ylab = "Connection density")
+boxplot (data[,3] ~ data[,13], data = data, boxwex = 0.25, ylab = "Number of concepts")
+boxplot (data[,4] ~ data[,13], data = data, boxwex = 0.25, ylab = "Number of transmitters")
+boxplot (data[,5] ~ data[,13], data = data, boxwex = 0.25, ylab = "Number of receivers")
+boxplot (data[,6] ~ data[,13], data = data, boxwex = 0.25, ylab = "Number of no connections")
+boxplot (data[,7] ~ data[,13], data = data, boxwex = 0.25, ylab = "Number of ordinary")
+boxplot (data[,8] ~ data[,13], data = data, boxwex = 0.25, ylab = "Number of self loops")
+boxplot (data[,9] ~ data[,13], data = data, boxwex = 0.25, ylab = "Connections/variable")
+boxplot (data[,10] ~ data[,13], data = data, boxwex = 0.25, ylab = "Complexity (R/T)")
+boxplot (data[,11] ~ data[,13], data = data, boxwex = 0.25, ylab = "Hierarchy")
+boxplot (data[,12] ~ data[,13], data = data, boxwex = 0.25, ylab = "Density with loops")
+```
+
+# Extract relationships and concepts from original matrices
+
+```{r}
+original_concepts <- c()
+original_relations <- data.frame(matrix = integer(),
+                            source_label = character(),
+                            target_label = character(),
+                            weight = numeric())
+
+for (i in 1:length(files)) {
+# for (i in 1:2) { # testing
+  my_matrix <- read.csv(paste(di, original_maps_folder, files[i], sep = ""), sep = ";", na.strings=c("","NA"), dec = ",")
+  
+  assign('map_concepts', as.character(my_matrix[,1])) # extract concept names
+  my_matrix <- my_matrix[,-1] # discard first column for matrix (concept names)
+  colnames(my_matrix) <- map_concepts # to avoid spaces being replaced by dots
+  
+  # Built vector with all concepts (repetitions)
+  original_concepts <- c(original_concepts, map_concepts) 
+  
+  for (g in 1:dim(my_matrix)[1]) {
+    for (j in 1:dim(my_matrix)[2]) {
+      ifelse(is.na(my_matrix[g, j]) == FALSE,
+             original_relations <- rbind(original_relations,
+                                  data.frame(matrix = i,
+                                             source_label = colnames(my_matrix)[g],
+                                             target_label = colnames(my_matrix)[j],
+                                             weight = my_matrix[g, j])),
+                                    "")
+    }
+  }
+}
+```
+
+# All relationships analysis
+
+```{r}
+ggplot(original_relations, aes(x = weight)) +
+  geom_histogram(binwidth = 0.1, fill = "lightskyblue3", col = "grey") +
+  theme_minimal() +
+  ggtitle("Histogram of relationships from original matrices") +
+  ylab("Count") +
+  xlab("Weight")
+```

@@ -1,0 +1,37 @@
+---
+title: "14. DPSIR_analysis"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+# Set up directory
+di <- "/Users/maria.suarez.munoz/Google Drive/ms_FuzzyCognitiveMapping/FCM_analysis"
+
+input_folder <- "input_files"
+output_folder <- "output_files"
+
+# Load packages
+library(dplyr)
+```
+
+# Load files
+
+```{r}
+Dic_concepts_original_concepts <- read.csv(paste(di, input_folder, "Dic_concepts_original_concepts.csv", sep = "/"), sep = ";") %>%
+  select(Hierarchical.Homogenisation..LEVEL.2, Colour) %>%
+  filter(Hierarchical.Homogenisation..LEVEL.2 != "-") %>%
+  group_by_all() %>%
+  summarise(count = n())
+
+DPSIR_class <- read.csv(paste(di, output_folder, "5.3 agg_matrix_concept_indices.csv", sep = "/"), sep = ";") %>%
+  select(Concept, DPSIR) %>%
+  left_join(Dic_concepts_original_concepts, by = c("Concept" = "Hierarchical.Homogenisation..LEVEL.2")) %>%
+  select(DPSIR, Colour) %>%
+  group_by(DPSIR, Colour) %>%
+  summarise(count = n())
+
+write.csv(DPSIR_class, paste(di, output_folder, "12.1 DPSIR_colour_classification.csv", sep = "/"))
+```
+

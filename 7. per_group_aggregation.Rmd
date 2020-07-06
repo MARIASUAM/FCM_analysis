@@ -1,0 +1,430 @@
+---
+title: "Groups map analysis"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(dplyr)
+
+di <- "/Users/maria.suarez.munoz/Google Drive/ms_FuzzyCognitiveMapping/FCM_analysis" # Mac
+
+homogenised_maps_folder <- "input_files/homogenised_matrices/"
+input_folder <- "/input_files/"
+output_folder <- "/output_files/"
+gephi_output_folder <- "/output_files/files_for_Gephi_plotting/aggregated/"
+
+files <- list.files(paste(di, homogenised_maps_folder, sep = "/"), pattern = "*.csv")
+```
+
+Load reference table with stakeholders type:
+
+```{r}
+#OLD - stakeholders <- read.csv(paste(di, "input_files/interviews_info_clean.csv", sep = "/"), sep = ";", na.strings=c("","NA"), dec = ",")
+stakeholders <- read.csv(paste(di, output_folder, "1.0. maps_to_matrices_ref_table.csv", sep = ""), sep = ";", na.strings=c("","NA"), dec = ",")
+
+stakeholders <- stakeholders %>%
+  mutate(ID_interview = Entrevista)
+```
+
+Build list of maps per stakeholder group
+```{r}
+researchers <- c()
+forestry_managers <- c()
+socioeconomic <- c()
+
+for (i in 1:length(stakeholders$ID_interview)) {
+  ifelse(stakeholders$Stakeholders_type[i] == "Researchers",
+         researchers <- c(researchers, i),
+         ifelse(stakeholders$Stakeholders_type[i] == "Forestry managers",
+                forestry_managers <- c(forestry_managers, i),
+                socioeconomic <- c(socioeconomic, i)))
+}
+
+#check
+for (i in 1:length(researchers)) {print(files[researchers[i]])}
+for (i in 1:length(forestry_managers)) {print(files[forestry_managers[i]])}
+for (i in 1:length(socioeconomic)) {print(files[socioeconomic[i]])}
+```
+
+# Researchers aggregated map
+
+```{r}
+researchers_concepts <- c()
+researchers_relations <- data.frame(matrix = integer(),
+                            source_label = character(),
+                            target_label = character(),
+                            weight = numeric())
+
+for (i in 1:length(researchers)) {
+# for (i in 1:2) { # testing
+  my_matrix <- read.csv(paste(di, homogenised_maps_folder, files[researchers[i]], sep = "/"), sep = ";", na.strings=c("","NA"), dec = ",")
+  
+  assign('researcher_map_concepts', as.character(my_matrix[,1])) # extract concept names
+  my_matrix <- my_matrix[,-1] # discard first column for matrix (concept names)
+  colnames(my_matrix) <- researcher_map_concepts # to avoid spaces being replaced by dots
+  # rownames(my_matrix) <- researcher_map_concepts # duplicated rownames not allowed - to check whether this line is needed (then, avoid duplications by pre-collapsing matrices)
+  
+  # Built vector with all concepts (repetitions)
+  researchers_concepts <- c(researchers_concepts, researcher_map_concepts) 
+  
+  for (g in 1:dim(my_matrix)[1]) {
+    for (j in 1:dim(my_matrix)[2]) {
+      ifelse(is.na(my_matrix[g, j]) == FALSE,
+             researchers_relations <- rbind(researchers_relations,
+                                  data.frame(matrix = i,
+                                             source_label = colnames(my_matrix)[g],
+                                             target_label = colnames(my_matrix)[j],
+                                             weight = my_matrix[g, j])),
+                                    "")
+    }
+  }
+}
+```
+
+## Researchers concept occurrences
+
+```{r}
+researchers_occurrences <- data.frame(Label = researchers_concepts)
+
+researchers_occurrences <- researchers_occurrences %>%
+  group_by(Label) %>%
+  summarise(researchers_occurrence = n())
+```
+
+- Add concept classification
+
+```{r}
+concepts_class <- read.csv(paste(di, input_folder, "concepts_classification.csv", sep = ""), sep = ";", na.strings=c("","NA"), dec = ",")
+concepts_class <- concepts_class %>%
+  mutate(Label = Save_copy) %>%
+  select(Label, DPSIR)
+```
+
+- Merge occurrences with classification and add ID
+
+```{r}
+researchers_occurrences <- left_join(researchers_occurrences, concepts_class, by = "Label")
+
+researchers_occurrences$ID <- 1:length(researchers_occurrences$Label)
+```
+
+## Researchers relationships
+
+```{r}
+researchers_rel_dic <- researchers_relations %>%
+  select(source_label, target_label, weight) %>%
+  group_by(source_label, target_label) %>%
+  summarise(mean = mean(weight),
+            sd = sd(weight),
+            minimum = min(weight),
+            maximum = max(weight),
+            cv = sd(weight)/mean(weight),
+            occurrences = n()) %>%
+  mutate(sign_change = ifelse(minimum * maximum < 0,
+                              "YES",
+                              "NO"))
+```
+
+## Generate Gephi files for researchers matrix
+
+```{r}
+# Build file for Gephi
+Source <- as.vector(researchers_rel_dic$source_label)
+Target <- as.vector(researchers_rel_dic$target_label)
+
+for (i in 1:length(researchers_occurrences$ID)) {
+  Source[which(Source == researchers_occurrences$Label[i], arr.ind = TRUE)] <- i
+  Target[which(Target == researchers_occurrences$Label[i], arr.ind = TRUE)] <- i
+}
+
+researchers_rel_dic <- cbind(researchers_rel_dic, Source_ID = Source, Target_ID = Target)
+
+edges_table_researchers <- researchers_rel_dic %>%
+  mutate(Weight = mean,
+         Source = Source_ID,
+         Target = Target_ID)
+
+edges_table_researchers <- edges_table_researchers[,c(13,14,12)]
+
+# Add column of weight type and modify weight to absolute weight - (for arrows thickness)
+
+edges_table_researchers$Weight_type <- c()
+
+for (h in 1:length(edges_table_researchers$Weight)) {
+    ifelse(edges_table_researchers$Weight[h] < 0,
+           edges_table_researchers$Weight_type[h] <- "negative",
+           edges_table_researchers$Weight_type[h] <- "positive")
+    }
+
+edges_table_researchers$Weight <- abs(edges_table_researchers$Weight)
+edges_table_researchers <- rbind(edges_table_researchers, c(NA, NA, 0), c(NA, NA, 1)) # Add empty edges to consider thickness scale 0-1
+```
+
+Export gephi files and dictionaries
+```{r}
+write.table(researchers_rel_dic, paste(di, output_folder, "7.1 researchers_relations_dic.csv", sep = ""), sep = ";", row.names = FALSE)
+write.table(researchers_occurrences, paste(di, output_folder, "7.2 researchers_concepts_dic.csv", sep = ""), sep = ";", row.names = FALSE)
+
+write.table(researchers_occurrences, paste(di, gephi_output_folder, "nodes_table_researchers.csv", sep = ""), sep = ";", row.names = FALSE)
+write.table(edges_table_researchers, paste(di, gephi_output_folder, "edges_table_researchers.csv", sep = ""), sep = ";", row.names = FALSE)
+```
+
+# Forestry managers aggregated map
+
+```{r}
+managers_concepts <- c()
+managers_relations <- data.frame(matrix = integer(),
+                            source_label = character(),
+                            target_label = character(),
+                            weight = numeric())
+
+for (i in 1:length(forestry_managers)) {
+# for (i in 1:2) { # testing
+  my_matrix <- read.csv(paste(di, homogenised_maps_folder, files[forestry_managers[i]], sep = "/"), sep = ";", na.strings=c("","NA"), dec = ",")
+  
+  assign('managers_map_concepts', as.character(my_matrix[,1])) # extract concept names
+  my_matrix <- my_matrix[,-1] # discard first column for matrix (concept names)
+  colnames(my_matrix) <- managers_map_concepts # to avoid spaces being replaced by dots
+  # rownames(my_matrix) <- managers_map_concepts # duplicated rownames not allowed - to check whether this line is needed (then, avoid duplications by pre-collapsing matrices)
+  
+  # Built vector with all concepts (repetitions)
+  managers_concepts <- c(managers_concepts, managers_map_concepts) 
+  
+  for (g in 1:dim(my_matrix)[1]) {
+    for (j in 1:dim(my_matrix)[2]) {
+      ifelse(is.na(my_matrix[g, j]) == FALSE,
+             managers_relations <- rbind(managers_relations,
+                                  data.frame(matrix = i,
+                                             source_label = colnames(my_matrix)[g],
+                                             target_label = colnames(my_matrix)[j],
+                                             weight = my_matrix[g, j])),
+                                    "")
+    }
+  }
+}
+```
+
+## Managers concept occurrences
+
+```{r}
+managers_occurrences <- data.frame(Label = managers_concepts)
+
+managers_occurrences <- managers_occurrences %>%
+  group_by(Label) %>%
+  summarise(managers_occurrence = n())
+
+managers_occurrences$ID <- 1:length(managers_occurrences$Label)
+```
+
+- Add concept classification
+
+- Merge occurrences with classification and add ID
+
+```{r}
+managers_occurrences <- left_join(managers_occurrences, concepts_class, by = "Label")
+
+managers_occurrences$ID <- 1:length(managers_occurrences$Label)
+```
+
+## Managers relationships
+
+```{r}
+managers_rel_dic <- managers_relations %>%
+  select(source_label, target_label, weight) %>%
+  group_by(source_label, target_label) %>%
+  summarise(mean = mean(weight),
+            sd = sd(weight),
+            minimum = min(weight),
+            maximum = max(weight),
+            cv = sd(weight)/mean(weight),
+            occurrences = n()) %>%
+  mutate(sign_change = ifelse(minimum * maximum < 0,
+                              "YES",
+                              "NO"))
+```
+
+## Generate Gephi files for managers matrix
+
+```{r}
+# Build file for Gephi
+Source <- as.vector(managers_rel_dic$source_label)
+Target <- as.vector(managers_rel_dic$target_label)
+
+for (i in 1:length(managers_occurrences$ID)) {
+  Source[which(Source == managers_occurrences$Label[i], arr.ind = TRUE)] <- i
+  Target[which(Target == managers_occurrences$Label[i], arr.ind = TRUE)] <- i
+}
+
+managers_rel_dic <- cbind(managers_rel_dic, Source_ID = Source, Target_ID = Target)
+
+edges_table_managers <- managers_rel_dic %>%
+  mutate(Weight = mean,
+         Source = Source_ID,
+         Target = Target_ID)
+
+edges_table_managers <- edges_table_managers[,c(13,14,12)]
+
+# Add column of weight type and modify weight to absolute weight - (for arrows thickness)
+
+edges_table_managers$Weight_type <- c()
+
+for (h in 1:length(edges_table_managers$Weight)) {
+    ifelse(edges_table_managers$Weight[h] < 0,
+           edges_table_managers$Weight_type[h] <- "negative",
+           edges_table_managers$Weight_type[h] <- "positive")
+    }
+
+edges_table_managers$Weight <- abs(edges_table_managers$Weight)
+edges_table_managers <- rbind(edges_table_managers, c(NA, NA, 0), c(NA, NA, 1)) # Add empty edges to consider thickness scale 0-1
+```
+
+Export gephi files and dictionaries
+```{r}
+write.table(managers_rel_dic, paste(di, output_folder, "7.3 managers_rel_dic.csv", sep = ""), sep = ";", row.names = FALSE)
+write.table(managers_occurrences, paste(di, output_folder, "7.4 managers_concepts_dic.csv", sep = ""), sep = ";", row.names = FALSE)
+
+write.table(managers_occurrences, paste(di, gephi_output_folder, "nodes_managers.csv", sep = ""), sep = ";", row.names = FALSE)
+write.table(edges_table_managers, paste(di, gephi_output_folder, "edges_table_managers.csv", sep = ""), sep = ";", row.names = FALSE)
+```
+
+# Socio-economic agents' aggregated map
+
+```{r}
+socioeconomic_concepts <- c()
+socioeconomic_relations <- data.frame(matrix = integer(),
+                            source_label = character(),
+                            target_label = character(),
+                            weight = numeric())
+
+for (i in 1:length(socioeconomic)) {
+# for (i in 1:2) { # testing
+  my_matrix <- read.csv(paste(di, homogenised_maps_folder, files[socioeconomic[i]], sep = "/"), sep = ";", na.strings=c("","NA"), dec = ",")
+  
+  assign('socioeconomic_map_concepts', as.character(my_matrix[,1])) # extract concept names
+  my_matrix <- my_matrix[,-1] # discard first column for matrix (concept names)
+  colnames(my_matrix) <- socioeconomic_map_concepts # to avoid spaces being replaced by dots
+  # rownames(my_matrix) <- others_map_concepts # duplicated rownames not allowed - to check whether this line is needed (then, avoid duplications by pre-collapsing matrices)
+  
+  # Built vector with all concepts (repetitions)
+  socioeconomic_concepts <- c(socioeconomic_concepts, socioeconomic_map_concepts) 
+  
+  for (g in 1:dim(my_matrix)[1]) {
+    for (j in 1:dim(my_matrix)[2]) {
+      ifelse(is.na(my_matrix[g, j]) == FALSE,
+             socioeconomic_relations <- rbind(socioeconomic_relations,
+                                  data.frame(matrix = i,
+                                             source_label = colnames(my_matrix)[g],
+                                             target_label = colnames(my_matrix)[j],
+                                             weight = my_matrix[g, j])),
+                                    "")
+    }
+  }
+}
+```
+
+## socioeconomic' concept occurrences
+
+```{r}
+socioeconomic_occurrences <- data.frame(Label = socioeconomic_concepts)
+
+socioeconomic_occurrences <- socioeconomic_occurrences %>%
+  group_by(Label) %>%
+  summarise(socioeconomic_occurrence = n())
+
+socioeconomic_occurrences$ID <- 1:length(socioeconomic_occurrences$Label)
+```
+
+- Add concept classification
+
+- Merge occurrences with classification and add ID
+
+```{r}
+socioeconomic_occurrences <- left_join(socioeconomic_occurrences, concepts_class, by = "Label")
+
+socioeconomic_occurrences$ID <- 1:length(socioeconomic_occurrences$Label)
+```
+
+## socioeconomic' relationships
+
+```{r}
+socioeconomic_rel_dic <- socioeconomic_relations %>%
+  select(source_label, target_label, weight) %>%
+  group_by(source_label, target_label) %>%
+  summarise(mean = mean(weight),
+            sd = sd(weight),
+            minimum = min(weight),
+            maximum = max(weight),
+            cv = sd(weight)/mean(weight),
+            occurrences = n()) %>%
+  mutate(sign_change = ifelse(minimum * maximum < 0,
+                              "YES",
+                              "NO"))
+```
+
+## Generate Gephi files for locals matrix
+
+```{r}
+# Build file for Gephi
+Source <- as.vector(socioeconomic_rel_dic$source_label)
+Target <- as.vector(socioeconomic_rel_dic$target_label)
+
+for (i in 1:length(socioeconomic_occurrences$ID)) {
+  Source[which(Source == socioeconomic_occurrences$Label[i], arr.ind = TRUE)] <- i
+  Target[which(Target == socioeconomic_occurrences$Label[i], arr.ind = TRUE)] <- i
+}
+
+socioeconomic_rel_dic <- cbind(socioeconomic_rel_dic, Source_ID = Source, Target_ID = Target)
+
+edges_table_socioeconomic <- socioeconomic_rel_dic %>%
+  mutate(Weight = mean,
+         Source = Source_ID,
+         Target = Target_ID)
+
+edges_table_socioeconomic <- edges_table_socioeconomic[,c(13,14,12)]
+
+# Add column of weight type and modify weight to absolute weight - (for arrows thickness)
+
+edges_table_socioeconomic$Weight_type <- c()
+
+for (h in 1:length(edges_table_socioeconomic$Weight)) {
+    ifelse(edges_table_socioeconomic$Weight[h] < 0,
+           edges_table_socioeconomic$Weight_type[h] <- "negative",
+           edges_table_socioeconomic$Weight_type[h] <- "positive")
+    }
+
+edges_table_socioeconomic$Weight <- abs(edges_table_socioeconomic$Weight)
+edges_table_socioeconomic <- rbind(edges_table_socioeconomic, c(NA, NA, 0), c(NA, NA, 1)) # Add empty edges to consider thickness scale 0-1
+```
+
+Export gephi files and relationship dictionary
+```{r}
+write.table(socioeconomic_rel_dic, paste(di, output_folder, "7.5 others_rel_dic.csv", sep = ""), sep = ";", row.names = FALSE)
+write.table(socioeconomic_occurrences, paste(di, output_folder, "7.6 others_concepts_dic.csv", sep = ""), sep = ";", row.names = FALSE)
+
+write.table(socioeconomic_occurrences, paste(di, gephi_output_folder, "nodes_others.csv", sep = ""), sep = ";", row.names = FALSE)
+write.table(edges_table_socioeconomic, paste(di, gephi_output_folder, "edges_table_others.csv", sep = ""), sep = ";", row.names = FALSE)
+```
+
+# Concepts occurrences analysis
+
+```{r}
+per_group_occurrences <- full_join(researchers_occurrences, managers_occurrences, by = "Label")
+
+per_group_occurrences <- full_join(per_group_occurrences, socioeconomic_occurrences, by = "Label")
+
+per_group_occurrences$researchers_occurrence[is.na(per_group_occurrences$researchers_occurrence)] <- 0
+per_group_occurrences$socioeconomic_occurrence[is.na(per_group_occurrences$socioeconomic_occurrence)] <- 0
+per_group_occurrences$managers_occurrence[is.na(per_group_occurrences$managers_occurrence)] <- 0
+
+per_group_occurrences <- per_group_occurrences %>%
+  select(Label, researchers_occurrence, managers_occurrence, socioeconomic_occurrence)
+```
+
+Export per group occurrences table
+```{r}
+write.table(per_group_occurrences, paste(di, output_folder, "7.7 per_group_concept_occurrences.csv", sep = ""), sep = ";", row.names = TRUE)
+```

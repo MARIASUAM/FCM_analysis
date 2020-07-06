@@ -1,0 +1,438 @@
+---
+title: "Per group aggregated matrix analysis"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(FCMapper)
+library(dplyr)
+library(ggplot2)
+library(reshape)
+
+di <- "/Users/maria.suarez.munoz/Google Drive/ms_FuzzyCognitiveMapping/FCM_analysis" # Mac
+output_folder <- "/output_files/"
+```
+
+# Build researchers matrix
+
+```{r}
+# Load files
+res_relations_dic <- read.csv(paste(di, output_folder, "7.1 researchers_relations_dic.csv", sep = ""), sep = ";")
+
+res_concepts_dic <- read.csv(paste(di, output_folder, "7.2 researchers_concepts_dic.csv", sep = ""), sep = ";")
+
+# Build empty matrix
+empty_res_matrix <- data.frame(matrix(NA, nrow = length(res_concepts_dic$ID), ncol = length(res_concepts_dic$ID)))
+colnames(empty_res_matrix) <- res_concepts_dic$Label
+rownames(empty_res_matrix) <- res_concepts_dic$Label
+
+# Fill in empty agg matrix
+res_matrix <- empty_res_matrix
+for (i in 1:length(res_relations_dic$source_label)) {
+  x <- as.numeric(res_relations_dic$Source_ID[i])
+  y <- as.numeric(res_relations_dic$Target_ID[i])
+  res_matrix[x, y] <- res_relations_dic$mean[i]
+}
+
+res_matrix[is.na(res_matrix)] <- 0 # replace NA by 0
+
+check.matrix(res_matrix) 
+```
+
+## Relationships histogram - Researchers' map
+
+```{r}
+occurrences_res <- data.frame(occurrences = as.factor(res_relations_dic$occurrences)) # extract number of occurrences per relationships (Source-Target)
+
+occurrences_count_res <- occurrences_res %>%
+  group_by(occurrences) %>%
+  summarise(count = n())
+
+occurrences_count_res$count # how many relationships happened
+occurrences_count_res$occurrences # what number of times
+
+occ_melted_res <- melt(occurrences_count_res)
+
+ggplot(occ_melted_res, aes(x = occurrences, y = value)) +
+  geom_col() +
+  theme_minimal() +
+  xlab("What number of times") +
+  ylab("How many relationships happened") +
+  ggtitle("Researchers")
+```
+
+# Build forestry managers matrix
+
+```{r}
+# Load files
+man_relations_dic <- read.csv(paste(di, output_folder, "7.3 managers_rel_dic.csv", sep = ""), sep = ";")
+
+man_concepts_dic <- read.csv(paste(di, output_folder, "7.4 managers_concepts_dic.csv", sep = ""), sep = ";")
+
+# Build empty matrix
+empty_man_matrix <- data.frame(matrix(NA, nrow = length(man_concepts_dic$ID), ncol = length(man_concepts_dic$ID)))
+colnames(empty_man_matrix) <- man_concepts_dic$Label
+rownames(empty_man_matrix) <- man_concepts_dic$Label
+
+# Fill in empty agg matrix
+man_matrix <- empty_man_matrix
+for (i in 1:length(man_relations_dic$source_label)) {
+  x <- as.numeric(man_relations_dic$Source_ID[i])
+  y <- as.numeric(man_relations_dic$Target_ID[i])
+  man_matrix[x, y] <- man_relations_dic$mean[i]
+}
+
+man_matrix[is.na(man_matrix)] <- 0 # replace NA by 0
+
+check.matrix(man_matrix) 
+```
+
+## Relationships histogram - FM' map
+
+```{r}
+occurrences_man <- data.frame(occurrences = as.factor(man_relations_dic$occurrences)) # extract number of occurrences per relationships (Source-Target)
+
+occurrences_count_man <- occurrences_man %>%
+  group_by(occurrences) %>%
+  summarise(count = n())
+
+occurrences_count_man$count # how many relationships happened
+occurrences_count_man$occurrences # what number of times
+
+occ_melted_man <- melt(occurrences_count_man)
+
+ggplot(occ_melted_man, aes(x = occurrences, y = value)) +
+  geom_col() +
+  theme_minimal() +
+  xlab("What number of times") +
+  ylab("How many relationships happened") +
+  ggtitle("Forestry Managers")
+```
+
+# Build key stakeholders' matrix
+
+```{r}
+# Load files
+others_relations_dic <- read.csv(paste(di, output_folder, "7.5 others_rel_dic.csv", sep = ""), sep = ";")
+
+others_concepts_dic <- read.csv(paste(di, output_folder, "7.6 others_concepts_dic.csv", sep = ""), sep = ";")
+
+# Build empty matrix
+empty_others_matrix <- data.frame(matrix(NA, nrow = length(others_concepts_dic$ID), ncol = length(others_concepts_dic$ID)))
+colnames(empty_others_matrix) <- others_concepts_dic$Label
+rownames(empty_others_matrix) <- others_concepts_dic$Label
+
+# Fill in empty agg matrix
+others_matrix <- empty_others_matrix
+for (i in 1:length(others_relations_dic$source_label)) {
+  x <- as.numeric(others_relations_dic$Source_ID[i])
+  y <- as.numeric(others_relations_dic$Target_ID[i])
+  others_matrix[x, y] <- others_relations_dic$mean[i]
+}
+
+others_matrix[is.na(others_matrix)] <- 0 # replace NA by 0
+
+check.matrix(others_matrix) 
+```
+
+## Relationships histogram - key stakeholders' map
+
+```{r}
+occurrences_others <- data.frame(occurrences = as.factor(others_relations_dic$occurrences)) # extract number of occurrences per relationships (Source-Target)
+
+occurrences_count_others <- occurrences_others %>%
+  group_by(occurrences) %>%
+  summarise(count = n())
+
+occurrences_count_others$count # how many relationships happened
+occurrences_count_others$occurrences # what number of times
+
+occ_melted_others <- melt(occurrences_count_others)
+
+ggplot(occ_melted_others, aes(x = occurrences, y = value)) +
+  geom_col() +
+  theme_minimal() +
+  xlab("What number of times") +
+  ylab("How many relationships happened") +
+  ggtitle("Other stakeholders")
+```
+
+# Analyse matrices
+
+Matrices indices
+```{r}
+res_indices <- matrix.indices(res_matrix)
+D_self <- as.numeric(res_indices$Value[1]) / as.numeric(res_indices$Value[3])^2
+Percentage_T <- as.numeric(res_indices$Value[4]) * 100 / as.numeric(res_indices$Value[3])
+Percentage_R <- as.numeric(res_indices$Value[5]) * 100 / as.numeric(res_indices$Value[3])
+Percentage_O <- as.numeric(res_indices$Value[7]) * 100 / as.numeric(res_indices$Value[3])
+  
+res_indices$Index <- as.character(res_indices$Index)
+res_indices <- rbind(res_indices, c("Density with loops", D_self))
+res_indices <- rbind(res_indices, c("Percentage_T", Percentage_T))
+res_indices <- rbind(res_indices, c("Percentage_R", Percentage_R))
+res_indices <- rbind(res_indices, c("Percentage_O", Percentage_O))
+
+man_indices <- matrix.indices(man_matrix)
+D_self <- as.numeric(man_indices$Value[1]) / as.numeric(man_indices$Value[3])^2
+Percentage_T <- as.numeric(man_indices$Value[4]) * 100 / as.numeric(man_indices$Value[3])
+Percentage_R <- as.numeric(man_indices$Value[5]) * 100 / as.numeric(man_indices$Value[3])
+Percentage_O <- as.numeric(man_indices$Value[7]) * 100 / as.numeric(man_indices$Value[3])
+
+man_indices$Index <- as.character(man_indices$Index)
+man_indices <- rbind(man_indices, c("Density with loops", D_self))
+man_indices <- rbind(man_indices, c("Percentage_T", Percentage_T))
+man_indices <- rbind(man_indices, c("Percentage_R", Percentage_R))
+man_indices <- rbind(man_indices, c("Percentage_O", Percentage_O))
+
+others_indices <- matrix.indices(others_matrix)
+D_self <- as.numeric(others_indices$Value[1]) / as.numeric(others_indices$Value[3])^2
+Percentage_T <- as.numeric(others_indices$Value[4]) * 100 / as.numeric(others_indices$Value[3])
+Percentage_R <- as.numeric(others_indices$Value[5]) * 100 / as.numeric(others_indices$Value[3])
+Percentage_O <- as.numeric(others_indices$Value[7]) * 100 / as.numeric(others_indices$Value[3])
+
+others_indices$Index <- as.character(others_indices$Index)
+others_indices <- rbind(others_indices, c("Density with loops", D_self))
+others_indices <- rbind(others_indices, c("Percentage_T", Percentage_T))
+others_indices <- rbind(others_indices, c("Percentage_R", Percentage_R))
+others_indices <- rbind(others_indices, c("Percentage_O", Percentage_O))
+
+per_group_indices <- data.frame(Index = res_indices$Index, Researchers_matrix = res_indices$Value, Managers_matrix = man_indices$Value, Others_matrix = others_indices$Value)
+```
+
+```{r}
+write.table(per_group_indices, paste(di, output_folder, "8.1 per_group_matrices_indices.csv", sep = ""), sep = ";", row.names = TRUE)
+```
+
+Concepts indexes
+```{r}
+res_concept_indices <- concept.indices(res_matrix, colnames(res_matrix))
+res_concept_indices <- res_concept_indices %>%
+  mutate(Concept_R = Concept,
+         Outdegre_R = Outdegree,
+         Indegree_R = Indegree,
+         Centrality_R = Centrality) %>%
+  select(Concept_R, Outdegre_R, Indegree_R, Centrality_R)
+  
+man_concept_indices <- concept.indices(man_matrix, colnames(man_matrix))
+man_concept_indices <- man_concept_indices %>%
+   mutate(Concept_FM = Concept,
+         Outdegre_FM = Outdegree,
+         Indegree_FM = Indegree,
+         Centrality_FM = Centrality) %>%
+  select(Concept_FM, Outdegre_FM, Indegree_FM, Centrality_FM) 
+  
+others_concept_indices <- concept.indices(others_matrix, colnames(others_matrix))
+others_concept_indices <- others_concept_indices %>%
+   mutate(Concept_O = Concept,
+         Outdegre_O = Outdegree,
+         Indegree_O = Indegree,
+         Centrality_O = Centrality) %>%
+  select(Concept_O, Outdegre_O, Indegree_O, Centrality_O)
+```
+
+Merge concept indexes tables, including agg_matrix
+
+```{r}
+agg_concept_indices <- read.csv(paste(di, output_folder, "5.3 agg_matrix_concept_indices.csv", sep = ""), sep = ";")
+agg_concept_indices <- agg_concept_indices %>%
+   mutate(Outdegre_agg = Outdegree,
+         Indegree_agg = Indegree,
+         Centrality_agg = Centrality) %>%
+  select(Concept, DPSIR, Outdegre_agg, Indegree_agg, Centrality_agg)  
+
+concept_indices <- left_join(agg_concept_indices, res_concept_indices, by = c("Concept" = "Concept_R"))
+concept_indices <- left_join(concept_indices, man_concept_indices, by = c("Concept" = "Concept_FM"))
+concept_indices <- left_join(concept_indices, others_concept_indices, by = c("Concept" = "Concept_O"))
+```
+
+```{r}
+write.table(concept_indices, paste(di, output_folder, "8.2 per_group_concept_indices.csv", sep = ""), sep = ";", row.names = TRUE)
+```
+
+Extract top X concepts per map (highest centrality values)
+```{r}
+nr_concepts <- 10
+
+res_top_concepts <- res_concept_indices %>%
+  filter(Centrality_R >= rev(sort(res_concept_indices$Centrality_R))[nr_concepts]) %>%
+  select(Concept_R)
+
+man_top_concepts <- man_concept_indices %>%
+  filter(Centrality_FM >= rev(sort(man_concept_indices$Centrality_FM))[nr_concepts]) %>%
+  select(Concept_FM)
+
+others_top_concepts <- others_concept_indices %>%
+  filter(Centrality_O >= rev(sort(others_concept_indices$Centrality_O))[nr_concepts]) %>%
+  select(Concept_O)
+
+top_concepts <- data.frame(researchers_top_concepts = sort(res_top_concepts$Concept), managers_top_concepts = sort(man_top_concepts$Concept), others_top_concepts = sort(others_top_concepts$Concept)) 
+```
+
+# In-/out-degree top concepts
+
+## Researchers
+
+```{r}
+n <- 10 
+title <- "Researchers' map"
+
+filt_degrees <- res_concept_indices %>%
+  select(Concept_R, Outdegre_R, Indegree_R, Centrality_R) %>%
+  top_n(n, Centrality_R)
+
+filt_degrees <- filt_degrees %>%
+  select(Concept_R, Outdegre_R, Indegree_R)
+
+filt_melted <- melt(filt_degrees, id.vars=c("Concept_R"))
+colnames(filt_melted) <- c("Concept", "Variable", "Centrality")
+
+filt_melted <- within(filt_melted, {
+  Concept <- factor(Concept, levels = names(sort(tapply(Centrality, Concept, sum))))
+})
+
+ggplot(filt_melted, aes(x= Concept, y = Centrality, fill = Variable)) + 
+  geom_bar(stat = "identity") +
+  theme(axis.text.x = element_text(), legend.position = "none") +
+  ggtitle(title) +
+  coord_flip()
+```
+
+## Forestry managers
+
+```{r}
+n <- 10 
+title <- "Forestry managers' map"
+
+filt_degrees <- man_concept_indices %>%
+  select(Concept_FM, Outdegre_FM, Indegree_FM, Centrality_FM) %>%
+  top_n(n, Centrality_FM)
+
+filt_degrees <- filt_degrees %>%
+  select(Concept_FM, Outdegre_FM, Indegree_FM)
+
+filt_melted <- melt(filt_degrees, id.vars=c("Concept_FM"))
+colnames(filt_melted) <- c("Concept", "Variable", "Centrality")
+
+filt_melted <- within(filt_melted, {
+  Concept <- factor(Concept, levels = names(sort(tapply(Centrality, Concept, sum))))
+})
+
+ggplot(filt_melted, aes(x= Concept, y = Centrality, fill = Variable)) + 
+  geom_bar(stat = "identity") +
+  theme(axis.text.x = element_text(), legend.position = "none") +
+  ggtitle(title) +
+  coord_flip()
+```
+
+## Other stakeholders
+
+```{r}
+n <- 10 
+title <- "Other stakeholders' map"
+
+filt_degrees <- others_concept_indices %>%
+  select(Concept_O, Outdegre_O, Indegree_O, Centrality_O) %>%
+  top_n(n, Centrality_O)
+
+filt_degrees <- filt_degrees %>%
+  select(Concept_O, Outdegre_O, Indegree_O)
+
+filt_melted <- melt(filt_degrees, id.vars=c("Concept_O"))
+colnames(filt_melted) <- c("Concept", "Variable", "Centrality")
+
+filt_melted <- within(filt_melted, {
+  Concept <- factor(Concept, levels = names(sort(tapply(Centrality, Concept, sum))))
+})
+
+ggplot(filt_melted, aes(x= Concept, y = Centrality, fill = Variable)) + 
+  geom_bar(stat = "identity") +
+  theme(axis.text.x = element_text(), legend.position = "none") +
+  ggtitle(title) +
+  coord_flip()
+```
+
+# Compare community matrices
+
+Load aggregated matrix
+```{r}
+agg_matrix <- read.csv(paste(di, output_folder, "5.1 agg_matrix.csv", sep = "/"), sep = ";", na.strings = c("","NA"), dec = ",")
+assign('concept_labels', row.names(agg_matrix)) # extract concept names
+colnames(agg_matrix) <- concept_labels # to avoid spaces being replaced by dots
+```
+
+Compare community maps
+```{r}
+comp.maps(colnames(res_matrix), colnames(man_matrix))[2]
+comp.maps(colnames(man_matrix), colnames(others_matrix))[2]
+comp.maps(colnames(others_matrix), colnames(res_matrix))[2]
+
+comp.maps(colnames(res_matrix), colnames(agg_matrix))[2]
+comp.maps(colnames(man_matrix), colnames(agg_matrix))[2]
+comp.maps(colnames(others_matrix), colnames(agg_matrix))[2]
+```
+
+# Concepts classification analysis
+
+DPSIR classification
+```{r}
+res_total_nr_concepts <- length(res_concepts_dic$Label)
+res_dpsir_classes <- res_concepts_dic %>%
+  select(DPSIR) %>%
+  group_by(DPSIR) %>%
+  summarise(res_abs_classes = n()) %>%
+  mutate(res_percentage_dpsir_classes = (res_abs_classes * 100) / res_total_nr_concepts)
+
+man_total_nr_concepts <- length(man_concepts_dic$Label)
+man_dpsir_classes <- man_concepts_dic %>%
+  select(DPSIR) %>%
+  group_by(DPSIR) %>%
+  summarise(man_abs_classes = n()) %>%
+  mutate(man_percentage_dpsir_classes = (man_abs_classes * 100) / man_total_nr_concepts)
+
+other_total_nr_concepts <- length(others_concepts_dic$Label)
+other_dpsir_classes <- others_concepts_dic %>%
+  select(DPSIR) %>%
+  group_by(DPSIR) %>%
+  summarise(other_abs_classes = n()) %>%
+  mutate(other_percentage_dpsir_classes = (other_abs_classes * 100) / other_total_nr_concepts)
+                                       
+per_group_dpsir_classification <- left_join(res_dpsir_classes, man_dpsir_classes)  
+per_group_dpsir_classification <- left_join(per_group_dpsir_classification, other_dpsir_classes)
+```
+
+Other classification
+```{r}
+# res_other_classes <- res_concepts_dic %>%
+#   select(Posibilidad_B) %>%
+#   group_by(Posibilidad_B) %>%
+#   summarise(res_abs_classes = n()) %>%
+#   mutate(res_percentage_other_classes = (res_abs_classes * 100) / res_total_nr_concepts)
+# 
+# man_other_classes <- man_concepts_dic %>%
+#   select(Posibilidad_B) %>%
+#   group_by(Posibilidad_B) %>%
+#   summarise(man_abs_classes = n()) %>%
+#   mutate(man_percentage_other_classes = (man_abs_classes * 100) / man_total_nr_concepts)
+# 
+# other_other_classes <- others_concepts_dic %>%
+#   select(Posibilidad_B) %>%
+#   group_by(Posibilidad_B) %>%
+#   summarise(other_abs_classes = n()) %>%
+#   mutate(other_percentage_other_classes = (other_abs_classes * 100) / other_total_nr_concepts)
+#                                        
+# per_group_other_classification <- left_join(res_other_classes, man_other_classes)  
+# per_group_other_classification <- left_join(per_group_other_classification, other_other_classes)
+```
+
+Export
+
+```{r}
+write.table(per_group_dpsir_classification, paste(di, output_folder, "8.3 per_group_dpsir_classification.csv", sep = ""), sep = ";", row.names = TRUE)
+
+# write.table(per_group_other_classification, paste(di, output_folder, "8.4 per_group_other_classification.csv", sep = ""), sep = ";", row.names = TRUE)
+```

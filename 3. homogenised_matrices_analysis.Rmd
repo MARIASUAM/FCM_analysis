@@ -1,0 +1,497 @@
+---
+title: "Analysis of homogenised individual maps"
+output:
+  word_document: default
+  html_document: default
+editor_options:
+  chunk_output_type: console
+---
+
+input files: csv files containing the matrices resulting from the FCM interviews, homogenised and without empty concepts ("-").
+
+```{r include = FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+# Load packages
+library(FCMapper)
+library("rlist")
+library(dplyr)
+library(ggplot2)
+library(reshape)
+library(knitr)
+
+# Directory
+di <- "/Users/maria.suarez.munoz/Google Drive/ms_FuzzyCognitiveMapping/FCM_analysis" # Mac
+
+matrices_folder <- "/input_files/homogenised_matrices/"
+input_folder <- "/input_files/"
+
+files <- list.files(paste(di, matrices_folder, sep = "/"), pattern = "*.csv")
+
+gephi_output_folder <- "/output_files/files_for_Gephi_plotting/aggregated/"
+
+output_folder <- "/output_files/"
+```
+
+```{r, include=FALSE}
+# Build maps list
+matrices_list <- list()
+
+for (i in 1:length(files)) {
+  my_matrix <- read.csv(paste(di, matrices_folder, files[i], sep = ""), sep = ";", na.strings=c("","NA"), dec = ",")
+  assign('concept_labels', as.character(my_matrix[,1])) # extract concept names
+  my_matrix <- my_matrix[,-1] # discard first column for matrix (concept names)
+  colnames(my_matrix) <- concept_labels # to avoid spaces being replaced by dots
+  
+  matrices_list <- list.append(matrices_list, my_matrix)
+}
+```
+
+Checking
+```{r}
+ifelse(i == 41,
+       "everything alright",
+       "ERROR in files loading")
+```
+
+# Basic accumulation curve
+
+Duplicated concepts within a matrix are considered the same, although originally (i.e. in the original matrices) they were different!
+
+```{r}
+acc_table <- data.frame(matrix_nr = integer(),
+                        nr_concepts_in_matrix = integer(),
+                        acc_concepts = integer(),
+                        acc_non_duplicated = integer()) # empty data frame
+
+all_concepts_vector <- c()
+unique_concepts_vector <- c()
+
+for (i in 1:length(matrices_list)) {
+# for (i in 1:6) { # for testing
+  matrix_nr <- i
+  concepts_in_matrix <- unique(colnames(matrices_list[[i]])) # if duplicated concepts considered, eliminate unique
+  nr_concepts_in_matrix <- length(concepts_in_matrix)
+  
+  all_concepts_vector <- c(all_concepts_vector, concepts_in_matrix)
+  nr_all_concepts <- length(all_concepts_vector)
+  
+  unique_concepts_vector <- unique(all_concepts_vector)
+  nr_unique_concepts <- length(unique_concepts_vector)
+  
+  acc_table <- rbind(acc_table, data.frame(matrix_nr = i,
+                        nr_concepts_in_matrix = nr_concepts_in_matrix,
+                        acc_concepts = nr_all_concepts,
+                        acc_non_duplicated = nr_unique_concepts))
+  
+}
+
+ggplot(acc_table) +
+  geom_point(aes(x = matrix_nr, y = acc_concepts), color = "red") +
+  geom_point(aes(x = matrix_nr, y = acc_non_duplicated), color = "blue") +
+  theme_minimal() +
+  xlab("Map number") +
+  ylab("Number of concepts") +
+  ggtitle("Accumulation curve")
+```
+
+# Improved accumulation curve
+
+Accumulation curve data are calculated altering the matrices ordering, in order to unbias the accumulation
+
+Duplicated concepts within a matrix are considered the same, although originally (i.e. in the original matrices) they were different!
+
+```{r}
+acc_table_iterations <- data.frame(matrix_nr = integer(),
+                        acc_concepts = integer(),
+                        acc_non_duplicated = integer()) # empty data frame
+
+nr_iterations <- 1000
+
+for (j in 1:nr_iterations) {
+  matrix_order <- sample(1:length(matrices_list), length(matrices_list), replace = FALSE)
+  all_concepts_vector <- c()
+  unique_concepts_vector <- c()
+  
+  for (i in 1:length(matrices_list)) {
+    matrix_nr <- i
+    concepts_in_matrix <- unique(colnames(matrices_list[[matrix_order[i]]]))
+    all_concepts_vector <- c(all_concepts_vector, concepts_in_matrix)
+    nr_all_concepts <- length(all_concepts_vector)
+    unique_concepts_vector <- unique(all_concepts_vector)
+    nr_unique_concepts <- length(unique_concepts_vector)
+    acc_table_iterations <- rbind(acc_table_iterations, data.frame(matrix_nr = i, acc_concepts = nr_all_concepts, acc_non_duplicated = nr_unique_concepts))
+  }
+}
+```
+
+```{r}
+acc_table_iterations_summary <- acc_table_iterations %>%
+  group_by(matrix_nr) %>%
+  summarise(acc_concepts_mean = mean(acc_concepts),
+            acc_concepts_sd = sd(acc_concepts),
+            acc_non_duplicated_mean = mean(acc_non_duplicated),
+            acc_non_duplicated_sd = sd(acc_non_duplicated))
+
+write.csv(acc_table_iterations_summary, paste(di, output_folder, "3.0 acc_table_whole_community.csv", sep = ""))
+```
+
+```{r}
+title <- paste("Accumulation curve for ", nr_iterations, " iterations", sep = "")
+
+ggplot(acc_table_iterations_summary) +
+  stat_summary(aes(x = matrix_nr, y = acc_concepts_mean), geom = "point", size = 0.2, fun.y = mean, color = "indianred4") +
+  stat_summary(aes(x = matrix_nr, y = acc_non_duplicated_mean), geom = "point", size = 0.2, fun.y = mean, color = "lightskyblue3") +
+  stat_summary(aes(x = matrix_nr, y = acc_concepts_mean), geom = "line", fun.y = mean, color = "indianred4", alpha = 0.6) +
+  stat_summary(aes(x = matrix_nr, y = acc_non_duplicated_mean), geom = "line", fun.y = mean, color = "lightskyblue3", alpha = 0.6) +
+  geom_ribbon(aes(x = matrix_nr, ymin = acc_concepts_mean - acc_concepts_sd, ymax = acc_concepts_mean + acc_concepts_sd, alpha = 0.2, fill = "indianred4")) +
+  geom_ribbon(aes(x = matrix_nr, ymin = acc_non_duplicated_mean - acc_non_duplicated_sd, ymax = acc_non_duplicated_mean + acc_non_duplicated_sd, alpha = 0.2, fill = "lightskyblue3")) +
+  theme(legend.position = "bottom") +
+  xlab("Map number") +
+  ylab("Number of concepts") +
+  ggtitle("Accumulation curve") +
+  scale_fill_manual(values=c("indianred4", "lightskyblue3"), name="", labels=c("Accumulated concepts", "Unique concepts")) +
+  scale_alpha(name = "", labels = "") +
+  ggtitle(title)
+```
+  
+# Maps comparison differentiating among groups
+
+Load stakeholders table
+```{r}
+ref_table <- read.csv(paste(di, output_folder, "1.0. maps_to_matrices_ref_table.csv", sep = ""), sep = ";", na.strings=c("","NA"), dec = ",")
+
+ref_table$Type <- substring(ref_table$Stakeholders_type, 1, 1)
+ref_table$typenr <- c()
+  
+for (i in 1:length(ref_table$Matrix_nr)) {
+  ifelse(ref_table$Matrix_nr[i] < 10,
+         index <- paste("0", ref_table$Matrix_nr[i], sep = ""),
+         index <- ref_table$Matrix_nr[i])
+  ref_table$typenr[i] <- paste(ref_table$Type[i], index, sep = "_")
+}
+```
+
+Calculate comparison indexes
+```{r, echo=FALSE}
+# create table to store comparisons
+other_vector <- c()
+for (i in 1:length(files)) {
+  name <- ref_table$typenr[i]
+  other_vector <- c(other_vector, name) 
+}
+
+jaccard_per_comparison <- matrix(NA, nrow = length(files), ncol = length(files), dimnames = list(other_vector, other_vector))
+# S2_per_comparison <- matrix(NA, nrow = length(files), ncol = length(files), dimnames = list(other_vector, other_vector))
+
+# fill in tables
+for (i in 1:length(files)) {
+  for (j in 1:length(files)){
+    a <- comp.maps(colnames(matrices_list[i][[1]]), colnames(matrices_list[j][[1]]))
+    jaccard_per_comparison[i,j] <- a$Jaccard
+    #S2_per_comparison[i,j] <- a$S2
+  }
+}
+``` 
+
+Fetch Jaccard data and create levels
+```{r}
+jaccard_per_comparison_ordered <- jaccard_per_comparison[order(as.factor(row.names(jaccard_per_comparison))),]
+jaccard_per_comparison_transposed <- t(jaccard_per_comparison_ordered)
+jaccard_per_comparison_reordered <- jaccard_per_comparison_transposed[order(as.factor(row.names(jaccard_per_comparison_transposed))),]
+jaccard_per_comparison_reordered[upper.tri(jaccard_per_comparison_reordered, diag = FALSE)] <- NA
+jaccard_per_melted <- melt(jaccard_per_comparison_reordered)
+jaccard_per_melted <- jaccard_per_melted %>%
+  filter(is.na(value) == FALSE)
+
+jaccard_per_melted$Level <- c()
+for (i in 1:length(jaccard_per_melted$value)) {
+  ifelse(jaccard_per_melted$value[i] > 0.75,
+         jaccard_per_melted$Level[i] <- "High",
+         ifelse(jaccard_per_melted$value[i] < 0.25,
+                jaccard_per_melted$Level[i] <- "Very low",
+                ifelse(jaccard_per_melted$value[i] > 0.5,
+                       jaccard_per_melted$Level[i] <- "Medium",
+                       jaccard_per_melted$Level[i] <- "Low")))
+}
+jaccard_levels <- jaccard_per_melted %>%
+  select(X1, X2, Level)
+```
+
+Jaccard plot
+```{r}
+cols <- c("Very low" = "lightskyblue3", "Low" = "orange2", "High" = "indianred4")
+ggplot() +
+  geom_tile(data = jaccard_levels, aes(x = X1, y = X2, fill = Level)) +
+  xlab("") +
+  ylab("") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 6),
+        axis.text.y = element_text(size = 6)) +
+  scale_colour_manual(values = cols,
+                      aesthetics = c("colour", "fill")) +
+  ggtitle("Jaccard index comparison")
+```
+
+Fetch S2 data and create levels
+```{r}
+# S2_per_comparison_ordered <- S2_per_comparison[order(as.factor(row.names(S2_per_comparison))),]
+# S2_per_comparison_transposed <- t(S2_per_comparison_ordered)
+# S2_per_comparison_reordered <- S2_per_comparison_transposed[order(as.factor(row.names(S2_per_comparison_transposed))),]
+# S2_per_comparison_reordered[upper.tri(S2_per_comparison_reordered, diag = FALSE)] <- NA
+# S2_per_melted <- melt(S2_per_comparison_reordered)
+# S2_per_melted <- S2_per_melted %>%
+#   filter(is.na(value) == FALSE)
+# 
+# S2_per_melted$level <- c()
+# for (i in 1:length(S2_per_melted$value)) {
+#   ifelse(S2_per_melted$value[i] <0.25,
+#          S2_per_melted$level[i] <- "low",
+#          ifelse(S2_per_melted$value[i] > 0.5,
+#                 S2_per_melted$level[i] <- "TOO SIMILAR",
+#                 S2_per_melted$level[i] <- "high"))
+# }
+# S2_levels <- S2_per_melted %>%
+#   select(X1, X2, level)
+```
+
+S2 plot
+```{r}
+# cols <- c("low" = "lightskyblue3", "high" = "indianred4", "TOO SIMILAR" = "red")
+# ggplot() +
+#   geom_tile(data = S2_levels, aes(x = X1, y = X2, fill = level)) +
+#   xlab("Matrices") +
+#   ylab("Matrices") +
+#   theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+#   scale_colour_manual(values = cols,
+#                       aesthetics = c("colour", "fill"))
+```
+  
+# Matrices indices
+
+All homogenised maps indices
+
+```{r, echo = FALSE}
+homogenised_matrices_indices <- data.frame(Index = c("Nr_connections", "Connection_density", "Nr_concepts", "Nr_transmitters", "Nr_receivers", "Nr_no_connections", "Nr_ordinary", "Nr_self_loops", "Connections_variable", "Complexity", "Hierarchy", "Density_with_loops", "Percentage_T", "Percentage_R", "Percentage_O"))
+  
+for (i in 1:length(matrices_list)) {
+  a_matrix <- matrices_list[[i]]
+  a_matrix[is.na(a_matrix)] <- 0
+  matrix_indexes <- matrix.indices(a_matrix)
+  D_self <- as.numeric(matrix_indexes$Value[1]) / as.numeric(matrix_indexes$Value[3])^2
+  Percentage_T <- as.numeric(matrix_indexes$Value[4]) * 100 / as.numeric(matrix_indexes$Value[3])
+  Percentage_R <- as.numeric(matrix_indexes$Value[5]) * 100 / as.numeric(matrix_indexes$Value[3])
+  Percentage_O <- as.numeric(matrix_indexes$Value[7]) * 100 / as.numeric(matrix_indexes$Value[3])
+  
+  matrix_indexes$Index <- as.character(matrix_indexes$Index)
+  matrix_indexes <- rbind(matrix_indexes, c("Density with loops", D_self))
+  matrix_indexes <- rbind(matrix_indexes, c("Percentage_T", Percentage_T))
+  matrix_indexes <- rbind(matrix_indexes, c("Percentage_R", Percentage_R))
+  matrix_indexes <- rbind(matrix_indexes, c("Percentage_O", Percentage_O))
+  
+  matrix_indexes$Index <- as.factor(matrix_indexes$Index)
+  matrix_indexes$Value <- as.numeric(matrix_indexes$Value)
+
+  matrix_indexes <- matrix_indexes %>%
+    select(Value)
+  colnames(matrix_indexes) <- paste("matrix_", i, sep = "")
+  homogenised_matrices_indices <- cbind(homogenised_matrices_indices, matrix_indexes)
+}
+
+column_names <- homogenised_matrices_indices$Index
+
+homogenised_matrices_indices <- homogenised_matrices_indices[,2:length(homogenised_matrices_indices)]
+homogenised_matrices_indices <- as.matrix(t(homogenised_matrices_indices))
+colnames(homogenised_matrices_indices) <- column_names
+homogenised_matrices_indices <- as.data.frame(homogenised_matrices_indices)
+
+homogenised_matrices_indices$Stakeholder_type <- ref_table$Type
+homogenised_matrices_indices <- homogenised_matrices_indices[with(homogenised_matrices_indices, order(Stakeholder_type)), ]
+```
+
+# Statistical comparison among groups
+
+```{r}
+boxplot(homogenised_matrices_indices$Nr_concepts ~ homogenised_matrices_indices$Stakeholder_type)
+
+model_Nr_concepts <- aov(Nr_concepts ~ Stakeholder_type, data = homogenised_matrices_indices)
+plot(model_Nr_concepts)
+shapiro.test(residuals(model_Nr_concepts)) # Normal
+summary(model_Nr_concepts) # means cannot be said different
+TukeyHSD(model_Nr_concepts) # means cannot be said different
+```
+
+```{r}
+boxplot(homogenised_matrices_indices$Percentage_T ~ homogenised_matrices_indices$Stakeholder_type)
+
+model_Percentage_T <- aov(Percentage_T ~ Stakeholder_type, data = homogenised_matrices_indices)
+plot(model_Percentage_T)
+shapiro.test(residuals(model_Percentage_T)) # Normal
+summary(model_Percentage_T) # means cannot be said different
+TukeyHSD(model_Percentage_T) # means cannot be said different
+```
+
+```{r}
+boxplot(homogenised_matrices_indices$Percentage_R ~ homogenised_matrices_indices$Stakeholder_type)
+
+model_Percentage_R <- aov(Percentage_R ~ Stakeholder_type, data = homogenised_matrices_indices)
+plot(model_Percentage_R)
+shapiro.test(residuals(model_Percentage_R)) # Normal
+summary(model_Percentage_R) # means cannot be said different
+TukeyHSD(model_Percentage_R) # means cannot be said different
+```
+
+```{r}
+boxplot(homogenised_matrices_indices$Percentage_O ~ homogenised_matrices_indices$Stakeholder_type)
+
+model_Percentage_O <- aov(Percentage_O ~ Stakeholder_type, data = homogenised_matrices_indices)
+plot(model_Percentage_O)
+shapiro.test(residuals(model_Percentage_O)) # Normal
+summary(model_Percentage_O) # means cannot be said different
+TukeyHSD(model_Percentage_O) # means cannot be said different
+```
+
+```{r}
+boxplot(homogenised_matrices_indices$Complexity ~ homogenised_matrices_indices$Stakeholder_type)
+
+model_Complexity <- aov(Complexity ~ Stakeholder_type, data = homogenised_matrices_indices)
+plot(model_Complexity)
+shapiro.test(residuals(model_Complexity)) # not normally distributed
+hist(homogenised_matrices_indices$Complexity)
+leveneTest(Complexity ~ Stakeholder_type, data = homogenised_matrices_indices) # homocedastic
+
+Complexity_log <- log(homogenised_matrices_indices$Complexity)
+model_Complexity_log <- aov(Complexity_log ~ homogenised_matrices_indices$Stakeholder_type)
+shapiro.test(residuals(model_Complexity_log)) # Normales
+summary(model_Complexity_log) # means cannot be said different
+TukeyHSD(model_Complexity_log) # means cannot be said different
+```
+
+```{r}
+boxplot(homogenised_matrices_indices$Nr_connections ~ homogenised_matrices_indices$Stakeholder_type)
+
+model_Nr_connections <- aov(Nr_connections ~ Stakeholder_type, data = homogenised_matrices_indices)
+plot(model_Nr_connections)
+shapiro.test(residuals(model_Nr_connections)) # not normally distributed
+hist(homogenised_matrices_indices$Nr_connections)
+leveneTest(Nr_connections ~ Stakeholder_type, data = homogenised_matrices_indices) # homocedastic
+
+Nr_connections_log <- log(homogenised_matrices_indices$Nr_connections)
+
+model_Nr_connections_log <- aov(Nr_connections_log ~ homogenised_matrices_indices$Stakeholder_type)
+shapiro.test(residuals(model_Nr_connections_log)) # Normal
+
+summary(model_Nr_connections_log) # means cannot be said different
+TukeyHSD(model_Nr_connections_log) # means cannot be said different
+```
+
+```{r}
+boxplot(homogenised_matrices_indices$Connections_variable ~ homogenised_matrices_indices$Stakeholder_type)
+
+model_Connections_variable <- aov(Connections_variable ~ Stakeholder_type, data = homogenised_matrices_indices)
+plot(model_Connections_variable)
+shapiro.test(residuals(model_Connections_variable)) # not normally distributed
+
+Connections_variable_log <- log(homogenised_matrices_indices$Connections_variable)
+model_Connections_variable_log <- aov(Connections_variable_log ~ homogenised_matrices_indices$Stakeholder_type)
+shapiro.test(residuals(model_Connections_variable_log)) # Not normal
+
+Connections_variable_asin <- asin(homogenised_matrices_indices$Connections_variable)
+model_Connections_variable_asin <- aov(Connections_variable_asin ~ homogenised_matrices_indices$Stakeholder_type)
+shapiro.test(residuals(model_Connections_variable_asin)) # Not normal
+```
+
+```{r}
+boxplot(homogenised_matrices_indices$Density_with_loops ~ homogenised_matrices_indices$Stakeholder_type)
+
+model_Density_with_loops <- aov(Density_with_loops ~ Stakeholder_type, data = homogenised_matrices_indices)
+plot(model_Density_with_loops)
+shapiro.test(residuals(model_Density_with_loops)) # not normally distributed
+
+Density_log <- log(homogenised_matrices_indices$Density_with_loops)
+
+model_Density_log <- aov(Density_log ~ homogenised_matrices_indices$Stakeholder_type)
+shapiro.test(residuals(model_Density_log))
+
+hist(Density_log)
+summary(model_Density_log) # means cannot be said different
+TukeyHSD(model_Density_log) # means cannot be said different
+```
+
+# Summary table
+
+```{r, include=FALSE}
+homogenised_matrices_indices_notype <- homogenised_matrices_indices[,1:15]
+
+mean_tb <- summarise_all(homogenised_matrices_indices_notype, mean)
+sd_tb <- summarise_all(homogenised_matrices_indices_notype, sd)
+min_tb <- summarise_all(homogenised_matrices_indices_notype, min)
+max_tb <- summarise_all(homogenised_matrices_indices_notype, max)
+
+summary_tb <- rbind(mean_tb, sd_tb, min_tb, max_tb)
+rownames(summary_tb) <- c("Mean_all", "SD_all", "Minimum_all", "Maximum_all")
+
+summary_tb$Stakeholder_type <- NA
+homogenised_matrices_indices <- rbind(homogenised_matrices_indices, summary_tb)
+```
+
+Export indices table
+
+```{r}
+write.table(homogenised_matrices_indices, paste(di, output_folder, "3.1 homogenised_matrices_indices.csv", sep = ""), sep = ";", row.names = TRUE)
+```
+
+**Note on density**
+
+Connection density = Number of connections / Number of concepts
+
+Density as [@Ozesmi2004]: Number of connections / Number of possible connections
+  with self loops: Number of connections / (Number of concepts^2)
+  without self loops: Number of connections / (Number of concepts * (Number of concepts - 1))
+  
+We consider that self-loops are possible, and add this index in the table ("Density with loops")
+
+```{r, echo = FALSE}
+# D_noself <- as.numeric(meanmatrix_indices$Value[1]) / (as.numeric(meanmatrix_indices$Value[3])*(as.numeric(matrix_indices$Value[3]) - 1)) # in case self-loops are not allowed in the map - not our case
+```
+
+Summary tables per group
+```{r}
+# Other stakeholders
+others_indices <- homogenised_matrices_indices %>% filter(Stakeholder_type == "S")
+others_indices <- others_indices[,1:15]
+mean_tb <- summarise_all(others_indices, mean)
+sd_tb <- summarise_all(others_indices, sd)
+min_tb <- summarise_all(others_indices, min)
+max_tb <- summarise_all(others_indices, max)
+summary_others <- rbind(mean_tb, sd_tb, min_tb, max_tb)
+rownames(summary_others) <- c("Mean_socio-economic_agents", "SD_socio-economic_agents", "Minimum_socio-economic_agents", "Maximum_socio-economic_agents")
+
+# Forestry managers
+managers_indices <- homogenised_matrices_indices %>%
+  filter(Stakeholder_type == "F")
+managers_indices <- managers_indices[,1:15]
+mean_tb <- summarise_all(managers_indices, mean)
+sd_tb <- summarise_all(managers_indices, sd)
+min_tb <- summarise_all(managers_indices, min)
+max_tb <- summarise_all(managers_indices, max)
+summary_managers <- rbind(mean_tb, sd_tb, min_tb, max_tb)
+rownames(summary_managers) <- c("Mean_managers", "SD_managers", "Minimum_managers", "Maximum_managers")
+
+# Researchers
+researchers_indices <- homogenised_matrices_indices %>%
+  filter(Stakeholder_type == "R")
+researchers_indices <- researchers_indices[,1:15]
+mean_tb <- summarise_all(researchers_indices, mean)
+sd_tb <- summarise_all(researchers_indices, sd)
+min_tb <- summarise_all(researchers_indices, min)
+max_tb <- summarise_all(researchers_indices, max)
+summary_researchers <- rbind(mean_tb, sd_tb, min_tb, max_tb)
+rownames(summary_researchers) <- c("Mean_researchers", "SD_researchers", "Minimum_researchers", "Maximum_researchers")
+
+per_group_summary <- rbind(summary_others, summary_managers)
+per_group_summary <- rbind(per_group_summary, summary_researchers)
+```
+
+```{r}
+write.table(per_group_summary, paste(di, output_folder, "3.2. per_group_summary_indices_homogenised.csv", sep = ""), sep = ";", row.names = TRUE)
+```

@@ -1,0 +1,162 @@
+---
+title: "Homogenised maps aggregation"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+library(dplyr)
+
+di <- "/Users/maria.suarez.munoz/Google Drive/ms_FuzzyCognitiveMapping/FCM_analysis" # Mac
+
+library(ggplot2)
+
+homogenised_maps_folder <- "/input_files/homogenised_matrices/"
+input_folder <- "/input_files/"
+output_folder <- "/output_files/"
+gephi_output_folder <- "/output_files/files_for_Gephi_plotting/aggregated/"
+
+files <- list.files(paste(di, homogenised_maps_folder, sep = "/"), pattern = "*.csv")
+```
+
+Own method, other options: code from @Olazabal2016, and comb.maps function from FCMapper
+
+- Generate all_concepts (vector with all the concepts in the maps, with repetitions) and all_relations (df with relationships from all maps)
+
+```{r}
+all_concepts <- c()
+all_relations <- data.frame(matrix = integer(),
+                            source_label = character(),
+                            target_label = character(),
+                            weight = numeric())
+
+for (i in 1:length(files)) {
+# for (i in 1:2) { # testing
+  my_matrix <- read.csv(paste(di, homogenised_maps_folder, files[i], sep = ""), sep = ";", na.strings=c("","NA"), dec = ",")
+  
+  assign('map_concepts', as.character(my_matrix[,1])) # extract concept names
+  my_matrix <- my_matrix[,-1] # discard first column for matrix (concept names)
+  colnames(my_matrix) <- map_concepts # to avoid spaces being replaced by dots
+  # rownames(my_matrix) <- map_concepts # duplicated rownames not allowed - to check whether this line is needed (then, avoid duplications by pre-collapsing matrices)
+  
+  # Built vector with all concepts (repetitions)
+  all_concepts <- c(all_concepts, map_concepts) 
+  
+  for (g in 1:dim(my_matrix)[1]) {
+    for (j in 1:dim(my_matrix)[2]) {
+      ifelse(is.na(my_matrix[g, j]) == FALSE,
+             all_relations <- rbind(all_relations,
+                                  data.frame(matrix = i,
+                                             source_label = colnames(my_matrix)[g],
+                                             target_label = colnames(my_matrix)[j],
+                                             weight = my_matrix[g, j])),
+                                    "")
+    }
+  }
+}
+```
+
+```{r}
+write.table(all_relations, paste(di, output_folder, "4.1 all_relations.csv", sep = ""), sep = ";", row.names = FALSE)
+```
+
+- Build concepts dictionary
+
+including column with number of occurrences
+
+```{r}
+concept_ocurrences <- data.frame(Label = all_concepts)
+
+concept_ocurrences <- concept_ocurrences %>%
+  group_by(Label) %>%
+  summarise(occurrence = n())
+
+my_concepts_dic <- concept_ocurrences %>%
+  mutate(ID = 1:length(concept_ocurrences$Label))
+```
+
+- Add column with concept type
+
+```{r}
+concepts_class <- read.csv(paste(di, input_folder, "concepts_classification.csv", sep = ""), sep = ";", na.strings=c("","NA"), dec = ",")
+
+concepts_class <- concepts_class %>%
+  mutate(Label = Save_copy) %>%
+  select(Label, DPSIR)
+```
+
+- Merge occurrences with classification
+
+```{r}
+my_concepts_dic <- left_join(my_concepts_dic, concepts_class, by = "Label")
+```
+
+- Build relationships dictionary
+
+```{r}
+relations_dic <- all_relations %>%
+  select(source_label, target_label, weight) %>%
+  group_by(source_label, target_label) %>%
+  summarise(mean = mean(weight),
+            sd = sd(weight),
+            minimum = min(weight),
+            maximum = max(weight),
+            cv = sd(weight)/mean(weight),
+            occurrences = n()) %>%
+  mutate(sign_change = ifelse(minimum * maximum < 0,
+                              "YES",
+                              "NO"))
+```
+
+- Build file for Gephi
+
+```{r}
+Source <- as.vector(relations_dic$source_label)
+Target <- as.vector(relations_dic$target_label)
+
+for (i in 1:length(my_concepts_dic$ID)) {
+  Source[which(Source == my_concepts_dic$Label[i], arr.ind = TRUE)] <- i
+  Target[which(Target == my_concepts_dic$Label[i], arr.ind = TRUE)] <- i
+}
+
+relations_dic <- cbind(relations_dic, Source_ID = Source, Target_ID = Target)
+
+edges_table_agg <- relations_dic %>%
+  mutate(Weight = mean,
+         Source = Source_ID,
+         Target = Target_ID)
+
+edges_table_agg <- edges_table_agg[,c(13,14,12,8,4,5,6,7,9)]
+
+# Add column of weight type and modify weight to absolute weight - (for arrows thickness)
+edges_table_agg$Weight_type <- c()
+for (h in 1:length(edges_table_agg$Weight)) {
+    ifelse(edges_table_agg$Weight[h] < 0,
+           edges_table_agg$Weight_type[h] <- "negative",
+           edges_table_agg$Weight_type[h] <- "positive")
+    }
+edges_table_agg$Weight <- abs(edges_table_agg$Weight)
+
+# Add column marking occurrences above 1
+edges_table_agg$occurrences_above1 <- c()
+for (j in 1:length(edges_table_agg$Weight)) {
+    ifelse(edges_table_agg$occurrences[j] > 1,
+           edges_table_agg$occurrences_above1[j] <- 1,
+           edges_table_agg$occurrences_above1[j] <- 0)
+    }
+
+edges_table_agg <- rbind(edges_table_agg, c(NA, NA, 0), c(NA, NA, 1)) # Add empty edges to consider thickness scale 0-1
+```
+
+- Export dictionaries and gephi files
+
+```{r}
+# dictionaries
+write.table(relations_dic, paste(di, output_folder, "4.2 agg_relations_dic.csv", sep = ""), sep = ";", row.names = FALSE)
+write.table(my_concepts_dic, paste(di, output_folder, "4.3 agg_concepts_dic.csv", sep = ""), sep = ";", row.names = FALSE)
+
+# gephi files
+write.table(my_concepts_dic, paste(di, gephi_output_folder, "nodes_table_agg.csv", sep = ""), sep = ";", row.names = FALSE)
+write.table(edges_table_agg, paste(di, gephi_output_folder, "edges_table_agg.csv", sep = ""), sep = ";", row.names = FALSE)
+```

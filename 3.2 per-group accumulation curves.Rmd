@@ -1,0 +1,274 @@
+---
+title: "3.2 per-group accumulation curves"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r include = FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+# Load packages
+library(FCMapper)
+library("rlist")
+library(dplyr)
+library(ggplot2)
+library(reshape)
+library(knitr)
+
+# Directory
+di <- "/Users/maria.suarez.munoz/Google Drive/ms_FuzzyCognitiveMapping/FCM_analysis" # Mac
+
+input_folder <- "input_files"
+
+files <- list.files(paste(di, input_folder, "homogenised_matrices", sep = "/"), pattern = "*.csv")
+
+output_folder <- "/output_files/"
+```
+
+```{r, include=FALSE}
+# Build maps list
+matrices_list <- list()
+
+for (i in 1:length(files)) {
+  my_matrix <- read.csv(paste(di, input_folder, "homogenised_matrices", files [i], sep = "/"), sep = ";", na.strings=c("","NA"), dec = ",")
+  assign('concept_labels', as.character(my_matrix[,1])) # extract concept names
+  my_matrix <- my_matrix[,-1] # discard first column for matrix (concept names)
+  colnames(my_matrix) <- concept_labels # to avoid spaces being replaced by dots
+  
+  matrices_list <- list.append(matrices_list, my_matrix)
+}
+
+# Checking
+ifelse(i == 41,
+       "everything alright",
+       "ERROR in files loading")
+```
+
+Load stakeholders table
+```{r}
+ref_table <- read.csv(paste(di, output_folder, "1.0. maps_to_matrices_ref_table.csv", sep = ""), sep = ";", na.strings=c("","NA"), dec = ",")
+
+ref_table$Type <- substring(ref_table$Stakeholders_type, 1, 1)
+ref_table$typenr <- c()
+  
+for (i in 1:length(ref_table$Matrix_nr)) {
+  ifelse(ref_table$Matrix_nr[i] < 10,
+         index <- paste("0", ref_table$Matrix_nr[i], sep = ""),
+         index <- ref_table$Matrix_nr[i])
+  ref_table$typenr[i] <- paste(ref_table$Type[i], index, sep = "_")
+}
+```
+
+Build list of maps per stakeholder group
+```{r}
+researchers <- c()
+forestry_managers <- c()
+others <- c()
+
+for (i in 1:length(ref_table$Entrevista)) {
+  ifelse(ref_table$Stakeholders_type[i] == "Researchers",
+         researchers <- c(researchers, i),
+         ifelse(ref_table$Stakeholders_type[i] == "Forestry managers",
+                forestry_managers <- c(forestry_managers, i),
+                others <- c(others, i)))
+}
+
+researchers_list <- list()
+for (i in 1:length(researchers)) {
+  my_matrix <- read.csv(paste(di, input_folder, "homogenised_matrices", files[researchers[i]], sep = "/"), sep = ";", na.strings=c("","NA"), dec = ",")
+  assign('concept_labels', as.character(my_matrix[,1])) # extract concept names
+  my_matrix <- my_matrix[,-1] # discard first column for matrix (concept names)
+  colnames(my_matrix) <- concept_labels # to avoid spaces being replaced by dots
+  researchers_list <- list.append(researchers_list, my_matrix)
+}
+
+managers_list <- list()
+for (i in 1:length(forestry_managers)) {
+  my_matrix <- read.csv(paste(di, input_folder, "homogenised_matrices", files[forestry_managers[i]], sep = "/"), sep = ";", na.strings=c("","NA"), dec = ",")
+  assign('concept_labels', as.character(my_matrix[,1])) # extract concept names
+  my_matrix <- my_matrix[,-1] # discard first column for matrix (concept names)
+  colnames(my_matrix) <- concept_labels # to avoid spaces being replaced by dots
+  managers_list <- list.append(managers_list, my_matrix)
+}
+
+others_list <- list()
+for (i in 1:length(others)) {
+  my_matrix <- read.csv(paste(di, input_folder, "homogenised_matrices", files[others[i]], sep = "/"), sep = ";", na.strings=c("","NA"), dec = ",")
+  assign('concept_labels', as.character(my_matrix[,1])) # extract concept names
+  my_matrix <- my_matrix[,-1] # discard first column for matrix (concept names)
+  colnames(my_matrix) <- concept_labels # to avoid spaces being replaced by dots
+  others_list <- list.append(others_list, my_matrix)
+}
+```
+
+# Researchers' accumulation curve
+
+Accumulation curve data are calculated altering the matrices ordering, in order to unbias the accumulation
+
+Duplicated concepts within a matrix are considered the same, although originally (i.e. in the original matrices) they were different!
+
+```{r}
+acc_table_iterations <- data.frame(matrix_nr = integer(),
+                        acc_concepts = integer(),
+                        acc_non_duplicated = integer()) # empty data frame
+
+nr_iterations <- 1000
+
+for (j in 1:nr_iterations) {
+  matrix_order <- sample(1:length(researchers_list), length(researchers_list), replace = FALSE)
+  all_concepts_vector <- c()
+  unique_concepts_vector <- c()
+  
+  for (i in 1:length(researchers_list)) {
+    matrix_nr <- i
+    concepts_in_matrix <- unique(colnames(researchers_list[[matrix_order[i]]]))
+    all_concepts_vector <- c(all_concepts_vector, concepts_in_matrix)
+    nr_all_concepts <- length(all_concepts_vector)
+    unique_concepts_vector <- unique(all_concepts_vector)
+    nr_unique_concepts <- length(unique_concepts_vector)
+    acc_table_iterations <- rbind(acc_table_iterations, data.frame(matrix_nr = i, acc_concepts = nr_all_concepts, acc_non_duplicated = nr_unique_concepts))
+  }
+}
+
+acc_table_iterations_summary <- acc_table_iterations %>%
+  group_by(matrix_nr) %>%
+  summarise(acc_concepts_mean = mean(acc_concepts),
+            acc_concepts_sd = sd(acc_concepts),
+            acc_non_duplicated_mean = mean(acc_non_duplicated),
+            acc_non_duplicated_sd = sd(acc_non_duplicated))
+
+write.csv(acc_table_iterations_summary, paste(di, output_folder, "3.2.1 acc_table_researchers.csv", sep = ""))
+
+title <- paste("Accumulation curve for researchers (", nr_iterations, " iterations)", sep = "")
+
+ggplot(acc_table_iterations_summary) +
+  stat_summary(aes(x = matrix_nr, y = acc_concepts_mean), geom = "point", size = 0.2, fun.y = mean, color = "indianred4") +
+  stat_summary(aes(x = matrix_nr, y = acc_non_duplicated_mean), geom = "point", size = 0.2, fun.y = mean, color = "lightskyblue3") +
+  stat_summary(aes(x = matrix_nr, y = acc_concepts_mean), geom = "line", fun.y = mean, color = "indianred4", alpha = 0.6) +
+  stat_summary(aes(x = matrix_nr, y = acc_non_duplicated_mean), geom = "line", fun.y = mean, color = "lightskyblue3", alpha = 0.6) +
+  geom_ribbon(aes(x = matrix_nr, ymin = acc_concepts_mean - acc_concepts_sd, ymax = acc_concepts_mean + acc_concepts_sd, alpha = 0.2, fill = "indianred4")) +
+  geom_ribbon(aes(x = matrix_nr, ymin = acc_non_duplicated_mean - acc_non_duplicated_sd, ymax = acc_non_duplicated_mean + acc_non_duplicated_sd, alpha = 0.2, fill = "lightskyblue3")) +
+  theme(legend.position = "none") +
+  xlab("Map number") +
+  ylab("Number of concepts") +
+  scale_x_continuous(breaks = c(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15)) +
+  ggtitle("Accumulation curve") +
+  scale_fill_manual(values=c("indianred4", "lightskyblue3"), name="", labels=c("Accumulated concepts", "Unique concepts")) +
+  scale_alpha(name = "", labels = "") +
+  ggtitle(title)
+```
+
+# Forestry managers' accumulation curve
+
+Accumulation curve data are calculated altering the matrices ordering, in order to unbias the accumulation
+
+Duplicated concepts within a matrix are considered the same, although originally (i.e. in the original matrices) they were different!
+
+```{r}
+acc_table_iterations <- data.frame(matrix_nr = integer(),
+                        acc_concepts = integer(),
+                        acc_non_duplicated = integer()) # empty data frame
+
+nr_iterations <- 1000
+
+for (j in 1:nr_iterations) {
+  matrix_order <- sample(1:length(managers_list), length(managers_list), replace = FALSE)
+  all_concepts_vector <- c()
+  unique_concepts_vector <- c()
+  
+  for (i in 1:length(managers_list)) {
+    matrix_nr <- i
+    concepts_in_matrix <- unique(colnames(managers_list[[matrix_order[i]]]))
+    all_concepts_vector <- c(all_concepts_vector, concepts_in_matrix)
+    nr_all_concepts <- length(all_concepts_vector)
+    unique_concepts_vector <- unique(all_concepts_vector)
+    nr_unique_concepts <- length(unique_concepts_vector)
+    acc_table_iterations <- rbind(acc_table_iterations, data.frame(matrix_nr = i, acc_concepts = nr_all_concepts, acc_non_duplicated = nr_unique_concepts))
+  }
+}
+
+acc_table_iterations_summary <- acc_table_iterations %>%
+  group_by(matrix_nr) %>%
+  summarise(acc_concepts_mean = mean(acc_concepts),
+            acc_concepts_sd = sd(acc_concepts),
+            acc_non_duplicated_mean = mean(acc_non_duplicated),
+            acc_non_duplicated_sd = sd(acc_non_duplicated))
+
+write.csv(acc_table_iterations_summary, paste(di, output_folder, "3.2.2 acc_table_forestry.csv", sep = ""))
+
+title <- paste("Accumulation curve for forestry managers (", nr_iterations, " iterations)", sep = "")
+
+ggplot(acc_table_iterations_summary) +
+  stat_summary(aes(x = matrix_nr, y = acc_concepts_mean), geom = "point", size = 0.2, fun.y = mean, color = "indianred4") +
+  stat_summary(aes(x = matrix_nr, y = acc_non_duplicated_mean), geom = "point", size = 0.2, fun.y = mean, color = "lightskyblue3") +
+  stat_summary(aes(x = matrix_nr, y = acc_concepts_mean), geom = "line", fun.y = mean, color = "indianred4", alpha = 0.6) +
+  stat_summary(aes(x = matrix_nr, y = acc_non_duplicated_mean), geom = "line", fun.y = mean, color = "lightskyblue3", alpha = 0.6) +
+  geom_ribbon(aes(x = matrix_nr, ymin = acc_concepts_mean - acc_concepts_sd, ymax = acc_concepts_mean + acc_concepts_sd, alpha = 0.2, fill = "indianred4")) +
+  geom_ribbon(aes(x = matrix_nr, ymin = acc_non_duplicated_mean - acc_non_duplicated_sd, ymax = acc_non_duplicated_mean + acc_non_duplicated_sd, alpha = 0.2, fill = "lightskyblue3")) +
+  theme(legend.position = "none") +
+  xlab("Map number") +
+  ylab("Number of concepts") +
+  scale_x_continuous(breaks = c(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20)) +
+  ggtitle("Accumulation curve") +
+  scale_fill_manual(values=c("indianred4", "lightskyblue3"), name="", labels=c("Accumulated concepts", "Unique concepts")) +
+  scale_alpha(name = "", labels = "") +
+  ggtitle(title)
+```
+
+# Key stakeholders' accumulation curve
+
+Accumulation curve data are calculated altering the matrices ordering, in order to unbias the accumulation
+
+Duplicated concepts within a matrix are considered the same, although originally (i.e. in the original matrices) they were different!
+
+```{r}
+acc_table_iterations <- data.frame(matrix_nr = integer(),
+                        acc_concepts = integer(),
+                        acc_non_duplicated = integer()) # empty data frame
+
+nr_iterations <- 1000
+
+for (j in 1:nr_iterations) {
+  matrix_order <- sample(1:length(others_list), length(others_list), replace = FALSE)
+  all_concepts_vector <- c()
+  unique_concepts_vector <- c()
+  
+  for (i in 1:length(others_list)) {
+    matrix_nr <- i
+    concepts_in_matrix <- unique(colnames(others_list[[matrix_order[i]]]))
+    all_concepts_vector <- c(all_concepts_vector, concepts_in_matrix)
+    nr_all_concepts <- length(all_concepts_vector)
+    unique_concepts_vector <- unique(all_concepts_vector)
+    nr_unique_concepts <- length(unique_concepts_vector)
+    acc_table_iterations <- rbind(acc_table_iterations, data.frame(matrix_nr = i, acc_concepts = nr_all_concepts, acc_non_duplicated = nr_unique_concepts))
+  }
+}
+
+acc_table_iterations_summary <- acc_table_iterations %>%
+  group_by(matrix_nr) %>%
+  summarise(acc_concepts_mean = mean(acc_concepts),
+            acc_concepts_sd = sd(acc_concepts),
+            acc_non_duplicated_mean = mean(acc_non_duplicated),
+            acc_non_duplicated_sd = sd(acc_non_duplicated))
+
+write.csv(acc_table_iterations_summary, paste(di, output_folder, "3.2.3 acc_table_key_stakeholders.csv", sep = ""))
+
+title <- paste("Accumulation curve for other stakeholders (", nr_iterations, " iterations)", sep = "")
+
+ggplot(acc_table_iterations_summary) +
+  stat_summary(aes(x = matrix_nr, y = acc_concepts_mean), geom = "point", size = 0.2, fun.y = mean, color = "indianred4") +
+  stat_summary(aes(x = matrix_nr, y = acc_non_duplicated_mean), geom = "point", size = 0.2, fun.y = mean, color = "lightskyblue3") +
+  stat_summary(aes(x = matrix_nr, y = acc_concepts_mean), geom = "line", fun.y = mean, color = "indianred4", alpha = 0.6) +
+  stat_summary(aes(x = matrix_nr, y = acc_non_duplicated_mean), geom = "line", fun.y = mean, color = "lightskyblue3", alpha = 0.6) +
+  geom_ribbon(aes(x = matrix_nr, ymin = acc_concepts_mean - acc_concepts_sd, ymax = acc_concepts_mean + acc_concepts_sd, alpha = 0.2, fill = "indianred4")) +
+  geom_ribbon(aes(x = matrix_nr, ymin = acc_non_duplicated_mean - acc_non_duplicated_sd, ymax = acc_non_duplicated_mean + acc_non_duplicated_sd, alpha = 0.2, fill = "lightskyblue3")) +
+  theme(legend.position = "none") +
+  xlab("Map number") +
+  ylab("Number of concepts") +
+  scale_x_continuous(breaks = c(1,2,3,4,5,6,7,8,9,10,11,12)) +
+  ggtitle("Accumulation curve") +
+  scale_fill_manual(values=c("indianred4", "lightskyblue3"), name="", labels=c("Accumulated concepts", "Unique concepts")) +
+  scale_alpha(name = "", labels = "") +
+  ggtitle(title)
+```

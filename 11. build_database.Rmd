@@ -1,0 +1,203 @@
+---
+title: "Database"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+# Set up directory
+di <- "/Users/maria.suarez.munoz/Google Drive/ms_FuzzyCognitiveMapping/FCM_analysis"
+
+input_folder <- "input_files"
+output_folder <- "output_files"
+
+# Load packages
+library(dplyr)
+```
+
+All data collected are organised in a database composed by the following tables:
+
+  - *Table_Concepts*
+
+  - *Table_Relationships*
+
+  - *Table_Matrix_to_Relationships*
+  
+  - *Table_Stakeholders_types*
+
+  - *Table_Matrices*
+
+  - *Table_Workbench*
+
+# Table_Concepts
+
+Columns: ID_concept, concept_name, concept_DPSIR_class, concept_tag, concept_definition
+
+```{r}
+Table_Concepts <- read.csv(paste(di, output_folder, "4.3 agg_concepts_dic.csv", sep = "/"), sep = ";") %>%
+  mutate(ID_concept = ID, concept_name = Label, concept_DPSIR_class = DPSIR) %>%
+  select(ID_concept, concept_name, concept_DPSIR_class)
+
+Dic_concepts_original_concepts <- read.csv(paste(di, input_folder, "Dic_concepts_original_concepts.csv", sep = "/"), sep = ";")
+
+concepts_tags <- Dic_concepts_original_concepts %>%
+  mutate(concept_name = Hierarchical.Homogenisation..LEVEL.2, concept_tag = Category) %>%
+  select(concept_name, concept_tag) %>%
+  filter(concept_tag != "-") %>%
+  distinct()
+
+Table_Concepts <- full_join(Table_Concepts, concepts_tags, by = "concept_name")
+
+concept_definitions <- read.csv(paste(di, input_folder, "Dic_concepts_homogenised_definitions.csv", sep = "/"), sep = ";") %>%
+  dplyr::mutate(concept_name = Concept, concept_definition = Definition) %>%
+  select(concept_name, concept_definition) %>%
+  filter(concept_name != "-",
+         concept_name != "")
+
+Table_Concepts <- full_join(Table_Concepts, concept_definitions, by = "concept_name")
+```
+
+# Table_Relationships
+
+Columns: ID_relationship, source_concept, target_concept (as concept_name)
+
+```{r}
+agg_relationships <- read.csv(paste(di, output_folder, "4.2 agg_relations_dic.csv", sep = "/"), sep = ";")
+
+Table_Relationships <- agg_relationships %>%
+  select(source_label, target_label)
+
+Table_Relationships$ID_relationship <- 1:length(Table_Relationships$source_label)
+  
+Table_Relationships <- Table_Relationships[,c(3,1,2)]
+colnames(Table_Relationships) <- c("ID_relationship", "source_concept", "target_concept")
+```
+
+# Table_Matrix_to_Relationships
+
+Columns: ID_matrix_to_relationship, ID_matrix, ID_relationship, relationship_weight
+
+```{r}
+Table_Matrix_to_Relationships <- read.csv(paste(di, output_folder, "4.1 all_relations.csv", sep = "/"), sep = ";")
+
+colnames(Table_Matrix_to_Relationships) <- c("ID_matrix", "source_concept", "target_concept", "relationship_weight")
+
+Table_Matrix_to_Relationships$ID_matrix_to_relationship <- c(1:length(Table_Matrix_to_Relationships$ID_matrix))
+
+Table_Matrix_to_Relationships <- full_join(Table_Matrix_to_Relationships, Table_Relationships, by = c("source_concept", "target_concept")) %>%
+  select(ID_matrix_to_relationship, ID_matrix, ID_relationship, relationship_weight)
+```
+
+# Table_Stakeholders_types
+
+Columns: : ID_stakeholder_type, stakeholder_type
+
+```{r}
+Table_Stakeholders_types <- data.frame(ID_stakeholder_type = c(1:3),
+                                       stakeholder_type = c("Forestry managers", "Researchers", "Socio-economic agents"))
+```
+
+# Table_Matrices
+ 
+Columns: ID_matrix, stakeholder_action_level, stakeholder_age_range, stakeholder_knowledge_area, stakeholder_type, ID_stakeholder_type
+
+```{r}
+ref_table <- read.csv(paste(di, output_folder, "1.0. maps_to_matrices_ref_table.csv", sep = "/"), sep = ";")
+
+stakeholders_info <- read.csv(paste(di, input_folder, "interviews_info_clean.csv", sep = "/"), sep = ";")
+
+stakeholders_info <- full_join(stakeholders_info, ref_table, by = c("ID_interview" = "Entrevista"))
+
+Table_Matrices <- stakeholders_info[,c(17, 15, 8, 7, 1)]
+
+Table_Matrices <- full_join(Table_Matrices, Table_Stakeholders_types, by = c("New_stakeholders_classification" = "stakeholder_type"))
+
+colnames(Table_Matrices) <- c("ID_matrix", "stakeholder_action_level", "stakeholder_age_range", "stakeholder_knowledge_area_prefix", "stakeholder_type", "ID_stakeholder_type")
+
+Table_Matrices <- Table_Matrices %>%
+  select(ID_matrix, stakeholder_action_level, stakeholder_age_range, stakeholder_knowledge_area_prefix, ID_stakeholder_type)
+
+Table_Matrices$stakeholder_knowledge_area_prefix <- as.character(Table_Matrices$stakeholder_knowledge_area_prefix)
+
+Table_Matrices$stakeholder_knowledge_area <- c()
+for (i in 1:length(Table_Matrices$ID_matrix)) {
+  Table_Matrices$stakeholder_knowledge_area[i] <- strsplit(Table_Matrices$stakeholder_knowledge_area_prefix[i], split = " - ")[[1]][2]
+}
+
+Table_Matrices <- Table_Matrices %>%
+  select(ID_matrix, stakeholder_action_level, stakeholder_age_range, stakeholder_knowledge_area, ID_stakeholder_type)
+```
+
+# Table_Workbench
+
+Columns: ID_element, ID_matrix, original_element, element_translation, terminological_homogenisation, hierarchical_homogenisation, sign_change_required, disaggregation_required, ID_concept
+
+```{r}
+Dic_concepts_original_concepts <- full_join(Dic_concepts_original_concepts, ref_table, by = c("Map_ID" = "Entrevista"))
+
+Table_Workbench <- Dic_concepts_original_concepts %>%
+  select(Matrix_nr, Original.Concept..ES., Translation..UK., Terminology.Homogenisation, Hierarchical.Homogenisation..LEVEL.2, Need.of.sign.change, Need.of.disaggregation) %>%
+  filter(is.na(Matrix_nr) == FALSE)
+
+colnames(Table_Workbench) <- c("ID_matrix", "original_element", "element_translation", "terminological_homogenisation", "hierarchical_homogenisation", "sign_change_required", "disaggregation_required")
+
+Table_Workbench$ID_element <- c(1:length(Table_Workbench$ID_matrix))
+
+Table_Workbench <- Table_Workbench[c(8, 1, 2, 3, 4, 5, 6, 7)]
+
+concepts_ID <- Table_Concepts %>% select(ID_concept, concept_name)
+
+Table_Workbench <- full_join(Table_Workbench, concepts_ID, by = c("hierarchical_homogenisation" = "concept_name"))
+```
+
+# Export tables
+```{r}
+write.table(Table_Concepts, paste(di, output_folder, "database", "Table_Concepts.csv", sep = "/"), sep = ";", row.names = FALSE)
+
+write.table(Table_Relationships, paste(di, output_folder, "database", "Table_Relationships.csv", sep = "/"), sep = ";", row.names = FALSE)
+
+write.table(Table_Matrix_to_Relationships, paste(di, output_folder, "database", "Table_Matrix_to_Relationships.csv", sep = "/"), sep = ";", row.names = FALSE)
+
+write.table(Table_Stakeholders_types, paste(di, output_folder, "database", "Table_Stakeholders_types.csv", sep = "/"), sep = ";", row.names = FALSE)
+
+write.table(Table_Matrices, paste(di, output_folder, "database", "Table_Matrices.csv", sep = "/"), sep = ";", row.names = FALSE)
+
+write.table(Table_Workbench, paste(di, output_folder, "database", "Table_Workbench.csv", sep = "/"), sep = ";", row.names = FALSE)
+```
+
+# Export original matrices with ID_Matrix
+
+```{r}
+for (j in 1:length(ref_table$Entrevista)) {
+  matrix <- read.csv(paste(di, input_folder, "original_matrices", ref_table$File[j], sep = "/"), sep = ";", dec = ",")
+  
+  matrix_name <- paste("original_matrix_", ref_table$Matrix_nr[j], ".csv", sep = "")
+  
+  write.table(matrix, paste(di, output_folder, "database", matrix_name, sep = "/"), sep = ";", row.names = FALSE)
+}
+```
+
+# Individual_maps_characteristics import and export
+
+```{r}
+original <- read.csv(paste(di, output_folder, "1.1. original_maps_indices.csv", sep = "/"), sep = ";", dec = ",")
+write.table(original, paste(di, output_folder, "database", "original_maps_indices.csv", sep = "/"), sep = ";", row.names = TRUE)
+
+homogenised <- read.csv(paste(di, output_folder, "3.1 homogenised_matrices_indices.csv", sep = "/"), sep = ";", dec = ",")
+write.table(homogenised, paste(di, output_folder, "database", "homogenised_matrices_indices.csv", sep = "/"), sep = ";", row.names = TRUE)
+```
+
+# Concepts indices - import and export
+```{r}
+concept_indices <- read.csv(paste(di, output_folder, "8.2 per_group_concept_indices.csv", sep = "/"), sep = ";", dec = ",")
+
+colnames(concept_indices) <- c("Concept", "DPSIR",
+       "Outdegree_social", "Indegree_social", "Centrality_social",
+       "Outdegree_researchers", "Indegree_researchers", "Centrality_researchers",
+       "Outdegree_forestry", "Indegree_forestry", "Centrality_forestry",
+       "Outdegree_socioeconomic", "Indegree_socioeconomic", "Centrality_socioeconomic")
+
+write.table(concept_indices, paste(di, output_folder, "database", "concept_indices.csv", sep = "/"), sep = ";", row.names = FALSE)
+```
+
