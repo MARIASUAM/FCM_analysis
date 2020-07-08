@@ -1,0 +1,17 @@
+﻿;Thinning;Thinning;Altitude;Site class & Climatic fitness;Knowledge & experience & tools for management;Costs;Decay;Stand density;Precipitation decrease impact;Local initiative on biomass & wood & firewood use;Shrubland encroachment;Herbivores overuse;Knowledge & experience & tools for management;Social unrest;Native forest recruitment & regeneration;Main species substitution
+Thinning;;;;;;;;-0,3;;;;;;0,2;;
+Thinning;;;;;;0,5;;-0,3;;;;;;;;
+Altitude;;;;;;;;;-0,5;;-0,2;0,5;;;;
+Site class & Climatic fitness;;;;;;;;;;;;;;;;
+Knowledge & experience & tools for management;0,7;0,5;;;;;;;;;;;0,9;;;
+Costs;;;;;;;;;;;;;;;;
+Decay;;;;;;;;-0,8;;;;;;;;0,4
+Stand density;0,8;;;;;;;;0,7;;;;;;-0,7;
+Precipitation decrease impact;;;;-0,2;;;0,7;;;;;;;;;
+Local initiative on biomass & wood & firewood use;0,5;0,3;;;;;;;;;;;;;;
+Shrubland encroachment;;;;;;;;;;;;;;;;
+Herbivores overuse;;;;;;;;;;;;;;;-0,2;
+Knowledge & experience & tools for management;;;;;;;;;;;;;;;;
+Social unrest;;;;;;;;;;;;;;;;
+Native forest recruitment & regeneration;;;;;;;;;;;;;;;;
+Main species substitution;;;;;;;;;;;;;;;;

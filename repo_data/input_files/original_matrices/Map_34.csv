@@ -1,0 +1,21 @@
+;Fauna abundance;Processionary moth abundance;Landscape attraction;Fuel quantity and quality;Acicular coverage;Fire complexity/propagation/spreading;Pine density;Tree species diversity;Local employment;Pine species homogeneity;Soil/environment humidity;Investment on pest control;Public investment;Mistletoe presence;Investment on awareness and involvement programmes;Advertising;Investment on water tanks recovery;Water requirement;Signposting, posters;Tourism
+Fauna abundance;;;;;;;;;;;;;;;;;;;;
+Processionary moth abundance;;;;;;;;;;;;;;;;;;;;
+Landscape attraction;;;;;;;;;;;;;;;;;;;;0,8
+Fuel quantity and quality;;;;;;0,9;;;;;;;;;;;;;;
+Acicular coverage;;;;0,8;;;;;;;;;;;;;;;;
+Fire complexity/propagation/spreading;;;;;;;;;;;;;;;;;;;;
+Pine density;;;;0,8;;;;;;;;;;;;;;;;
+Tree species diversity;0,9;;0,6;;;;;;;-0,9;;;;;;;;;;
+Local employment;;;;;;;;;;;;;;;;;;;;
+Pine species homogeneity;-0,7;1;;;1;;;;;;;;;0,7;;;;0,8;;
+Soil/environment humidity;;;1;-0,7;;;;;;;;;;;;;;;;
+Investment on pest control;;-0,6;;;;;;;;;;;;;;;;;;
+Public investment;;;;;;;;0,7;0,8;;;;;;;0,5;;;0,5;
+Mistletoe presence;;;;;;;;;;;;;;;;;;;;
+Investment on awareness and involvement programmes;;;0,6;;;;;0,3;;;;;;;;;;;;
+Advertising;;;;;;;;;;;;;;;;;;;;0,5
+Investment on water tanks recovery;;;;;;;;;;;0,6;;;;;;;;;
+Water requirement;;;;;;;;;;;-0,7;;;;;;;;;
+Signposting, posters;;;0,5;;;;;;;;;;;;;;;;;
+Tourism;;;;;;;;;;;;;;;;;;;;

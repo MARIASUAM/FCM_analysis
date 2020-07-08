@@ -1,0 +1,11 @@
+;Biological and functional biodiversity;Stand density which doesn't allow regeneration;Stand density which allows regeneration;Development degree of underlying vegetation;Treatment intensity;Wild and domestic fauna presence;Established underlying vegetation quantity;Regeneration of reference vegetation;Regeneration;Underlying vegetation similarity with reference vegetation
+Biological and functional biodiversity;;;;;;;;;;
+Stand density which doesn't allow regeneration;-0,8;;;;;;;-0,3;-0,3;
+Stand density which allows regeneration;-0,1;;;;;;;-0,5;-0,5;
+Development degree of underlying vegetation;;;;;;;;0,8;0,8;
+Treatment intensity;;-0,9;-0,2;;;;0,3;;;
+Wild and domestic fauna presence;;;;-0,8;;;;;;
+Established underlying vegetation quantity;;;;;;;;0,8;0,8;
+Regeneration of reference vegetation;0,9;;;;;;;;;
+Regeneration;0,9;;;;;;;;;
+Underlying vegetation similarity with reference vegetation;;;;;;;;0,9;;

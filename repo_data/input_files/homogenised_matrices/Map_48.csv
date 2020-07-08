@@ -1,0 +1,16 @@
+﻿;Extensive livestock use;Thinning;Biodiversity;Site class & Climatic fitness;Stand density;Biodiversity;Carbon sequestration in long term;Soil formation;Pines mortality;Biomass & Wood & Firewood use;Vulnerability against perturbations;Pastures & Shrubs & others as food sources;Soil protection against erosion;Resilience;Shrubland encroachment
+Extensive livestock use;;;;;;;;;;;;;;;
+Thinning;;;;;-1;;;;;;;;;;
+Biodiversity;;;;;;1;0,8;1;;;-0,8;;0,7;1;
+Site class & Climatic fitness;;;;;;;;;-1;1;;;;;-1
+Stand density;;;-1;;;;;;1;-0,5;1;-1;0,7;;
+Biodiversity;;;;;;;;;;;;;;;
+Carbon sequestration in long term;;;;;;;;;;;;;;;
+Soil formation;;;;;;;;;;;;;;;
+Pines mortality;;;;;-1;;;;;;;;;;
+Biomass & Wood & Firewood use;;;;;;;;;;;;;;;
+Vulnerability against perturbations;;;;;;;-0,5;;;;;;;;
+Pastures & Shrubs & others as food sources;1;;;;;;;;;;;;;;
+Soil protection against erosion;;;;;;;;;;;;;;;
+Resilience;;;;;;;;;;;;;;;
+Shrubland encroachment;1;;1;;;;;;;;;;;;

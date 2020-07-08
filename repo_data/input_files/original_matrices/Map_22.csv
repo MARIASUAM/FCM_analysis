@@ -1,0 +1,11 @@
+;Opportunistic species onset;Animal biodiversity;Vegetal biodiversity;Thinning;Competition;Fire spreading;Limit visits impact;Monospecificity;Pests and diseases spreading;Natural regeneration
+Opportunistic species onset;;;0,4;;;;;;;
+Animal biodiversity;;;;;;;;;;
+Vegetal biodiversity;;0,8;;;;-0,8;;;;
+Thinning;;;;;-0,8;;;;;
+Competition;;;;;;;;;;-0,7
+Fire spreading;0,8;;;;;;;;;
+Limit visits impact;;0,9;0,7;;;;;;;
+Monospecificity;;;;;;0,9;;;0,8;
+Pests and diseases spreading;;;;;;;;;;
+Natural regeneration;;;0,9;;;;;;;

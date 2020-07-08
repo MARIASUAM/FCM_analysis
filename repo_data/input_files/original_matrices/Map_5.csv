@@ -1,0 +1,18 @@
+;Food for wild fauna and livestock;Tourism attraction;Biodiversity;Landscape quality;Soil quality;Regeneration capacity;Forest management - Thinning;Climatic stability;Forest management;Leaves;Public and private investment;Forest management - Shrubland cleaning;Forest fire magnitude;Pines presence;Oak and Holm oak presence;Local workforce;Oak trees health
+Food for wild fauna and livestock;;;;;;;;;;;;;;;;;
+Tourism attraction;;;;;;;;;;;;;;;;0,5;
+Biodiversity;;;;;;;;;;;;;;;;;
+Landscape quality;;0,8;;;;;;;;;;;;;;;
+Soil quality;;;;;;;;;;;;;;;;;
+Regeneration capacity;;;;;;;;;;;;;;;;;
+Forest management - Thinning;;;;;;;;;;;;;-1;;;;
+Climatic stability;;;;;;;;;;;;;;;;;1
+Forest management;;;;;;;;;;;;;-1;;;0,1;
+Leaves;;;;;;;;;;;;;;;;;
+Public and private investment;;;;;;;;;1;;;;;;;;
+Forest management - Shrubland cleaning;;;;;;;;;;;;;-1;;;;
+Forest fire magnitude;;;;;;;;;;;;;;;;;
+Pines presence;-1;;;;;-0,8;;;;-1;;;;;;;
+Oak and Holm oak presence;1;;1;1;1;1;;;;1;;;;;;;
+Local workforce;;;;;;;;;;;;;;;;;
+Oak trees health;1;;1;;;;;;;;;;;;;;

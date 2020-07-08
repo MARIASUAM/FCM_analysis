@@ -1,0 +1,15 @@
+;Shrubs and groves;Holm oaks sprout;Selective thinning;Compost;Tree growth;Water availability;Animals entrance;Light entrance;Coverage;Density;Generation of employment;Fire magnitude;Pruning;Fires risk
+Shrubs and groves;;;;;;;;;;;;;;
+Holm oaks sprout;;;;;;;;;;;;;;
+Selective thinning;;;;1;1;;;;;-1;1;;;
+Compost;;;;;;;;;;;;;;
+Tree growth;;;;;;;;;;;;;;
+Water availability;;;;;;;;;;;;;;
+Animals entrance;;;;;;;;;;;;;;
+Light entrance;0,5;0,8;;;;;;;;;;;;
+Coverage;;;;;;-0,8;;-0,5;;;;1;;0,6
+Density;;;;;;-0,8;;-0,5;;;;;;
+Generation of employment;;;;;;;;;;;;;;
+Fire magnitude;;;;;;;;;;;;;;
+Pruning;;;;0,2;0,5;;1;;-0,3;;1;;;
+Fires risk;;;;;;;;;;;;;;

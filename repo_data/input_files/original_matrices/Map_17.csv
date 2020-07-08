@@ -1,0 +1,13 @@
+;Antropic impact on soil;Climatic fitness;Soil quality;Competition;Forest management;Weakening;Woodland density;Climate change effect ;Hidric stress;Pests and diseases incidence;Collapse probability;Fire probability
+Antropic impact on soil;;;-0,5;;;;;;;;;
+Climatic fitness;;;;-0,8;;;;;;;;
+Soil quality;;;;-1;;;;;;;;
+Competition;;;;;;0,8;;;1;;;
+Forest management;;;;;;;-1;;;;;
+Weakening;;;;;;;;;;0,8;;
+Woodland density;;;;1;;;;;;;;0,5
+Climate change effect ;;-0,8;-0,7;;;;;;;;;
+Hidric stress;;;;;;;;;;;1;
+Pests and diseases incidence;;;;;;;;;;;0,8;
+Collapse probability;;;;;;;;;;;;
+Fire probability;;;;;;;;;;;;

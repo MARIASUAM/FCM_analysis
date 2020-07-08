@@ -1,0 +1,19 @@
+;Biodiversity;Response capacity to fires;Availability of hunting species;Interspecific competition;Climatic situation;Shrubland growth;Pests damage;Density;Pine coverage;Promote self-funding use;Fires intensity;Pastures;Biomass production (pellet);Fires propagation;Soil protection;Prescribed burning;Resilience;Group or block treatments
+Biodiversity;;1;1;;;;-0,6;;;;;;;;1;;1;
+Response capacity to fires;;;;;;;;;;;;;;;;;;
+Availability of hunting species;;;;;;;;;;;;;;;;;;
+Interspecific competition;;;;;;;1;;;;;;;;;;-0,7;
+Climatic situation;;;;1;;;;;;;;;;;;;;
+Shrubland growth;;1;;;;;;;;;;;;1;1;;;
+Pests damage;;;;;;;;;-0,3;;;;;;;;;
+Density;;;;1;;-0,4;;;;;;;;;;;-0,8;
+Pine coverage;-0,8;;-0,8;;;-0,7;;;;;;-0,9;-0,8;;1;;;
+Promote self-funding use;;;;;;;;;;;;;0,5;;;;;
+Fires intensity;-1;-0,9;;;;;;;;;;;-0,6;;-1;;-1;
+Pastures;;;;;;;;;;;;;;;;;;
+Biomass production (pellet);;;;;;;;;;;;;;;;;;
+Fires propagation;;;;;;;;;;;;;;;-0,4;;;
+Soil protection;;;;;;;;;;;;;;;;;;
+Prescribed burning;0,6;-0,1;;;;-0,5;-0,6;-0,7;;;-0,8;;;-1;-0,4;;;
+Resilience;;;;;;;;;;;;;;;;;;
+Group or block treatments;0,8;;;;;0,5;-0,5;-0,2;-0,2;1;-0,2;0,5;;-0,8;-0,3;;;

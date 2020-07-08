@@ -1,0 +1,12 @@
+;Fuel quantity;Vertical-horizontal fuel continuity;Species diversity;Plant species diversity;Structural homogeneity;Well-planned investment;Stand continuity potential;Science-management feedback;Burned surface;Economic values;Fire virulence
+Fuel quantity;;;;;;;;;;;1
+Vertical-horizontal fuel continuity;;;;;;;;;0,8;;0,9
+Species diversity;;;;;-0,7;;0,9;;;0,1;
+Plant species diversity;0,7;0,8;;;;;;;;;
+Structural homogeneity;;;;;;;-0,9;;;;
+Well-planned investment;;;0,9;;;;;;;;
+Stand continuity potential;;;;;;;;;;;
+Science-management feedback;;;0,6;;;;;;;;-0,3
+Burned surface;;;;;;;;;;;
+Economic values;;;;;;-0,4;;;;;
+Fire virulence;;;;;;;;;;;

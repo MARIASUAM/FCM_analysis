@@ -166,38 +166,11 @@ write.table(Table_Matrices, paste(di, output_folder, "database", "Table_Matrices
 write.table(Table_Workbench, paste(di, output_folder, "database", "Table_Workbench.csv", sep = "/"), sep = ";", row.names = FALSE)
 ```
 
-# Export original matrices with ID_Matrix
+# Export interviews_info_clean.csv preserving interviewees anonymity.
 
 ```{r}
-for (j in 1:length(ref_table$Entrevista)) {
-  matrix <- read.csv(paste(di, input_folder, "original_matrices", ref_table$File[j], sep = "/"), sep = ";", dec = ",")
-  
-  matrix_name <- paste("original_matrix_", ref_table$Matrix_nr[j], ".csv", sep = "")
-  
-  write.table(matrix, paste(di, output_folder, "database", matrix_name, sep = "/"), sep = ";", row.names = FALSE)
-}
+stakeholders_info <- stakeholders_info %>%
+  select(New_stakeholders_classification, ID_interview, Knowledge.area, Knowledge.area...clean, Age.range, Age.code, Action.level, File, Matrix_nr, Stakeholders_type)
+
+write.table(stakeholders_info, paste(di, output_folder, "database", "interviews_info_clean.csv", sep = "/"), sep = ";", row.names = FALSE)
 ```
-
-# Individual_maps_characteristics import and export
-
-```{r}
-original <- read.csv(paste(di, output_folder, "1.1. original_maps_indices.csv", sep = "/"), sep = ";", dec = ",")
-write.table(original, paste(di, output_folder, "database", "original_maps_indices.csv", sep = "/"), sep = ";", row.names = TRUE)
-
-homogenised <- read.csv(paste(di, output_folder, "3.1 homogenised_matrices_indices.csv", sep = "/"), sep = ";", dec = ",")
-write.table(homogenised, paste(di, output_folder, "database", "homogenised_matrices_indices.csv", sep = "/"), sep = ";", row.names = TRUE)
-```
-
-# Concepts indices - import and export
-```{r}
-concept_indices <- read.csv(paste(di, output_folder, "8.2 per_group_concept_indices.csv", sep = "/"), sep = ";", dec = ",")
-
-colnames(concept_indices) <- c("Concept", "DPSIR",
-       "Outdegree_social", "Indegree_social", "Centrality_social",
-       "Outdegree_researchers", "Indegree_researchers", "Centrality_researchers",
-       "Outdegree_forestry", "Indegree_forestry", "Centrality_forestry",
-       "Outdegree_socioeconomic", "Indegree_socioeconomic", "Centrality_socioeconomic")
-
-write.table(concept_indices, paste(di, output_folder, "database", "concept_indices.csv", sep = "/"), sep = ";", row.names = FALSE)
-```
-

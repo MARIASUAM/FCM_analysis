@@ -1,0 +1,10 @@
+;Available water;Soil disturbance;Plantation density;Vegetation functional diversity;Soil development slowness;Carbon sequestration;Thinning;Soil protection;Reintroduction of native species
+Available water;;;;;;0,6;;;
+Soil disturbance;;;;;;;;-0,5;
+Plantation density;;;;-0,8;0,5;-0,8;;0,8;
+Vegetation functional diversity;0,6;;;;-0,7;0,7;;0,8;
+Soil development slowness;-0,6;;;;;-0,9;;-0,4;
+Carbon sequestration;;;;;;;;;
+Thinning;;;-0,5;0,4;;;;;
+Soil protection;0,9;;;;;0,5;;;
+Reintroduction of native species;;;;0,5;-0,7;0,7;;;

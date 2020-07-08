@@ -1,0 +1,11 @@
+﻿;Species immigration;Fauna biodiversity;Vegetation biodiversity;Thinning;Interspecific competition;Fires propagation;Limit visits impact;Vegetation biodiversity;Pests & diseases expansion;Native forest recruitment & regeneration
+Species immigration;;;0,4;;;;;;;
+Fauna biodiversity;;;;;;;;;;
+Vegetation biodiversity;;0,8;;;;-0,8;;;;
+Thinning;;;;;-0,8;;;;;
+Interspecific competition;;;;;;;;;;-0,7
+Fires propagation;0,8;;;;;;;;;
+Limit visits impact;;0,9;0,7;;;;;;;
+Vegetation biodiversity;;;;;;-0,9;;;-0,8;
+Pests & diseases expansion;;;;;;;;;;
+Native forest recruitment & regeneration;;;0,9;;;;;;;

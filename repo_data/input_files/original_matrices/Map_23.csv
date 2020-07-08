@@ -1,0 +1,15 @@
+﻿;Altitude;Fuel quantity;Decay;Consideration and support;Fires intensity;Intervention intensity;Maintenance and management;Local participation in decision-making;Precipitation;Intervention possibility;Fires risk;Climate change effect;Pine species substitution;Manager' link with territory
+Altitude;;;;;;;;;;-0,5;;;;
+Fuel quantity;;;;;1;;;;;;;;;
+Decay;;;;;;;;;;;;;;
+Consideration and support;;;;;;;;;;;;;;
+Fires intensity;;;;;;;;;;;;;;
+Intervention intensity;;-0,8;-1;;;;;;;;;;;
+Maintenance and management;;-1;-1;;;;;;;;;;;
+Local participation in decision-making;;;;1;;;;;;;;;;0,8
+Precipitation;;;;;;;;;;-0,5;;;;
+Intervention possibility;;;;;;;;;;;;;;
+Fires risk;;;;;;;;;;;;;;
+Climate change effect;;;;;1;;;;;;0,8;;1;
+Pine species substitution;;;;;;;;;;;;;;
+Manager' link with territory;;;;;;;1;;;;;;;

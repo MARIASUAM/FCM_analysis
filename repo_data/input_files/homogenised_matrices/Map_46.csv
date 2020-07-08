@@ -1,0 +1,13 @@
+﻿;Thinning intensity;Humidity;Temperature;Stand density;Pests & diseases expansion;Pests & diseases expansion;Shrubland planting;Quercus planting;Vegetation biodiversity;Pests & diseases abundance;Native forest recruitment & regeneration;Fires risk
+Thinning intensity;;;;-1;;;;;;;;
+Humidity;;;;;;-0,7;;;;;;
+Temperature;;;;;1;;;;;;;
+Stand density;;;;;;0,8;;;;0,5;-1;1
+Pests & diseases expansion;;;;;;;;;;;;
+Pests & diseases expansion;;;;;;;;;;;;
+Shrubland planting;;;;;;;;;;;0,8;
+Quercus planting;;;;;;;;;;;0,8;
+Vegetation biodiversity;;;;;;-0,6;;;;-0,8;;-0,5
+Pests & diseases abundance;;;;;;;;;;;;
+Native forest recruitment & regeneration;;;;;;;;;0,2;;;
+Fires risk;;;;;;;;;;;;

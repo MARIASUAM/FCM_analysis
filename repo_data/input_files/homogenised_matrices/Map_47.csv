@@ -1,0 +1,14 @@
+﻿;Soil disturbance;Thinning;Coppice with standards & Pruning;Soil disturbance;Shrubland growth & regeneration;Stand density;Soil formation;Soil quality;Fauna biodiversity;Vegetation biodiversity;Fauna biodiversity;Vegetation biodiversity;Stand surface
+Soil disturbance;;;;;;;;;;;;;
+Thinning;;;;;;-0,8;;;;;;;-0,8
+Coppice with standards & Pruning;;;;;;-0,8;;;;;;;-0,8
+Soil disturbance;;;;;;;;;;;;;
+Shrubland growth & regeneration;;;;;;;;;1;1;1;1;
+Stand density;0,5;;;;-1;;-0,7;;-0,8;-0,8;-0,8;;
+Soil formation;;;;;;;;;;;;;
+Soil quality;;;;;;;;;;0,8;;;
+Fauna biodiversity;;;;;;;;0,7;;1;;;
+Vegetation biodiversity;;;;;;;;;;;;;
+Fauna biodiversity;;;;;;;;;;0,6;;;
+Vegetation biodiversity;;;;;;;;;0,8;0,8;0,8;;
+Stand surface;;;;0,8;;;;;;;;;

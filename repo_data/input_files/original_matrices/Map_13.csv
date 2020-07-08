@@ -1,0 +1,14 @@
+;Planning quality;Competition among individuals;Plantation density;Species diversity;Ecosystem services diversity;Structural diversity;Homogeneity;Intervention  ;Need of economic resources;Promote biomass as energy source;Regeneration;Fire propagation risk;Vulnerability against pests
+Planning quality;;;;;;;;;-0,7;;;;
+Competition among individuals;;;;;;;;;;;;;
+Plantation density;;0,9;;;;;;;;;-0,7;1;0,8
+Species diversity;;;;;;;;;;;;;
+Ecosystem services diversity;;;;;;;;;;;;;
+Structural diversity;;;;;;;;;;;;;
+Homogeneity;;;;-0,7;-0,9;-1;;;;;;0,8;0,9
+Intervention  ;;;-1;;;;-1;;1;;;;
+Need of economic resources;;;;;;;;;;;;;
+Promote biomass as energy source;;;;;;;;1;;;;;
+Regeneration;;;;1;0,9;1;;;;;;;
+Fire propagation risk;;;;;;;;;;;;;
+Vulnerability against pests;;;;;;;;;;;;;

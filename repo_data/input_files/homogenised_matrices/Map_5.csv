@@ -1,0 +1,25 @@
+﻿;Pastures & Shrubs & others as food sources;Landscape & Tourism attraction;Biodiversity;Social & cultural & economic mountain range valuation;Soil quality;Pines recruitment & regeneration;Native forest recruitment & regeneration;Thinning;Change in climate seasonality;Thinning;Coppice with standards & Pruning;Brush-cutting;Group or block treatments;Pines planting;Quercus planting;Shrubland planting;Provisioning ecosystem services;Public & Private investment;Brush-cutting;Fires propagation;Stand density;Vegetation biodiversity;Employment;Native forest recruitment & regeneration
+Pastures & Shrubs & others as food sources;;;;;;;;;;;;;;;;;;;;;;;;
+Landscape & Tourism attraction;;;;;;;;;;;;;;;;;;;;;;;0,5;
+Biodiversity;;;;;;;;;;;;;;;;;;;;;;;;
+Social & cultural & economic mountain range valuation;;0,8;;;;;;;;;;;;;;;;;;;;;;
+Soil quality;;;;;;;;;;;;;;;;;;;;;;;;
+Pines recruitment & regeneration;;;;;;;;;;;;;;;;;;;;;;;;
+Native forest recruitment & regeneration;;;;;;;;;;;;;;;;;;;;;;;;
+Thinning;;;;;;;;;;;;;;;;;;;;-1;;;;
+Change in climate seasonality;;;;;;;;;;;;;;;;;;;;;;;;-1
+Thinning;;;;;;;;;;;;;;;;;;;;-1;;;0,1;
+Coppice with standards & Pruning;;;;;;;;;;;;;;;;;;;;-1;;;0,1;
+Brush-cutting;;;;;;;;;;;;;;;;;;;;-1;;;0,1;
+Group or block treatments;;;;;;;;;;;;;;;;;;;;-1;;;0,1;
+Pines planting;;;;;;;;;;;;;;;;;;;;-1;;;0,1;
+Quercus planting;;;;;;;;;;;;;;;;;;;;-1;;;0,1;
+Shrubland planting;;;;;;;;;;;;;;;;;;;;-1;;;0,1;
+Provisioning ecosystem services;;;;;;;;;;;;;;;;;;;;;;;;
+Public & Private investment;;;;;;;;;;1;1;1;1;1;1;1;;;;;;;;
+Brush-cutting;;;;;;;;;;;;;;;;;;;;-1;;;;
+Fires propagation;;;;;;;;;;;;;;;;;;;;;;;;
+Stand density;-1;;;;;-0,8;-0,8;;;;;;;;;;-1;;;;;;;
+Vegetation biodiversity;1;;1;1;1;1;1;;;;;;;;;;1;;;;;;;
+Employment;;;;;;;;;;;;;;;;;;;;;;;;
+Native forest recruitment & regeneration;1;;1;;;;;;;;;;;;;;;;;;;;;

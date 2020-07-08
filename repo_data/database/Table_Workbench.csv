@@ -1,0 +1,686 @@
+"ID_element";"ID_matrix";"original_element";"element_translation";"terminological_homogenisation";"hierarchical_homogenisation";"sign_change_required";"disaggregation_required";"ID_concept"
+1;10;"Aclareos";"Thinning";"Thinning intensity";"Thinning intensity";"";"";130
+2;10;"Aprovechamientos";"Ecosystem services";"Ecosystem services";"Ecosystem services";"";"";30
+3;10;"Biodiversidad";"Biodiversity";"Biodiversity";"Biodiversity";"";"";9
+4;10;"Decaimiento";"Decay";"Decay";"Decay";"";"";25
+5;10;"Densidad";"Density";"Stand density - high";"Stand density";"";"";122
+6;10;"Potencial de ganadería extensiva";"Extensive livestock production potential";"Extensive livestock use - potential";"Extensive livestock use";"";"";35
+7;10;"Plagas";"Pests";"Pests incidence";"Pests & diseases incidence";"";"";80
+8;10;"Prevenir erosión";"Erosion prevention";"Soil protection against erosion";"Soil protection against erosion";"";"";117
+9;10;"Sucesión bloqueada";"Blocking of succession";"Blocking of succession";"Stagnation";"";"";120
+10;10;"Superficie repoblada";"Reforested surface";"Stand surface";"Stand surface";"";"";124
+11;20;"Agua disponible";"Available water";"Water availability";"Water availability";"";"";141
+12;20;"Alteración del suelo";"Soil disturbance";"Physical soil disturbance";"Soil disturbance";"";"";115
+13;20;"Densidad de la plantación";"Plantation density";"Stand density - general";"Stand density";"";"";122
+14;20;"Diversidad funcional de la vegetación";"Vegetation functional diversity";"Vegetation functional diversity";"Functional diversity";"";"";45
+15;20;"Lentitud en la evolución del suelo";"Soil development slowness";"Soil development slowness";"Soil formation";"YES";"";116
+16;20;"Fijación de carbono";"Carbon sequestration";"Carbon sequestration";"Carbon sequestration";"";"";16
+17;20;"Intensidad de aclareos";"Thinning";"Thinning intensity";"Thinning intensity";"";"";130
+18;20;"Protección del suelo";"Soil protection";"Soil protection against erosion";"Soil protection against erosion";"";"";117
+19;20;"Reintroducción de especies autóctonas";"Reintroduction of native species";"Reintroduction of native species";"-";"";"YES";NA
+20;20;"Reintroducción de especies autóctonas";"Reintroduction of native species";"Reintroduction of native species";"Shrubland planting";"";"disaggregated";108
+21;20;"Reintroducción de especies autóctonas";"Reintroduction of native species";"Reintroduction of native species";"Quercus planting";"";"disaggregated";97
+22;37;"Alimentación para fauna salvaje y ganadería";"Food for wild fauna and livestock";"Food source";"Pastures & Shrubs & others as food sources";"";"";76
+23;37;"Atractivo turístico";"Tourism attraction";"Tourism attraction";"Landscape & Tourism attraction";"";"";58
+24;37;"Biodiversidad";"Biodiversity";"Biodiversity";"Biodiversity";"";"";9
+25;37;"Calidad del paisaje";"Landscape quality";"Landscape quality for local population";"Social & cultural & economic mountain range valuation";"";"";112
+26;37;"Calidad del suelo";"Soil quality";"Soil quality";"Soil quality";"";"";118
+27;37;"Capacidad de regeneración";"Regeneration capacity";"Regeneration";"-";"";"YES";NA
+28;37;"Capacidad de regeneración";"Regeneration capacity";"Regeneration";"Pines recruitment & regeneration";"";"disaggregated";84
+29;37;"Capacidad de regeneración";"Regeneration capacity";"Regeneration";"Native forest recruitment & regeneration";"";"disaggregated";73
+30;37;"Gestión del monte - Clareos";"Forest management - Thinning";"Thinning";"Thinning";"";"";129
+31;37;"Estabilidad climática";"Climatic stability";"Climatic stability";"Change in climate seasonality";"YES";"";18
+32;37;"Gestión del monte";"Forest management";"Silvicultural treatments";"-";"";"YES";NA
+33;37;"Gestión del monte";"Forest management";"Silvicultural treatments";"Thinning";"";"disaggregated";129
+34;37;"Gestión del monte";"Forest management";"Silvicultural treatments";"Coppice with standards & Pruning";"";"disaggregated";22
+35;37;"Gestión del monte";"Forest management";"Silvicultural treatments";"Brush-cutting";"";"disaggregated";13
+36;37;"Gestión del monte";"Forest management";"Silvicultural treatments";"Group or block treatments";"";"disaggregated";47
+37;37;"Gestión del monte";"Forest management";"Silvicultural treatments";"Pines planting";"";"disaggregated";83
+38;37;"Gestión del monte";"Forest management";"Silvicultural treatments";"Quercus planting";"";"disaggregated";97
+39;37;"Gestión del monte";"Forest management";"Silvicultural treatments";"Shrubland planting";"";"disaggregated";108
+40;37;"Hojas";"Leaves";"Leaves (as material)";"Provisioning ecosystem services";"";"";94
+41;37;"Inversión pública y privada";"Public and private investment";"Investment";"Public & Private investment";"";"";96
+42;37;"Gestión del monte - Limpieza del monte bajo";"Forest management - Shrubland cleaning";"Shrubland cleaning";"Brush-cutting";"";"";13
+43;37;"Magnitud de los incendios forestales";"Forest fire magnitude";"Fires magnitude";"Fires propagation";"";"";41
+44;37;"Presencia de pinos";"Pines presence";"Stand density - general";"Stand density";"";"";122
+45;37;"Presencia de robles y encinas";"Oak and Holm oak presence";"Oak and Holm oak presence";"Vegetation biodiversity";"";"";137
+46;37;"Puestos de trabajo locales";"Local workforce";"Local employment";"Employment";"";"";33
+47;37;"Salud robles";"Oak trees health";"Oak trees health";"Native forest recruitment & regeneration";"";"";73
+48;38;"Clara, aclareos";"Thinning";"Thinning intensity";"Thinning intensity";"";"";130
+49;38;"Densidad de la repoblación";"Plantation density";"Stand density - general";"Stand density";"";"";122
+50;38;"Diversidad biológica";"Biological diversity";"Biological diversity";"Biodiversity";"";"";9
+51;38;"Diversidad estructural";"Structural diversity";"Structural diversity";"Structural diversity";"";"";126
+52;38;"Diversidad funcional  ";"Functional diversity";"Functional diversity";"Functional diversity";"";"";45
+53;38;"Gasto de recursos económicos";"Economic resources spending";"Costs";"Costs";"";"";23
+54;38;"Herbivoría silvestre y doméstica";"Wild and domestic herbivory";"Herbivory";"Herbivory";"";"";49
+55;38;"Mejorar la planificación";"Improve planning";"Planning quality";"Planning & projects quality";"";"";86
+56;38;"\"Overgrazing\" silvestre y doméstica";"Wild and domestic overgrazing";"Overgrazing";"Herbivores overuse";"";"";48
+57;38;"Participación de agentes sociales";"Participation of social agents";"Local participation in decision-making";"Participated and democratic decision-making processes";"";"";75
+58;38;"Plantaciones - Matorral espinoso";"Thorn shrubland planting actions";"Thorn shrubland planting";"Shrubland planting";"";"";108
+59;38;"Plantaciones - Pinos";"Pine planting actions";"Pines planting";"Pines planting";"";"";83
+60;38;"Protección frente a la erosión";"Protection against erosion";"Soil protection against erosion";"Soil protection against erosion";"";"";117
+61;38;"Regeneración natural espontánea";"Spontaneous natural regeneration";"Native species regeneration";"Native forest recruitment & regeneration";"";"";73
+62;38;"Riesgo de incendios";"Fires risk";"Fires risk";"Fires risk";"";"";42
+63;38;"Tratamiento apoyo a formaciones naturales (roble y encina)";"Actions to promote natural formations (oaks and holm oaks)";"Coppice with standars & Pruning";"Coppice with standards & Pruning";"";"";22
+64;39;"Servicios ecosistémicos - Almacenamiento de CO2";"Ecosystem services - CO2 storage";"Carbon sequestration";"Carbon sequestration";"";"";16
+65;39;"Servicios ecosistémicos - Atractivo para el uso recreativo";"Ecosystem services - Recreational use attraction";"Recreation";"Recreation";"";"";98
+66;39;"Autoaclareo";"Auto-thinning";"Pines mortality";"Pines mortality";"";"";82
+67;39;"Servicios ecosistémicos - Biodiversidad";"Biodiversity";"Biodiversity";"Biodiversity";"";"";9
+68;39;"Cambio global";"Global change";"Climate change effect";"-";"";"YES";NA
+69;39;"Cambio global";"Global change";"Climate change effect";"Temperature";"";"disaggregated";128
+70;39;"Cambio global";"Global change";"Climate change effect";"Precipitation";"YES";"disaggregated";89
+71;39;"Clareos";"Thinning";"Thinning";"Thinning";"";"";129
+72;39;"Cubierta vegetal";"Vegetation cover";"Vegetation coverage";"Vegetation cover";"";"";138
+73;39;"Densidad de la repoblación";"Plantation density";"Stand density - below a threshold";"Stand density";"";"";122
+74;39;"Edad de la repoblación";"Plantation age";"Plantation age";"Plantation age";"";"";87
+75;39;"Incidencia de plagas";"Pests incidence";"Pests incidence";"Pests & diseases incidence";"";"";80
+76;39;"Inversión directa y aprovechamiento ";"Direct investment and use";"Investment";"Public & Private investment";"";"";96
+77;39;"Obras hidrológicas";"Hydraulic infrastructures";"Hydraulic infrastructures";"Hydraulic infrastructures";"";"";52
+78;39;"Servicios ecosistémicos - Protección frente a la erosión";"Ecosystem services - Protection against erosion";"Soil protection against erosion";"Soil protection against erosion";"";"";117
+79;39;"Servicios ecosistémicos - Protección frente a movimientos de ladera";"Ecosystem services - Protection against land slides";"Soil protection against land slides";"Soil protection against erosion";"";"";117
+80;39;"Regeneración del suelo";"Soil regeneration";"Soil regeneration";"Soil formation";"";"";116
+81;39;"Excesiva biomasa de pinos";"Excessive pine biomass";"Stand density - above a threshold";"Stand density";"";"";122
+82;39;"Vulnerabilidad frente a incendios";"Vulnerability against fires";"Vulnerability against fires";"Vulnerability against perturbations";"";"";140
+83;40;"Actuaciones a coste 0 (explotación)";"Forestry actions at zero-cost (use)";"Forestry actions at zero-cost";"Thinning";"";"";129
+84;40;"Actuaciones de disminución de densidad";"Density reduction actions";"Density reduction actions";"Thinning";"";"";129
+85;40;"Altitud";"Altitude";"Altitude";"Altitude";"";"";5
+86;40;"Ascenso altitudinal de los óptimos de cada especie";"Altitudinal ascension of optimal values of each species";"Altitudinal ascension of optimal values of each species";"Site class & Climatic fitness";"YES";"";110
+87;40;"Conocimiento y experiencia";"Knowledge and experience";"Knowledge and experience for management";"Knowledge & experience & tools for management";"";"";57
+88;40;"Costes";"Costs";"Costs";"Costs";"";"";23
+89;40;"Decaimiento";"Decay";"Decay";"Decay";"";"";25
+90;40;"Densidad de la repoblación";"Plantation density";"Stand density - general";"Stand density";"";"";122
+91;40;"Efecto del cambio climático (precipitaciones)";"Climate change effect (precipitation)";"Climate change effect - precipitation";"Precipitation decrease impact";"";"";90
+92;40;"Iniciativa local";"Local initiative";"Local initiative on biomass and wood use";"Local initiative on biomass & wood & firewood use";"";"";62
+93;40;"Matorralización";"Shrubland encroachment";"Shrubland encroachment";"Shrubland encroachment";"";"";106
+94;40;"Presión ganadera";"Livestock pressure";"Livestock pressure";"Herbivores overuse";"";"";48
+95;40;"Capacidad para priorizar de zonas a tratar";"Capacity to prioritise areas to treat";"Capacity to prioritise areas to treat";"Knowledge & experience & tools for management";"";"";57
+96;40;"Rechazo social";"Social rejection";"Social unrest";"Social unrest";"";"";114
+97;40;"Regeneración de especies autóctonas";"Native species regeneration";"Native species regeneration";"Native forest recruitment & regeneration";"";"";73
+98;40;"Sustitución de la especie principal";"Main species substitution (Quercus and pines)";"Main species substitution";"Main species substitution";"";"";65
+99;41;"Beneficio económico directo potencial";"Potential direct economic benefit";"Economic benefit of biomass and wood use";"Economic benefit";"";"";28
+100;41;"Beneficios indirectos";"Indirect benefits";"Ecosystem services";"Ecosystem services";"";"";30
+101;41;"Biodiversidad";"Biodiversity";"Biodiversity";"Biodiversity";"";"";9
+102;41;"Calidad de la estación";"Site class";"Site class";"Site class & Climatic fitness";"";"";110
+103;41;"Capacidad de adaptación (resiliencia)";"Adaptation capacity (resilience)";"Resilience";"Resilience";"";"";99
+104;41;"Densidad de la repoblación";"Plantation density";"Stand density - general";"Stand density";"";"";122
+105;41;"Disponibilidad de recursos económicos";"Economic resources availability";"Economic resources  ";"Material & human resources";"";"";67
+106;41;"Efectos del cambio climático";"Climate change effect";"Climate change effect";"-";"";"YES";NA
+107;41;"Efectos del cambio climático";"Climate change effect";"Climate change effect";"Temperature";"";"disaggregated";128
+108;41;"Efectos del cambio climático";"Climate change effect";"Climate change effect";"Precipitation";"YES";"disaggregated";89
+109;41;"Entrada de agentes externos";"External agents entrance";"Pest and diseases expansion";"Pests & diseases expansion";"";"";79
+110;41;"Incidencia de plagas y enfermedades clásicas";"Classic pests and diseases incidence";"Pests and diseases incidence - classic";"Pests & diseases incidence";"";"";80
+111;41;"Incidencia de plagas y enfermedades emergentes";"Emerging pests and diseases incidence";"Pests and diseases incidence - emerging";"Pests & diseases incidence";"";"";80
+112;41;"Producción de recursos (biomasa + madera)";"Resources production (biomass and wood)";"Wood & firewood use";"Biomass & Wood & Firewood use";"";"";10
+113;41;"Reforzar la vegetación natural potencial / Diversificar";"Promoting of potential natural vegetation / Diversify";"Promote natural vegetation";"Promote natural vegetation";"";"";92
+114;41;"Supervivencia de la masa a largo plazo";"Long term survival";"Stand long term survival";"Stand stability";"";"";123
+115;41;"Tratamientos selvícolas (entresacas, clareos, aclareos)";"Silvicultural treatments (selective cutting, thinning)";"Thinning & Selective cutting";"Thinning";"";"";129
+116;41;"Vigor/estado vegetativo";"Vigour/State of growth";"Vigour";"Vigour";"";"";139
+117;1;"Atractivo paisajístico";"Landscape attraction";"Landscape attraction";"Landscape & Tourism attraction";"";"";58
+118;1;"Beneficio económico sostenible";"Sustainable economic benefit";"Sustainable economic benefit";"Economic benefit";"";"";28
+119;1;"Calidad de la planificación y ordenación";"Planning and management quality";"Planning quality";"Planning & projects quality";"";"";86
+120;1;"Concienciación ambiental";"Environmental awareness";"Environmental education";"Environmental education";"";"";34
+121;1;"Densidad de la repoblación";"Plantation density";"Stand density - general";"Stand density";"";"";122
+122;1;"Descontento social";"Social discontent";"Social unrest";"Social unrest";"";"";114
+123;1;"Fomento de la actividad económica local";"Promoting of local economic activity";"Promotion of local economy";"Promotion of local economy";"";"";93
+124;1;"Incidencia de incendios";"Fires incidence";"Fires incidence";"Fires incidence";"";"";39
+125;1;"Puesta en valor de recursos forestales - Explotación y puesta en valor de recursos micológicos";"Forest resources use - Mycological resources use and promotion";"Mycological use";"Mycological use";"";"";72
+126;1;"Puesta en valor de recursos forestales";"-";"-";"-";"";"";NA
+127;1;"Puesta en valor de recursos forestales - Uso turístico";"Forest resources use - Tourist use";"Tourism ";"Tourism";"";"";133
+128;1;"Regeneración/Naturalización";"Regeneration/Naturalisation ";"Native species regeneration";"Native forest recruitment & regeneration";"";"";73
+129;1;"Riesgo de incendios";"Fires risk";"Fires risk";"Fires risk";"";"";42
+130;1;"Puesta en valor de recursos forestales - Saca de madera";"Forest resources use - Wood use";"Wood use";"Biomass & Wood & Firewood use";"";"";10
+131;1;"Sobreexplotación de recursos micológicos y destrucción asociada";"Overuse of mycological resources and associated destruction";"Mycological overuse and associated destruction";"Mycological overuse";"";"";71
+132;1;"Tratamientos selvícolas";"Silvicultural treatments";"Thinning";"Thinning";"";"";129
+133;2;"Calidad y cantidad de la madera";"Quality and quantity of wood";"Wood quantity & quality";"Wood quantity & quality";"";"";144
+134;2;"Claras";"Thinning";"Thinning intensity";"Thinning intensity";"";"";130
+135;2;"Coetaneidad";"Even-age";"Even-age";"Structural diversity";"YES";"";126
+136;2;"Debilitamiento";"Weakening";"Weakening";"Stand weakening";"";"";125
+137;2;"Densidad de la masa";"Forest stand density";"Stand density - general";"Stand density";"";"";122
+138;2;"Estancamiento en el crecimiento";"Growth stagnation";"Pines growth";"Pines growth";"YES";"";81
+139;2;"Vulnerabilidad frente a incendios";"Vulnerability against fires";"Vulnerability against fires";"Vulnerability against perturbations";"";"";140
+140;2;"Provisión de servicios ecosistémicos de abastecimiento";"Provisioning ecosystem services production";"Provisioning ecosystem services";"Provisioning ecosystem services";"";"";94
+141;2;"Reclutamiento";"Recruitment";"Pines recruitment";"Pines recruitment & regeneration";"";"";84
+142;2;"Regeneración";"Regeneration";"Native species regeneration";"Native forest recruitment & regeneration";"";"";73
+143;2;"Resiliencia y adaptación";"Resilience & Adaptation";"Resilience & Adaptation";"Resilience";"";"";99
+144;2;"Similitud de la procedencia de la planta";"Similarity with plant provenance";"Similarity with plant provenance";"Site class & Climatic fitness";"";"";110
+145;2;"Vulnerabilidad frente a la sequía";"Vulnerability against drought";"Vulnerability against drought";"Vulnerability against perturbations";"";"";140
+146;2;"Vulnerabilidad frente a plagas";"Vulnerability against pests";"Vulnerability against pests";"Vulnerability against perturbations";"";"";140
+147;2;"Vulnerabilidad frente al viento";"Vulnerability against winds";"Vulnerability against winds";"Vulnerability against perturbations";"";"";140
+148;3;"Adaptación a cambios";"Adaptation to change";"Resilience";"Resilience";"";"";99
+149;3;"Biodiversidad";"Biodiversity";"Biodiversity";"Biodiversity";"";"";9
+150;3;"Clareos";"Thinning";"Thinning";"Thinning";"";"";129
+151;3;"Competencia";"Competition";"Intraspecific competition";"Intraspecific competition";"";"";56
+152;3;"Densidad de la repoblación";"Plantation density";"Stand density - general";"Stand density";"";"";122
+153;3;"Estado de desarrollo";"Development state";"Vigour";"Vigour";"";"";139
+154;3;"Favorecer el desarrollo de otras especies";"Promoting other species' development";"Promote natural vegetation";"-";"";"YES";NA
+155;3;"Favorecer el desarrollo de otras especies";"Promoting other species development";"Promote natural vegetation";"Shrubland planting";"";"disaggregated";108
+156;3;"Favorecer el desarrollo de otras especies";"Promoting other species development";"Promote natural vegetation";"Quercus planting";"";"disaggregated";97
+157;3;"Inversión pública";"Public investment";"Investment - public";"Public & Private investment";"";"";96
+158;3;"Limitación de tiempo";"Time limitation";"Time limitation for wood and biomass use";"Time limitation for wood and biomass use";"";"";131
+159;3;"Monoespecificidad";"Monospecificity";"Monospecificity";"Vegetation biodiversity";"";"";137
+160;3;"Pendientes";"Slopes";"Slope";"Slope";"";"";111
+161;3;"Rentabilidad";"Profitability";"Wood & biomass use profitability";"Biomass & Wood & Firewood use profitability";"";"";11
+162;3;"Rentabilidad social";"Social profitability";"Social profitability";"Social profitability & sustainability";"";"";113
+163;3;"Vulnerabilidad frente a enfermedades y plagas";"Vulnerability against pests and diseases";"Vulnerability against pests and diseases";"Vulnerability against perturbations";"";"";140
+164;4;"Calidad de la planificación  ";"Planning quality";"Planning quality";"Planning & projects quality";"";"";86
+165;4;"Competencia entre individuos";"Competition among individuals";"Intraspecific competition";"Intraspecific competition";"";"";56
+166;4;"Densidad de la repoblación";"Plantation density";"Stand density - general";"Stand density";"";"";122
+167;4;"Diversidad de especies";"Species diversity";"Biodiversity";"Biodiversity";"";"";9
+168;4;"Diversidad de servicios ecosistémicos";"Ecosystem services diversity";"Ecosystem services diversity";"Ecosystem services";"";"";30
+169;4;"Diversidad estructural";"Structural diversity";"Structural diversity";"Structural diversity";"";"";126
+170;4;"Homogeneidad";"Homogeneity";"Homogeneity";"Structural diversity";"YES";"";126
+171;4;"Intervención";"Intervention  ";"Thinning";"Thinning";"";"";129
+172;4;"Necesidad de recursos económicos";"Need of economic resources";"Costs";"Costs";"";"";23
+173;4;"Primar el uso de la biomasa para energía";"Promote biomass as energy source";"Promotion of biomass use";"Biomass & Wood & Firewood use promotion";"";"";12
+174;4;"Regeneración";"Regeneration";"Regeneration";"Native forest recruitment & regeneration";"";"";73
+175;4;"Riesgo de expansión de incendios";"Fire propagation risk";"Fire propagation risk";"Fires propagation";"";"";41
+176;4;"Vulnerabilidad plagas";"Vulnerability against pests";"Vulnerability against pests";"Vulnerability against perturbations";"";"";140
+177;5;"Aprovechamiento (ganadería + leña)";"Use (livestock + firewood)";"Livestock & firewood use";"-";"";"YES";NA
+178;5;"Aprovechamiento (ganadería + leña)";"Use (livestock + firewood)";"Livestock & firewood use";"Extensive livestock use";"";"disaggregated";35
+179;5;"Aprovechamiento (ganadería + leña)";"Use (livestock + firewood)";"Livestock & firewood use";"Biomass & Wood & Firewood use";"";"disaggregated";10
+180;5;"Cambio climático";"Climate change";"Climate change effect";"-";"";"YES";NA
+181;5;"Cambio climático";"Climate change";"Climate change effect";"Temperature";"YES";"disaggregated";128
+182;5;"Cambio climático";"Climate change";"Climate change effect";"Precipitation";"";"disaggregated";89
+183;5;"Competencia hídrica";"Hidric competition";"Hidric competition";"Intraspecific competition";"";"";56
+184;5;"Debilitamiento de la masa";"Stand weakening";"Stand weakening";"Stand weakening";"";"";125
+185;5;"Densidad";"Density";"Stand density - general";"Stand density";"";"";122
+186;5;"Eliminación ciervos";"Deer removal";"Deer population control hunting";"Deer population control hunting";"";"";26
+187;5;"Incidencia de plagas";"Pests incidence";"Pests incidence";"Pests & diseases incidence";"";"";80
+188;5;"Inversión pública";"Public investment";"Investment - public";"Public & Private investment";"";"";96
+189;5;"Investigación";"Research";"Scientific activity";"Scientific activity & knowledge";"";"";104
+190;5;"Magnitud de incendios";"Fire magnitude";"Fires magnitude";"Fires propagation";"";"";41
+191;5;"Presión de herbivoría";"Herbivory pressure";"Livestock overuse";"Herbivores overuse";"";"";48
+192;5;"Protección frente a herbivoría";"Protection against herbivory";"Protection against herbivory";"Other actions";"";"";74
+193;5;"Reclutamiento";"Recruitment";"Pines recruitment";"Pines recruitment & regeneration";"";"";84
+194;5;"Sobreexplotación ganadera";"Livestock overuse";"Livestock overuse";"Herbivores overuse";"";"";48
+195;5;"Tratamientos";"Treatments";"Silvicultural treatments & Planting";"-";"";"YES";NA
+196;5;"Tratamientos";"Treatments";"Silvicultural treatments & Planting";"Thinning";"";"disaggregated";129
+197;5;"Tratamientos";"Treatments";"Silvicultural treatments & Planting";"Quercus planting";"";"disaggregated";97
+198;5;"Tratamientos";"Treatments";"Silvicultural treatments & Planting";"Shrubland planting";"";"disaggregated";108
+199;5;"Tratamientos";"Treatments";"Silvicultural treatments & Planting";"Coppice with standards & Pruning";"";"disaggregated";22
+200;6;"Biodiversidad biológica y funcional";"Biological and functional biodiversity";"Biological & functional diversity";"-";"";"YES";NA
+201;6;"Biodiversidad biológica y funcional";"Biological and functional biodiversity";"Biological & functional diversity";"Biodiversity";"";"disaggregated";9
+202;6;"Biodiversidad biológica y funcional";"Biological and functional biodiversity";"Biological & functional diversity";"Functional diversity";"";"disaggregated";45
+203;6;"Densidad de la masa que no permite regeneración";"Stand density which doesn't allow regeneration";"Stand density - above a threshold";"Stand density";"";"";122
+204;6;"Densidad de la masa que permite la regeneración ";"Stand density which allows regeneration";"Stand density - below a threshold";"Stand density";"";"";122
+205;6;"Grado de desarrollo de la vegetación subyacente";"Development degree of underlying vegetation";"Underlying vegetation development degree";"Underlying vegetation abundance & development degree";"";"";135
+206;6;"Intensidad de tratamiento";"Treatment intensity";"Thinning intensity";"Thinning intensity";"";"";130
+207;6;"Presencia de fauna silvestre y doméstica";"Wild and domestic fauna presence";"Fauna presence";"Fauna biodiversity";"";"";36
+208;6;"Cantidad de vegetación subyacente establecida";"Established underlying vegetation quantity";"Underlying vegetation abundance";"Underlying vegetation abundance & development degree";"";"";135
+209;6;"Regeneración de vegetación de referencia";"Regeneration of reference vegetation";"Reference vegetation regeneration";"Native forest recruitment & regeneration";"";"";73
+210;6;"Regeneración";"Regeneration";"Regeneration";"Native forest recruitment & regeneration";"";"";73
+211;6;"Similitud de la vegetación subyacente con vegetación de referencia";"Underlying vegetation similarity with reference vegetation";"Underlying vegetation similarity with reference vegetation";"Native forest recruitment & regeneration";"";"";73
+212;7;"Biodiversidad";"Biodiversity";"Biodiversity";"Biodiversity";"";"";9
+213;7;"Capacidad de respuesta a incendios";"Response capacity to fires";"Resilience";"Resilience";"";"";99
+214;7;"Disponibilidad de especies cinegéticas";"Availability of hunting species";"Game abundance";"Game abundance";"";"";46
+215;7;"Competencia interespecífica";"Interspecific competition";"Interspecific competition";"Interspecific competition";"";"";54
+216;7;"Coyuntura climática";"Climatic situation";"Climate change effect";"-";"";"YES";NA
+217;7;"Coyuntura climática";"Climatic situation";"Climate change effect";"Temperature";"";"disaggregated";128
+218;7;"Coyuntura climática";"Climatic situation";"Climate change effect";"Precipitation";"YES";"disaggregated";89
+219;7;"Crecimiento del matorral";"Shrubland growth";"Shrubland growth";"Shrubland growth & regeneration";"";"";107
+220;7;"Daño de plagas";"Pests damage";"Pests impact";"Pests & diseases incidence";"";"";80
+221;7;"Densidad";"Density";"Stand density - general";"Stand density";"";"";122
+222;7;"Espesura de los pinos";"Pine coverage";"Stand density - without crown tangency";"Stand density";"";"";122
+223;7;"Favorecer aprovechamientos autofinanciados";"Promote self-funding use";"Promote self-funding biomass use";"Biomass & Wood & Firewood use promotion";"";"";12
+224;7;"Intensidad de incendios";"Fires intensity";"Fires intensity";"Fires intensity";"";"";40
+225;7;"Pastos";"Pastures";"Pastures";"Pastures & Shrubs & others as food sources";"";"";76
+226;7;"Producción de biomasa (pellet)";"Biomass production (pellet)";"Biomass use";"Biomass & Wood & Firewood use";"";"";10
+227;7;"Propagación de incendios";"Fires propagation";"Fires propagation";"Fires propagation";"";"";41
+228;7;"Protección del suelo  ";"Soil protection";"Soil protection against erosion (and others)";"Soil protection against erosion";"";"";117
+229;7;"Quema prescrita";"Prescribed burning";"Prescribed burning";"Other actions";"";"";74
+230;7;"Resiliencia";"Resilience";"Resilience";"Resilience";"";"";99
+231;7;"Tratamientos por rodales o bosquetes";"Group or block treatments";"Group or block treatments";"Group or block treatments";"";"";47
+232;8;"Impacto antrópico sobre el suelo";"Antropic impact on soil";"Antropic impact on soil";"Soil disturbance";"";"";115
+233;8;"Adecuación climática";"Climatic fitness";"Climatic fitness";"Site class & Climatic fitness";"";"";110
+234;8;"Calidad del suelo";"Soil quality";"Soil quality";"Soil quality";"";"";118
+235;8;"Competencia";"Competition";"Interspecific competition";"Interspecific competition";"";"";54
+236;8;"Gestión forestal";"Forest management";"Thinning";"Thinning";"";"";129
+237;8;"Debilitamiento";"Weakening";"Weakening";"Stand weakening";"";"";125
+238;8;"Densidad del arbolado";"Woodland density";"Stand density - general";"Stand density";"";"";122
+239;8;"Efecto del cambio climático  ";"Climate change effect ";"Climate change effect";"-";"";"YES";NA
+240;8;"Efecto del cambio climático  ";"Climate change effect ";"Climate change effect";"Temperature";"";"disaggregated";128
+241;8;"Efecto del cambio climático  ";"Climate change effect ";"Climate change effect";"Precipitation";"YES";"disaggregated";89
+242;8;"Estrés hídrico";"Water stress";"Water stress";"Water stress";"";"";142
+243;8;"Incidencia de plagas y enfermedades";"Pests and diseases incidence";"Pest and diseases incidence";"Pests & diseases incidence";"";"";80
+244;8;"Intervención en función de objetivos";"-";"-";"-";"";"";NA
+245;8;"Probabilidad de colapso";"Collapse probability";"Collapse probability";"Pines mortality";"";"";82
+246;8;"Probabilidad de incendio";"Fire probability";"Fires probability";"Fires risk";"";"";42
+247;9;"Autogestión comunal y local";"Local and communal self-management";"Local and communal self-management";"Participated and democratic decision-making processes";"";"";75
+248;9;"Diversidad de usos";"Uses diversity";"Uses diversity";"Ecosystem services";"";"";30
+249;9;"Explotación biomasa";"Biomass use";"Biomass use";"Biomass & Wood & Firewood use";"";"";10
+250;9;"Explotación maderera";"Wood use";"Wood  use";"Biomass & Wood & Firewood use";"";"";10
+251;9;"Explotación micológica";"Mycological use";"Mycological use";"Mycological use";"";"";72
+252;9;"Percepción local de consumo de recursos hídricos de los pinos";"Local perception on water consumption by pines";"Local perception on water consumption by pines";"Local perception on water consumption by pines";"";"";64
+253;9;"Políticas de conservación integrada";"Integrated conservation policies";"Integrated conservation policies";"Integrated conservation policies";"";"";53
+254;9;"Políticas de fomento";"-";"-";"-";"";"";NA
+255;9;"Presión conservadora";"Conservation pressure";"Conservation pressure";"Conservation pressure";"";"";21
+256;9;"Rechazo social local a políticas";"Social local rejection to policies";"Social unrest - policies";"Social unrest";"";"";114
+257;9;"Reconocimiento, pertenencia";"Recognition, sense of belonging";"Sense of belonging";"Sense of belonging";"";"";105
+258;9;"Recuperación de fincas agrarias";"Farming plots recovery";"Farming plots recovery";"-";"";"YES";NA
+259;9;"Recuperación de fincas agrarias";"Farming plots recovery";"Farming plots recovery";"Mountain agriculture use";"";"disaggregated";70
+260;9;"Recuperación de fincas agrarias";"Farming plots recovery";"Farming plots recovery";"Extensive livestock use";"";"disaggregated";35
+261;9;"Retorno local";"Local return";"Social profitability";"Social profitability & sustainability";"";"";113
+262;9;"Riesgo de incendios";"Fires risk";"Fires risk";"Fires risk";"";"";42
+263;9;"Uso recreativo";"Recreational use";"Recreation";"Recreation";"";"";98
+264;11;"Caída de árboles";"Falling of trees";"Falling of trees";"Pines mortality";"";"";82
+265;11;"Debilitamiento";"Weakening";"Weakening";"Stand weakening";"";"";125
+266;11;"Densidad de la repoblación";"Plantation density";"Stand density - general";"Stand density";"";"";122
+267;11;"Diversidad de fauna";"-";"-";"-";"";"";NA
+268;11;"Diversidad de fauna - aves";"Fauna diversity -  birds";"Birds biodiversity";"Fauna biodiversity";"";"";36
+269;11;"Diversidad de fauna - herbívoros";"Fauna diversity -  herbivores";"Herbivores biodiversity";"Fauna biodiversity";"";"";36
+270;11;"Impacto plagas - Matsucoccus";"Pests impact - Matsucoccus";"Pests impact - Matsucoccus";"Pests & diseases incidence";"";"";80
+271;11;"Impacto plagas - muérdago";"Pests impact - Mistletoe";"Pests impact - Mistletoe";"Pests & diseases incidence";"";"";80
+272;11;"Impacto plagas - procesionaria";"Pests impact - Pine processionary moth";"Pests impact - Pine processionary moth";"Pests & diseases incidence";"";"";80
+273;11;"Mortalidad de árboles";"Trees mortality";"Pines mortality";"Pines mortality";"";"";82
+274;11;"Percepción negativa";"Negative perception";"Negative perception";"Social unrest";"";"";114
+275;11;"Presencia de sotobosque";"Ground vegetation presence";"Underlying vegetation abundance";"Underlying vegetation abundance & development degree";"";"";135
+276;11;"Seguridad";"Safety";"Safety";"Safety";"";"";102
+277;11;"Tratamientos selvícolas";"Silvicultural treatments";"Thinning";"Thinning";"";"";129
+278;12;"Actividad científica";"Scientific activity";"Scientific activity";"Scientific activity & knowledge";"";"";104
+279;12;"Calidad de los aprovechamientos";"Uses quality";"Uses quality";"Ecosystem services";"";"";30
+280;12;"Efecto del cambio climático - patrón de precipitaciones";"Climate change effect - precipitation pattern";"Climatic stability";"Change in climate seasonality";"";"";18
+281;12;"Efecto del cambio climático - temperatura";"Climate change effect - temperature";"Climate change effect - temperature";"Temperature";"";"";128
+282;12;"Educación social";"Social education";"Social education";"Environmental education";"";"";34
+283;12;"Esfuerzo para la adaptación de la regulación aprovechamientos";"Use regulation adaptation effort";"Adapting use regulation to climate change";"Adapting use regulation to climate change";"";"";3
+284;12;"Grado de aceptación de la población a la conservación";"Acceptance level of conservation by population";"Social unrest - conservation";"Social unrest";"YES";"";114
+285;12;"Grado de conservación";"Conservation degree";"Conservation degree";"Conservation degree";"";"";20
+286;12;"Promoción de los aprovechamientos monetaristas";"Monetarist uses promotion";"Monetarist uses promotion";"Monetarist uses promotion";"";"";69
+287;12;"Recursos materiales y humanos";"Material and human resources";"Material & human resources";"Material & human resources";"";"";67
+288;12;"Regeneración";"Regeneration";"Regeneration";"-";"";"YES";NA
+289;12;"Regeneración";"Regeneration";"Regeneration";"Pines recruitment & regeneration";"";"disaggregated";84
+290;12;"Regeneración";"Regeneration";"Regeneration";"Shrubland growth & regeneration";"";"disaggregated";107
+291;12;"Transferencia ciencia-gestión";"Science-management transfer";"Science-management transfer";"Science-management transfer & feedback";"";"";103
+292;13;"Aparición de especies oportunistas";"Opportunistic species onset";"Opportunistic species regeneration";"Species immigration";"";"";119
+293;13;"Biodiversidad animal";"Animal biodiversity";"Fauna biodiversity";"Fauna biodiversity";"";"";36
+294;13;"Biodiversidad vegetal";"Vegetal biodiversity";"Vegetation biodiversity";"Vegetation biodiversity";"";"";137
+295;13;"Clareos";"Thinning";"Thinning";"Thinning";"";"";129
+296;13;"Competencia";"Competition";"Interspecific competition";"Interspecific competition";"";"";54
+297;13;"Expansión de incendios";"Fire spreading";"Fires propagation";"Fires propagation";"";"";41
+298;13;"Limitar el impacto de las visitas";"Limit visits impact";"Limit visits impact";"Limit visits impact";"";"";61
+299;13;"Monoespecificidad";"Monospecificity";"Monospecificity";"Vegetation biodiversity";"YES";"";137
+300;13;"Propagación de plagas y enfermedades";"Pests and diseases spreading";"Pests and diseases expansion";"Pests & diseases expansion";"";"";79
+301;13;"Regeneración natural  ";"Natural regeneration";"Regeneration";"Native forest recruitment & regeneration";"";"";73
+302;14;"Altitud";"Altitude";"Altitude";"Altitude";"";"";5
+303;14;"Cantidad de combustible";"Fuel quantity";"Fuel quantity";"Fuel quantity & quality";"";"";44
+304;14;"Decaimiento";"Decay";"Decay";"Decay";"";"";25
+305;14;"Consideración y apoyo";"Consideration and support";"Consideration and support for administration";"Social unrest";"YES";"";114
+306;14;"Intensidad de incendios";"Fires intensity";"Fires intensity";"Fires intensity";"";"";40
+307;14;"Intensidad de intervención";"Intervention intensity";"Thinning intensity";"Thinning intensity";"";"";130
+308;14;"Mantenimiento y gestión";"Maintenance and management";"Silvicultural treatments & Planting or similar";"-";"";"YES";NA
+309;14;"Mantenimiento y gestión";"Maintenance and management";"Silvicultural treatments & Planting or similar";"Thinning";"";"disaggregated";129
+310;14;"Mantenimiento y gestión";"Maintenance and management";"Silvicultural treatments & Planting or similar";"Coppice with standards & Pruning";"";"disaggregated";22
+311;14;"Participación local en la toma de decisiones";"Local participation in decision-making";"Local participation in decision-making";"Participated and democratic decision-making processes";"";"";75
+312;14;"Pluviometría";"Precipitation";"Precipitation";"Precipitation";"";"";89
+313;14;"Posibilidad de intervención";"Intervention possibility";"Intervention possibility";"Intervention possibility";"";"";55
+314;14;"Riesgo de incendios";"Fires risk";"Fires risk";"Fires risk";"";"";42
+315;14;"Climatología";"Climate change effect";"Climate change effect";"-";"";"YES";NA
+316;14;"Climatología";"Climate change";"Climate change effect";"Temperature";"";"disaggregated";128
+317;14;"Climatología";"Climate change";"Climate change effect";"Precipitation decrease impact";"";"disaggregated";90
+318;14;"Sustitución de especies de pino";"Pine species substitution";"Main species substitution";"Main species substitution";"";"";65
+319;14;"Vinculación del gestor con el territorio";"Manager' link with territory";"Manager' link with territory";"Manager' link with territory";"";"";66
+320;15;"Aprovechamientos biomasa";"Biomass use";"Biomass use";"Biomass & Wood & Firewood use";"";"";10
+321;15;"Aprovechamientos madera";"Wood use";"Wood  use";"Biomass & Wood & Firewood use";"";"";10
+322;15;"Calidad de la estación  ";"Site class";"Site class";"Site class & Climatic fitness";"";"";110
+323;15;"Colapso de la masa";"Stand collapse";"Stand collapse";"Stand collapse";"";"";121
+324;15;"Combustible";"Fuel";"Fuel quantity";"Fuel quantity & quality";"";"";44
+325;15;"Competencia entre todas las especies";"Competition among all species";"Interspecific competition";"Interspecific competition";"";"";54
+326;15;"Debilitamiento";"Weakening";"Weakening";"Stand weakening";"";"";125
+327;15;"Densidad con tangencia de copas";"Density with crown tangency";"Stand density - with crown tangency";"Stand density";"";"";122
+328;15;"Incidencia de plagas - Matsucoccus";"Pests incidence - Matsucoccus";"Pests incidence - Matsucoccus";"Pests & diseases incidence";"";"";80
+329;15;"Incidencia de plagas - procesionaria";"Pests incidence - Pine processionary moth";"Pests incidence - Pine processionary moth";"Pests & diseases incidence";"";"";80
+330;15;"Incidencia de plagas - Tomicus";"Pests incidence - Tomicus";"Pests incidence - Tomicus";"Pests & diseases incidence";"";"";80
+331;15;"Inversión pública";"Public investment";"Investment - public";"Public & Private investment";"";"";96
+332;15;"Pobreza del suelo";"Soil poverty";"Soil quality";"Soil quality";"YES";"";118
+333;15;"Posibilidad de mecanización";"Mechanisation possibility";"Mechanisation possibility for wood and biomass use";"Mechanisation possibility for wood & biomass use";"";"";68
+334;15;"Presencia de industria local";"Local industry presence";"Local industry presence";"Local initiative on biomass & wood & firewood use";"";"";62
+335;15;"Propagación de incendios";"Fire propagation";"Fires propagation";"Fires propagation";"";"";41
+336;15;"Puestos de trabajo";"Jobs";"Employment";"Employment";"";"";33
+337;15;"Regeneración";"Regeneration";"Regeneration";"-";"";"YES";NA
+338;15;"Regeneración";"Regeneration";"Regeneration";"Pines recruitment & regeneration";"";"disaggregated";84
+339;15;"Regeneración";"Regeneration";"Regeneration";"Native forest recruitment & regeneration";"";"disaggregated";73
+340;15;"Regeneración";"Regeneration";"Regeneration";"Shrubland growth & regeneration";"";"disaggregated";107
+341;15;"Rentabilidad económica";"Economic profitability of biomass and wood use";"Economic profitability of biomass and wood use";"Biomass & Wood & Firewood use profitability";"";"";11
+342;15;"Riesgo de incendios";"Fires risk";"Fires risk";"Fires risk";"";"";42
+343;15;"Sequía";"Drought";"Drought";"Precipitation";"YES";"";89
+344;15;"Tratamientos";"Treatments";"Thinning";"Thinning";"";"";129
+345;16;"Aclareos dejando árboles de porvenir";"Selective thinning";"Selective thinning";"Thinning";"";"";129
+346;16;"Brusquedad en entrada de luz";"Light entrance suddenness";"Light entrance suddenness";"Light entrance suddenness";"";"";60
+347;16;"Calidad del suelo";"Soil quality";"Soil quality";"Soil quality";"";"";118
+348;16;"Competencia";"Competition";"Interspecific competition";"Interspecific competition";"";"";54
+349;16;"Debilitamiento de la masa (situación sanitaria)";"Stand weakening (health state)";"Weakening";"Stand weakening";"";"";125
+350;16;"Densidad";"Density";"Stand density - general";"Stand density";"";"";122
+351;16;"Disponibilidad de luz";"Light availability";"Light availability";"Light availability";"";"";59
+352;16;"Erosión ";"Erosion";"Erosion";"Soil protection against erosion";"YES";"";117
+353;16;"Establecimiento de encinas";"Holm oaks establishment";"Holm oak regeneration";"Native forest recruitment & regeneration";"";"";73
+354;16;"Formación del suelo";"Soil formation";"Soil formation";"Soil formation";"";"";116
+355;16;"Incendios de copa";"Crown fires";"Fires risk - Crown fires";"Fires risk";"";"";42
+356;16;"Infiltración de agua";"Water infiltration";"Water infiltration";"Underground runoff";"";"";134
+357;16;"Matorralización";"Shrubland encroachment";"Shrubland encroachment";"Shrubland encroachment";"";"";106
+358;16;"Pendiente ";"Slope";"Slope";"Slope";"";"";111
+359;16;"Precipitación";"-";"-";"-";"";"";NA
+360;16;"Regeneración del pinar";"Pine mass regeneration";"Pines recruitment";"Pines recruitment & regeneration";"";"";84
+361;16;"Resalveos, podas y plantación de encinas";"Holm oask coppice with standars, pruning and planting";"Holm oaks silvicultural treatments & Planting or similar";"-";"";"YES";NA
+362;16;"Resalveos, podas y plantación de encinas";"Holm oask coppice with standars, pruning and planting";"Holm oaks silvicultural treatments & Planting or similar";"Coppice with standards & Pruning";"";"disaggregated";22
+363;16;"Resalveos, podas y plantación de encinas";"Holm oask coppice with standars, pruning and planting";"Holm oaks silvicultural treatments & Planting or similar";"Quercus planting";"";"disaggregated";97
+364;16;"Vientos";"-";"-";"-";"";"";NA
+365;17;"Abusos en la recolección";"Harvesting abuses";"Harvesting abuses";"Mycological overuse";"";"";71
+366;17;"Accesibilidad";"Accesibility";"Accesibility";"Accesibility";"";"";1
+367;17;"Aclareo ";"Thinning";"Thinning";"Thinning";"";"";129
+368;17;"Caudal en ríos";"Rivers flow";"Rivers flow";"Rivers flow";"";"";101
+369;17;"Competencia entre los pinos";"Competition among pines";"Intraspecific competition";"Intraspecific competition";"";"";56
+370;17;"Conflictividad social";"Social unrest";"Social unrest";"Social unrest";"";"";114
+371;17;"Debilidad de la masa";"Stand weakness";"Stand weakening";"Stand weakening";"";"";125
+372;17;"Densidad";"Density";"Stand density - general";"Stand density";"";"";122
+373;17;"Dificultad orográfica";"Difficult orography";"Difficult orography for accesibility";"Slope";"";"";111
+374;17;"Dinamización económica";"Economic revitalization";"Local economy improvement";"Economic benefit";"";"";28
+375;17;"Educación ambiental";"Environmental education";"Environmental education";"Environmental education";"";"";34
+376;17;"Incidencia de plagas";"Pests incidence";"Pests incidence";"Pests & diseases incidence";"";"";80
+377;17;"Inversión pública";"Public investment";"Investment - public";"Public & Private investment";"";"";96
+378;17;"Monocultivo";"Monoculture";"Monospecificity";"Vegetation biodiversity";"YES";"";137
+379;17;"Potencial aprovechamiento apícola y plantas aromáticas";"Beekeeping and aromatic plants use potential";"Aromatic plants & Melliferous use";"Aromatic plants & Melliferous use";"";"";7
+380;17;"Potencial aprovechamiento para biomasa";"Biomass use potential";"Biomass use - potential";"Biomass & Wood & Firewood use";"";"";10
+381;17;"Potencial de aprovechamiento micológico";"Mycologic use potential";"Mycological use - potential";"Mycological use";"";"";72
+382;17;"Propagación de incendios";"Fire propagation";"Fires propagation";"Fires propagation";"";"";41
+383;17;"Rentabilidad de aprovechamiento de madera";"Wood use profitability";"Wood use profitability";"Biomass & Wood & Firewood use profitability";"";"";11
+384;17;"Sequía";"Drought (precipitation & temperature)";"Climate change effect";"-";"";"YES";NA
+385;17;"Sequía";"Drought (precipitation & temperature)";"Climate change effect";"Temperature";"";"disaggregated";128
+386;17;"Sequía";"Drought (precipitation & temperature)";"Climate change effect";"Precipitation";"YES";"disaggregated";89
+387;17;"Subasta para aprovechamientos (prioridad a prácticas tradicionales)";"Uses auction prioritising traditional practices";"Biomass & Wood uses auction prioritising traditional practices";"Biomass & Wood & Firewood use promotion";"";"";12
+388;17;"Turismo micológico";"Mycological tourism";"Mycological tourism";"Tourism";"";"";133
+389;18;"Arbustos y arboleda";"Shrubs and groves";"Shrubland growth";"Shrubland growth & regeneration";"";"";107
+390;18;"Brotes de encina";"Holm oaks sprout";"Holm oak recruitment";"Native forest recruitment & regeneration";"";"";73
+391;18;"Clareos selectivos";"Selective thinning";"Selective thinning";"Thinning";"";"";129
+392;18;"Compost";"Compost";"Prunings and cuttings remains";"Prunings and cuttings remains";"";"";95
+393;18;"Crecimiento del árbol";"Tree growth";"Pines growth";"Pines growth";"";"";81
+394;18;"Disponibilidad de agua";"Water availability";"Water availability";"Water availability";"";"";141
+395;18;"Entrada de animales";"Animals entrance";"Fauna presence";"Fauna biodiversity";"";"";36
+396;18;"Entrada de luz";"Light entrance";"Light availability";"Light availability";"";"";59
+397;18;"Espesura";"Coverage";"Pines coverage";"Stand density";"";"";122
+398;18;"Espesura (pies/ha)";"Density";"Stand density - general";"Stand density";"";"";122
+399;18;"Generación de empleo";"Generation of employment";"Employment";"Employment";"";"";33
+400;18;"Magnitud de incendios";"Fire magnitude";"Fires magnitude";"Fires propagation";"";"";41
+401;18;"Podas";"Pruning";"Pruning";"Coppice with standards & Pruning";"";"";22
+402;18;"Riesgo de incendios";"Fires risk";"Fires risk";"Fires risk";"";"";42
+403;19;"Calidad del estado fisiológico y funcional";"Quality of physiological and functional state";"Vigour";"Vigour";"";"";139
+404;19;"Conocimiento local";"Local knowledge";"Local knowledge";"Local knowledge";"";"";63
+405;19;"Densidad actual de la repoblación";"Current plantation density";"Stand density - general";"Stand density";"";"";122
+406;19;"Homogeneidad del paisaje";"Landscape homogeneity";"Landscape homogeneity";"Structural diversity";"YES";"";126
+407;19;"Implicación local";"Local involvement";"Local involvement";"Participated and democratic decision-making processes";"";"";75
+408;19;"Intervención de choque";"Shock intervention";"Group or block treatments";"Group or block treatments";"";"";47
+409;19;"Inversiones, proyectos, ayudas, incentivación";"Investments, projects, subsidies, incentive programmes";"Investments, projects, subsidies, incentive programmes";"Public & Private investment";"";"";96
+410;19;"Puestos de trabajo locales";"Local workforce";"Local employment";"Employment";"";"";33
+411;19;"Usos y aprovechamientos sostenibles";"Sustainable uses and exploitation";"Sustainable uses";"Ecosystem services";"";"";30
+412;21;"Abundancia de caza - ciervos";"Abundance of hunting - deers";"Game abundance - deers";"Game abundance";"";"";46
+413;21;"Abundancia de caza - jabalíes";"Abundance of hunting - wild boars";"Game abundance - wild boars";"Game abundance";"";"";46
+414;21;"Abundancia de caza - palomas toraces";"Abundance of hunting - wood pigeons/ringdoves";"Game abundance - wood pigeons/ringdoves";"Game abundance";"";"";46
+415;21;"Abundancia de caza - perdices";"Abundance of hunting - partridges";"Game abundance - partridges";"Game abundance";"";"";46
+416;21;"Abundancia de caza - zorzales";"Abundance of hunting - thrushes/throstles";"Game abundance - thrushes/throstles";"Game abundance";"";"";46
+417;21;"Accesibilidad & Visibilidad";"Accesibility & Visibility";"Accesibility & Visibility";"Accesibility";"";"";1
+418;21;"Aprovechamiento cinegético";"Hunting use";"Hunting";"Hunting";"";"";51
+419;21;"Conflicto con otros aprovechamientos";"Conflict with other uses";"Conflict with other uses";"Conflict with other uses";"";"";19
+420;21;"Densidad de la repoblación";"Stand density";"Stand density - general";"Stand density";"";"";122
+421;21;"Función de cobijo";"Shelter function";"Capacity to shelter fauna";"Capacity to shelter fauna";"";"";15
+422;21;"Potencial de aprovechamiento micológico";"Mycological use potential";"Mycological use - potential";"Mycological use";"";"";72
+423;21;"Producción de alimento - pastos/arbustos";"Food production - pastures/shrubs";"Pastures & Shrubs as food source";"Pastures & Shrubs & others as food sources";"";"";76
+424;21;"Producción de alimento - setas";"Food production - fungi";"Fungi as food source";"Pastures & Shrubs & others as food sources";"";"";76
+425;21;"Regulación de aprovechamientos";"Uses regulation";"Uses regulation & Information";"Uses regulation & Information";"";"";136
+426;21;"Superficie del parche / Lejanía a alimentación";"Patch surface/Food source distance";"Patch surface";"Patch surface";"";"";77
+427;21;"Tratamientos selvícolas (clareos, favorecer)";"Silvicultural treatments (thinning)";"Thinning";"Thinning";"";"";129
+428;22;"Aprovechamientos";"Uses";"Ecosystem services profitability";"Ecosystem services profitability";"";"";32
+429;22;"Atractivo turístico";"Tourism attraction";"Tourism attraction";"Landscape & Tourism attraction";"";"";58
+430;22;"Biodiversidad";"Biodiversity";"Biodiversity";"Biodiversity";"";"";9
+431;22;"Clareos y resalveos ";"-";"-";"-";"";"";NA
+432;22;"Clareos";"Thinning";"Thinning";"Thinning";"";"";129
+433;22;"Resalveos de encinas";"Holm oaks coppice with standars";"Holm oaks coppice with standards";"Coppice with standards & Pruning";"";"";22
+434;22;"Densidad de la repoblación";"Stand density";"Stand density - general";"Stand density";"";"";122
+435;22;"Estancamiento";"Stagnation";"Stagnation";"Stagnation";"";"";120
+436;22;"Extinción de incendios";"Fire extinguishing";"Fire extinguishing";"Fire extinguishing";"";"";37
+437;22;"Generación de empleo";"Generation of employment";"Employment";"Employment";"";"";33
+438;22;"Plantación de encinas";"Holm oaks planting";"Holm oaks planting";"Quercus planting";"";"";97
+439;22;"Prevención de incendios (\"limpiar el monte\")";"Fire prevention (cleaning of the forest)";"Treatments for fire prevention";"Brush-cutting";"";"";13
+440;22;"Valor paisajístico";"Landscape value";"Landscape quality";"Landscape & Tourism attraction";"";"";58
+441;23;"Aportaciones subterráneas";"Underground inputs";"Underground inputs";"Underground runoff";"";"";134
+442;23;"Cambio climático - temperatura";"Climate change - temperature";"Climate change effect - temperature";"Temperature";"";"";128
+443;23;"Caudal de base del río";"River base flow";"River base flow";"Rivers flow";"";"";101
+444;23;"Clareos";"Thinning";"Thinning intensity";"Thinning intensity";"";"";130
+445;23;"Continuidad de la masa con los pueblos";"Continuity of the stand with the villages";"Continuity of the stand with the villages";"Fuel quantity & quality";"";"";44
+446;23;"Densidad";"Density";"Stand density - general";"Stand density";"";"";122
+447;23;"Erosión y pérdida de suelo";"Erosion and soil loss";"Erosion";"Soil protection against erosion";"YES";"";117
+448;23;"Escorrentía subterránea (recarga de acuífero)";"Underground runoff (recharge of aquifer)";"Underground runoff";"Underground runoff";"";"";134
+449;23;"Escorrentía total";"Total runoff";"Total runoff";"Total runoff";"";"";132
+450;23;"Evapotranspiración real";"Actual evapotranspiration";"Actual evapotranspiration";"Actual evapotranspiration";"";"";2
+451;23;"Magnitud de incendios";"Fire magnitude";"Fires magnitude";"Fires propagation";"";"";41
+452;23;"Número de acequias de careo";"Number of channels to water pastures";"Number of traditional irrigation channels";"Mountain agriculture use";"";"";70
+453;23;"Probabilidad de incendio";"Fire probability";"Fires probability";"Fires risk";"";"";42
+454;23;"Retorno de riego";"Irrigation turnover";"Irrigation turnover";"Underground runoff";"";"";134
+455;23;"Superficie del pinar";"Plantation surface";"Stand surface";"Stand surface";"";"";124
+456;23;"Superficie de riego tradicional";"Traditionally irrigated surface";"Traditionally irrigated surface";"Mountain agriculture use";"";"";70
+457;24;"Aprovechamiento sostenible de madera/leña ";"Sustainable wood/firewood use";"Wood & firewood use - sustainable";"Biomass & Wood & Firewood use";"";"";10
+458;24;"Calidad del suelo";"Soil quality";"Soil quality";"Soil quality";"";"";118
+459;24;"Competencia";"Competition";"Intraspecific competition";"Intraspecific competition";"";"";56
+460;24;"Crecimiento de los pinos";"Pines growth";"Pines growth";"Pines growth";"";"";81
+461;24;"Debilitamiento";"Weakening";"Weakening";"Stand weakening";"";"";125
+462;24;"Densidad";"Density";"Stand density - general";"Stand density";"";"";122
+463;24;"Disponibilidad de agua";"Water availability";"Water availability";"Water availability";"";"";141
+464;24;"Fauna dispersante (aves)";"Dispersal fauna (birds)";"Birds biodiversity";"Fauna biodiversity";"";"";36
+465;24;"Herbivoría silvestre y doméstica";"Wild and domestic herbivory";"Livestock overuse";"Herbivores overuse";"";"";48
+466;24;"Mantenimiento de la red de riego tradicional";"Maintenance of traditional irrigation network (sustainable)";"Maintenance of traditional irrigation network (sustainable)";"Mountain agriculture use";"";"";70
+467;24;"Mortalidad de pinos";"Pines mortality";"Pines mortality";"Pines mortality";"";"";82
+468;24;"Precipitaciones";"Precipitations";"Precipitation";"Precipitation";"";"";89
+469;24;"Proliferación de plagas";"Pests proliferation";"Pests impact";"Pests & diseases incidence";"";"";80
+470;24;"Reforestaciones con especies naturales (bosque botánico)";"Reforestations with natural species (botanic forest)";"Planting";"-";"";"YES";NA
+471;24;"Reforestaciones con especies naturales (bosque botánico)";"Reforestations with natural species (botanic forest)";"Planting";"Shrubland planting";"";"disaggregated";108
+472;24;"Reforestaciones con especies naturales (bosque botánico)";"Reforestations with natural species (botanic forest)";"Planting";"Quercus planting";"";"disaggregated";97
+473;24;"Regeneración";"Regeneration";"Regeneration";"-";"";"YES";NA
+474;24;"Regeneración";"Regeneration";"Regeneration";"Pines recruitment & regeneration";"";"disaggregated";84
+475;24;"Regeneración";"Regeneration";"Regeneration";"Native forest recruitment & regeneration";"";"disaggregated";73
+476;24;"Temperatura";"Temperature";"Temperature";"Temperature";"";"";128
+477;25;"Abundancia de fauna";"Fauna abundance";"Fauna biodiversity";"Fauna biodiversity";"";"";36
+478;25;"Abundancia de procesionaria";"Processionary moth abundance";"Pests abundance - Pine processionary moth";"Pests & diseases abundance";"";"";78
+479;25;"Atractivo paisajístico";"Landscape attraction";"Landscape attraction";"Landscape & Tourism attraction";"";"";58
+480;25;"Cantidad y calidad de combustible";"Fuel quantity and quality";"Fuel quantity & quality";"Fuel quantity & quality";"";"";44
+481;25;"Cobertura de pinácula";"Acicular coverage";"Pines coverage - aciculae";"Stand density";"";"";122
+482;25;"Complejidad / propagación / extensión de incendios";"Fire complexity/propagation/spreading";"Fires complexity & Fires propagation";"-";"";"YES";NA
+483;25;"Complejidad / propagación / extensión de incendios";"Fire complexity/propagation/spreading";"Fires complexity & Fires propagation";"Fires intensity";"";"disaggregated";40
+484;25;"Complejidad / propagación / extensión de incendios";"Fire complexity/propagation/spreading";"Fires complexity & Fires propagation";"Fires propagation";"";"disaggregated";41
+485;25;"Densidad de pinos";"Pine density";"Stand density - general";"Stand density";"";"";122
+486;25;"Diversidad de especies arbóreas";"Tree species diversity";"Tree species diversity";"Vegetation biodiversity";"";"";137
+487;25;"Empleo local";"Local employment";"Local employment";"Employment";"";"";33
+488;25;"Homogeneidad de especies de pinos";"Pine species homogeneity";"Vegetation biodiversity";"Vegetation biodiversity";"YES";"";137
+489;25;"Humedad del suelo/ambiente";"Soil/environment humidity";"Soil/environment humidity";"Water availability";"";"";141
+490;25;"Inversión en control de plagas";"Investment on pest control";"Investment - on pest control";"Public & Private investment";"";"";96
+491;25;"Inversión pública";"Public investment";"Investment - public";"Public & Private investment";"";"";96
+492;25;"Presencia de muérdago";"Mistletoe presence";"Pests abundance - Mistletoe";"Pests & diseases abundance";"";"";78
+493;25;"Inversión en programas de sensibilización, involucración";"Investment on awareness and involvement programmes";"Investment - on awareness and involvement programmes";"Public & Private investment";"";"";96
+494;25;"Publicidad";"Advertising";"Advertising";"Advertising";"";"";4
+495;25;"Inversión en recuperación de albercas";"Investment on water tanks recovery";"Investment - on water tanks recovery";"Public & Private investment";"";"";96
+496;25;"Requerimientos de agua";"Water requirement";"Pines water requirement";"Pines water requirement";"";"";85
+497;25;"Señalización, cartelería";"Signposting, posters";"Signposting, posters";"Signposting & posters";"";"";109
+498;25;"Turismo  ";"Tourism";"Tourism";"Tourism";"";"";133
+499;26;"Arraigo con el territorio";"Roots with the territory";"Sense of belonging";"Sense of belonging";"";"";105
+500;26;"Buen estado fisiológico";"Good physiological state";"Vigour";"Vigour";"";"";139
+501;26;"Servicios ecosistémicos - Capacidad de albergar fauna";"Ecosystem services - Capacity to shelter fauna";"Capacity to shelter fauna";"Capacity to shelter fauna";"";"";15
+502;26;"Cubierta vegetal";"Vegetation cover";"Vegetation coverage";"Vegetation cover";"";"";138
+503;26;"Debilitamiento";"Weakening";"Weakening";"Stand weakening";"";"";125
+504;26;"Densidad de la repoblación";"Stand density";"Stand density - without crown tangency";"Stand density";"";"";122
+505;26;"Densidad de la repoblación con tangencia de copas";"Stand density with crown tangency";"Stand density - with crown tangency";"Stand density";"";"";122
+506;26;"Diversificación de especies y tipos funcionales";"Species and functional types diversification";"Species and functional types diversification";"-";"";"YES";NA
+507;26;"Diversificación de especies y tipos funcionales";"Species and functional types diversification";"Species and functional types diversification";"Thinning";"";"disaggregated";129
+508;26;"Diversificación de especies y tipos funcionales";"Species and functional types diversification";"Species and functional types diversification";"Coppice with standards & Pruning";"";"disaggregated";22
+509;26;"Diversidad funcional";"Functional diversity";"Functional diversity";"Functional diversity";"";"";45
+510;26;"Posibilidad de regeneración de especies de luz";"Regeneration possibility of sun-tolerant species";"Sun-tolerant species regeneration";"Pines recruitment & regeneration";"";"";84
+511;26;"Posibilidad de regeneración de especies de sombra";"Regeneration possibility of shade-tolerant species";"Shade-tolerant species regeneration";"Native forest recruitment & regeneration";"";"";73
+512;26;"Propagación de incendios";"Fire propagation";"Fires propagation";"Fires propagation";"";"";41
+513;26;"Protección frente a la erosión";"Protection against erosion";"Soil protection against erosion";"Soil protection against erosion";"";"";117
+514;26;"Sentimiento de pertenencia";"Sense of belonging";"Sense of belonging";"Sense of belonging";"";"";105
+515;26;"Tamaño de claro";"Size of trait without trees";"Pines coverage";"Stand density";"YES";"";122
+516;26;"Servicios ecosistémicos - Uso recreativo";"Ecosystem services - Recreational";"Recreation";"Recreation";"";"";98
+517;26;"Servicios ecosistémicos - Valoración de servicios culturales";"Ecosystem services - Cultural services valorization";"Cultural services";"Cultural services";"";"";24
+518;26;"Vulnerabilidad frente a perturbaciones ";"Vulnerability against perturbations";"Vulnerability against perturbations";"Vulnerability against perturbations";"";"";140
+519;27;"Abandono del uso del suelo";"Land use abandonment";"Land use abandonment";"-";"YES";"YES";NA
+520;27;"Abandono del uso del suelo";"Land use abandonment";"Land use abandonment";"Mountain agriculture use";"YES";"disaggregated";70
+521;27;"Abandono del uso del suelo";"Land use abandonment";"Land use abandonment";"Extensive livestock use";"YES";"disaggregated";35
+522;27;"Actuaciones de mejora de hábitats (relacionadas con agua)";"Wells and springs management";"Wells and springs management";"Other actions";"";"";74
+523;27;"Atractivo paisajístico";"Landscape attraction";"Landscape attraction";"Landscape & Tourism attraction";"";"";58
+524;27;"Biodiversidad";"Biodiversity";"Biodiversity";"Biodiversity";"";"";9
+525;27;"Diversidad de nichos ecológicos";"Ecological niche diversity";"Ecological niche diversity";"Structural diversity";"";"";126
+526;27;"Efecto de cambio climático";"Climate change effect";"Climate change effect";"-";"";"YES";NA
+527;27;"Efecto de cambio climático";"Climate change effect";"Climate change effect";"Temperature";"";"disaggregated";128
+528;27;"Efecto de cambio climático";"Climate change effect";"Climate change effect";"Precipitation";"YES";"disaggregated";89
+529;27;"Falta de heterogeneidad de hábitats";"Lack of habitat heterogeneity";"Habitat heterogeneity";"Structural diversity";"YES";"";126
+530;27;"Función ecológica";"Ecological function";"Ecological function";"Ecological function";"";"";27
+531;27;"Matorralización";"Shrubland encroachment";"Shrubland encroachment";"Shrubland encroachment";"";"";106
+532;27;"Plantaciones";"Planting";"Planting";"-";"";"YES";NA
+533;27;"Plantaciones";"Planting";"Planting";"Shrubland planting";"";"disaggregated";108
+534;27;"Plantaciones";"Planting";"Planting";"Quercus planting";"";"disaggregated";97
+535;27;"Reducir densidad";"Density reduction";"Density reduction actions";"Thinning";"";"";129
+536;27;"Resiliencia";"Resilience";"Resilience";"Resilience";"";"";99
+537;27;"Resistencia al colapso";"Resistance to collapse";"Resistance to collapse";"Resistance";"";"";100
+538;28;"Arraigo de la población local";"Local population roots with the territory";"Sense of belonging";"Sense of belonging";"";"";105
+539;28;"Calidad de infraestructuras de prevención y extinción";"Prevention and extinction infrastructures quality";"Prevention and extinction infrastructures quality";"Prevention and extinction infrastructures quality";"";"";91
+540;28;"Discontinuidad horizontal-vertical en las infraestructuras";"Horizontal-vertical discontinuity in infrastructures";"Horizontal-vertical discontinuity in fire prevention and extinction infrastructures";"Fuel quantity & quality";"YES";"";44
+541;28;"Favorecer la economía rural";"Promotion of rural economy";"Promotion of local economy";"Promotion of local economy";"";"";93
+542;28;"Grado de evolución de la masa";"Stand development degree";"Stand development degree";"Successional stage";"";"";127
+543;28;"Herramientas de gestión y acceso a información";"Information management and access tools";"Information management and access tools";"Knowledge & experience & tools for management";"";"";57
+544;28;"Información y formación a las visitas";"Information and education of visitors";"Environmental education - visitors";"Environmental education";"";"";34
+545;28;"Inversiones";"Investments";"Investment";"Public & Private investment";"";"";96
+546;28;"Meteorología adversa";"Adverse meteorology";"Adverse meteorology for fires";"-";"";"YES";NA
+547;28;"Meteorología adversa";"Adverse meteorology";"Adverse meteorology for fires";"Temperature";"";"disaggregated";128
+548;28;"Meteorología adversa";"Adverse meteorology";"Adverse meteorology for fires";"Humidity";"YES";"disaggregated";50
+549;28;"Meteorología adversa";"Adverse meteorology";"Adverse meteorology for fires";"Winds";"";"disaggregated";143
+550;28;"Recurrencia de grandes incendios";"Big fires recurrence";"Fires incidence - Big fires";"Fires incidence";"";"";39
+551;28;"Superficie quemada en grandes incendios";"Burned surface in big fires";"Burned surface";"Burned surface";"";"";14
+552;28;"Tratamientos selvícolas";"Silvicultural treatments";"Silvicultural treatments";"-";"";"YES";NA
+553;28;"Tratamientos selvícolas";"Silvicultural treatments";"Silvicultural treatments";"Thinning";"";"disaggregated";129
+554;28;"Tratamientos selvícolas";"Silvicultural treatments";"Silvicultural treatments";"Coppice with standards & Pruning";"";"disaggregated";22
+555;28;"Tratamientos selvícolas";"Silvicultural treatments";"Silvicultural treatments";"Brush-cutting";"";"disaggregated";13
+556;28;"Tratamientos selvícolas";"Silvicultural treatments";"Silvicultural treatments";"Group or block treatments";"";"disaggregated";47
+557;29;"Aplicación de política socio-forestal progresiva";"Application of progressive socio-forestry policy";"Application of progressive socio-forestry policy";"Application of progressive socio-forestry policy";"";"";6
+558;29;"Base científica";"Scientific base";"Scientific base";"Scientific activity & knowledge";"";"";104
+559;29;"Biodiversidad ";"Biodiversity";"Biodiversity";"Biodiversity";"";"";9
+560;29;"Grado de artificialidad";"Artificiality degree";"Artificiality degree";"Artificiality degree";"";"";8
+561;29;"Identificación";"Identification";"Identification";"Sense of belonging";"";"";105
+562;29;"Inversión";"Investment";"Investment";"Public & Private investment";"";"";96
+563;29;"Procesos de toma de decisión participados y democráticos";"Participated and democratic decision-making processes";"Participated and democratic decision-making processes";"Participated and democratic decision-making processes";"";"";75
+564;29;"Usos socio-económicos - agricultura";"Socio-economic use - agriculture";"Agriculture use";"Mountain agriculture use";"";"";70
+565;29;"Usos socio-económicos - caza";"Socio-economic use - hunting";"Hunting";"Hunting";"";"";51
+566;29;"Usos socio-económicos - cultural";"Socio-economic use - cultural";"Cultural services";"Cultural services";"";"";24
+567;29;"Usos socio-económicos - ganadería";"Socio-economic use - livestock";"Livestock use";"Extensive livestock use";"";"";35
+568;29;"Usos socio-económicos - madera, leña";"Socio-economic use - wood, firewood";"Wood & firewood use";"Biomass & Wood & Firewood use";"";"";10
+569;29;"Valoración social, cultural, económica";"Social, cultural and economic value";"Social, cultural and economic mountain range valuation";"Social & cultural & economic mountain range valuation";"";"";112
+570;29;"Voluntad política y de gestión";"Political and management will";"Political and management will";"Political and management will";"";"";88
+571;30;"Bloqueo de la sucesión";"Blocking of succession";"Blocking of succession";"Stagnation";"";"";120
+572;30;"Calidad de proyectos";"Projects quality";"Projects quality";"Planning & projects quality";"";"";86
+573;30;"Claras";"Thinning";"Thinning";"Thinning";"";"";129
+574;30;"Posibilidad de aplicar la planificación";"Possibility of application of the planning";"Possibility of application of the planning";"Forest planning execution";"";"";43
+575;30;"Cortas de \"desregulación\"";"Deregulation cutting";"Group or block treatments";"Group or block treatments";"";"";47
+576;30;"Debilitamiento por plagas y enfermedades";"Weakening - by pests and diseases";"Weakening by pests and diseases";"Stand weakening";"";"";125
+577;30;"Ejecución material";"-";"-";"-";"";"";NA
+578;30;"Espesura";"Density";"Stand density - general";"Stand density";"";"";122
+579;30;"Estabilidad  ";"Stability";"Stand stability";"Stand stability";"";"";123
+580;30;"Estado de vigor";"Vigour state";"Vigour";"Vigour";"";"";139
+581;30;"Fuegos (grandes incendios)";"Big fires";"Fires incidence - Big fires";"Fires incidence";"";"";39
+582;30;"Homogeneidad";"Homogeneity";"Homogeneity";"Structural diversity";"YES";"";126
+583;30;"Legislación";"-";"-";"-";"";"";NA
+584;30;"Mortalidades masivas";"Massive mortalities";"Stand collapse";"Stand collapse";"";"";121
+585;30;"Mortalidades parciales";"Parcial mortalities";"Pines mortality";"Pines mortality";"";"";82
+586;30;"Ejecución material de la ordenación de montes";"Forest planning execution";"Forest planning execution";"Forest planning execution";"";"";43
+587;30;"Participación y aceptación social";"Participation and social acceptance";"Local participation in decision-making";"Participated and democratic decision-making processes";"";"";75
+588;30;"Incidencia de plagas y enfermedades";"Pests and diseases incidence";"Pest and diseases incidence";"Pests & diseases incidence";"";"";80
+589;30;"Potencialidad vegetación subyacente";"Underlying vegetation potential";"Underlying vegetation potential";"Shrubland growth & regeneration";"";"";107
+590;30;"Recursos económicos";"Economic resources  ";"Economic resources  ";"Material & human resources";"";"";67
+591;30;"Resiliencia";"Resilience";"Resilience";"Resilience";"";"";99
+592;30;"Sequías";"Droughts";"Climate change effect";"-";"";"YES";NA
+593;30;"Sequías";"Droughts";"Climate change effect";"Temperature";"";"disaggregated";128
+594;30;"Sequías";"Droughts";"Climate change effect";"Precipitation";"YES";"disaggregated";89
+595;31;"Cantidad de combustible";"Fuel quantity";"Fuel quantity";"Fuel quantity & quality";"";"";44
+596;31;"Continuidad vertical-horizontal de combustible";"Vertical-horizontal fuel continuity";"Vertical-horizontal fuel continuity";"Fuel quantity & quality";"";"";44
+597;31;"Diversidad de especies";"Species diversity";"Biodiversity";"Biodiversity";"";"";9
+598;31;"Diversidad de especies vegetales";"Plant species diversity";"Vegetation biodiversity";"Vegetation biodiversity";"";"";137
+599;31;"Homogeneidad estructural";"Structural homogeneity";"Homogeneity";"Structural diversity";"YES";"";126
+600;31;"Inversión meditada";"Well-planned investment";"Investment - well-planned";"Public & Private investment";"";"";96
+601;31;"Potencial de continuidad de la masa";"Stand continuity potential";"Ecosystem health";"Ecosystem health";"";"";29
+602;31;"Retroalimentación ciencia-gestión";"Science-management feedback";"Science-management feedback";"Science-management transfer & feedback";"";"";103
+603;31;"Superficie quemada  ";"Burned surface";"Burned surface";"Burned surface";"";"";14
+604;31;"Valores económicos";"Economic values";"Economic benefit";"Economic benefit";"";"";28
+605;31;"Virulencia de incendios";"Fire virulence";"Fires intensity";"Fires intensity";"";"";40
+606;32;"Continuidad en el tiempo";"Continuity in time";"Ecosystem health";"Ecosystem health";"";"";29
+607;32;"Efecto del cambio climático";"Climate change effect";"Climate change effect";"-";"";"YES";NA
+608;32;"Efecto del cambio climático";"Climate change effect";"Climate change effect";"Temperature";"";"disaggregated";128
+609;32;"Efecto del cambio climático";"Climate change effect";"Climate change effect";"Precipitation";"YES";"disaggregated";89
+610;32;"Estabilidad de la estructura - coetaneidad y densidad";"Structure stability";"Structure stability";"Structural diversity";"YES";"";126
+611;32;"Estabilización de la estructura - densidad";"-";"-";"-";"";"";NA
+612;32;"Gestión forestal";"Forest management";"Silvicultural treatments";"-";"";"YES";NA
+613;32;"Gestión forestal";"Forest management";"Silvicultural treatments";"Thinning";"";"disaggregated";129
+614;32;"Gestión forestal";"Forest management";"Silvicultural treatments";"Coppice with standards & Pruning";"";"disaggregated";22
+615;32;"Gestión forestal";"Forest management";"Silvicultural treatments";"Brush-cutting";"";"disaggregated";13
+616;32;"Gestión forestal";"Forest management";"Silvicultural treatments";"Group or block treatments";"";"disaggregated";47
+617;32;"Mejora de la economía local";"Local economy improvement";"Local economy improvement";"Economic benefit";"";"";28
+618;32;"Aprovechamientos de biomasa";"Uses (biomass)";"Biomass use";"Biomass & Wood & Firewood use";"";"";10
+619;32;"Procesos de decaimiento";"Decay processes";"Decay";"Decay";"";"";25
+620;32;"Regeneración";"Regeneration";"Pines regeneration";"Pines recruitment & regeneration";"";"";84
+621;32;"Resiliencia";"Resilience";"Resistance";"Resistance";"";"";100
+622;32;"Riesgo de incendios";"Fires risk";"Fires risk";"Fires risk";"";"";42
+623;32;"Sustitución de especies  ";"Species substitution";"Main species substitution";"Main species substitution";"";"";65
+624;33;"Aprovechamiento cinegético";"Hunting use";"Hunting";"Hunting";"";"";51
+625;33;"Aprovechamiento micológico";"Mycological use";"Mycological use";"Mycological use";"";"";72
+626;33;"Aprovechamiento potencial de plantas aromáticas";"Aromatic plants use potential";"Aromatic plants use";"Aromatic plants & Melliferous use";"";"";7
+627;33;"Cambio de vegetación árborea en zonas concretas";"Change of tree vegetation in specific areas";"Change of tree vegetation in specific areas";"Main species substitution";"";"";65
+628;33;"Conflictividad social";"Social conflictivity";"Social conflictivity";"Social unrest";"";"";114
+629;33;"Grado de desarrollo del pinar";"Pine stand development degree";"Pines growth";"Pines growth";"";"";81
+630;33;"Intensidad de aprovechamientos";"Uses intensity";"Ecosystem services intensity";"Ecosystem services intensity";"";"";31
+631;33;"Potencial aprovechamiento ganadero";"Livestock use potential";"Livestock use";"Extensive livestock use";"";"";35
+632;33;"Potencial de regeneración natural de encinas";"Holm oak natural regeneration potential";"Holm oak regeneration";"Native forest recruitment & regeneration";"";"";73
+633;33;"Interés turístico";"Tourism interest";"Tourism attraction";"Landscape & Tourism attraction";"";"";58
+634;33;"Presencia de vegetación propia del pinar";"Pine accompanying vegetation presence";"Underlying vegetation abundance";"Underlying vegetation abundance & development degree";"";"";135
+635;33;"Profundidad de los suelos";"Soil depth";"Soil depth";"Soil quality";"";"";118
+636;33;"Rozas poco selectivas";"Non-selective brush-cutting";"Non-selective brush-cutting";"Brush-cutting";"";"";13
+637;33;"Sombreo del pinar";"Pines shading";"Stand density - above a threshold";"Stand density";"";"";122
+638;33;"Sostenibilidad social";"Social sustainability";"Social sustainability";"Social profitability & sustainability";"";"";113
+639;33;"Trabajos de prevención de incendios mal hechos";"Badly performed fire prevention tasks";"Fire prevention quality";"Fire prevention quality";"YES";"";38
+640;33;"Turismo  ";"Tourism ";"Tourism ";"Tourism";"";"";133
+641;33;"Valoración de la sierra";"Mountain range valuation";"Mountain range valuation";"Social & cultural & economic mountain range valuation";"";"";112
+642;34;"Aclareos progresivos";"Progressive thinning";"Thinning intensity";"Thinning intensity";"";"";130
+643;34;"Condiciones climáticas - Humedad";"Climatic conditions - Humidity";"Climate change effect - humidity";"Humidity";"";"";50
+644;34;"Condiciones climáticas - Temperatura en invierno";"Climatic conditions - Winter temperature";"Climate change effect - temperature";"Temperature";"";"";128
+645;34;"Densidad";"Density";"Stand density - general";"Stand density";"";"";122
+646;34;"Expansión altitudinal procesionaria";"Altitudinal expansion of pine processionary moth";"Pests expansion - altitudinal - Pine processionary moth";"Pests & diseases expansion";"";"";79
+647;34;"Expansión del muérdago y perforadores";"Mistletoe and wood borers expansion";"Pests and diseases expansion - Mistletoe and wood borers";"Pests & diseases expansion";"";"";79
+648;34;"Introducción de arbolado y matorral autóctono";"Introduction of native trees and shrublands";"Planting";"-";"";"YES";NA
+649;34;"Introducción de arbolado y matorral autóctono";"Introduction of native trees and shrublands";"Planting";"Shrubland planting";"";"disaggregated";108
+650;34;"Introducción de arbolado y matorral autóctono";"Introduction of native trees and shrublands";"Planting";"Quercus planting";"";"disaggregated";97
+651;34;"Monoespecificidad de coníferas";"Conifers monospecificity";"Monospecificity";"Vegetation biodiversity";"YES";"";137
+652;34;"Presencia de procesionaria";"Pine processionary moth presence";"Pests abundance - Pine processionary moth";"Pests & diseases abundance";"";"";78
+653;34;"Regeneración natural del bosque autóctono";"Native forest natural regeneration";"Native species regeneration";"Native forest recruitment & regeneration";"";"";73
+654;34;"Riesgo de grandes incendios forestales";"Big forest fires risk";"Fires risk - Big fires";"Fires risk";"";"";42
+655;35;"Acidificación del suelo";"Soil acidification";"Soil acidification";"Soil disturbance";"";"";115
+656;35;"Aclareos, resalveos";"Selective thinning, coppice with standards";"Selective thinning & Coppice with standards";"-";"";"YES";NA
+657;35;"Aclareos, resalveos";"Selective thinning, coppice with standards";"Selective thinning & Coppice with standards";"Thinning";"";"disaggregated";129
+658;35;"Aclareos, resalveos";"Selective thinning, coppice with standards";"Selective thinning & Coppice with standards";"Coppice with standards & Pruning";"";"disaggregated";22
+659;35;"Alteración suelo";"Soil alteration";"Physical soil disturbance";"Soil disturbance";"";"";115
+660;35;"Biodiversidad";"-";"-";"-";"";"";NA
+661;35;"Crecimiento del matorral arbustivo";"Shrubland growth";"Shrubland growth";"Shrubland growth & regeneration";"";"";107
+662;35;"Densidad";"Density";"Stand density - general";"Stand density";"";"";122
+663;35;"Desarrollo estructural del suelo ";"Structural soil development";"Structural soil development";"Soil formation";"";"";116
+664;35;"Disponibilidad de nutrientes y materia orgánica";"Nutrients and organic matter availability";"Nutrients and organic matter availability";"Soil quality";"";"";118
+665;35;"Biodiversidad - Edafodauna";"Biodiversity - Edaphofauna";"Edaphofauna biodiversity";"Fauna biodiversity";"";"";36
+666;35;"Biodiversidad - Especies vegetales";"Biodiversity - Vegetal species";"Vegetation biodiversity";"Vegetation biodiversity";"";"";137
+667;35;"Escasez de comunidad vegetal";"-";"-";"-";"";"";NA
+668;35;"Biodiversidad - Fauna vertebrada";"Biodiversity - Vertebrate fauna";"Vertebrates biodiversity";"Fauna biodiversity";"";"";36
+669;35;"Monoespecidad";"Monospecificity";"Monospecificity";"Vegetation biodiversity";"YES";"";137
+670;35;"Superficie";"Surface";"Stand surface";"Stand surface";"";"";124
+671;36;"Posibilidad de ganadería extensiva de montaña y otros usos";"Possibility of extensive mountain livestock production and other uses";"Livestock use & other uses";"Extensive livestock use";"";"";35
+672;36;"Aclareos selectivos";"Selective thinning";"Selective thinning";"Thinning";"";"";129
+673;36;"Biodiversidad";"Biodiversity";"Biodiversity";"Biodiversity";"";"";9
+674;36;"Calidad de la estación";"Site class";"Site class";"Site class & Climatic fitness";"";"";110
+675;36;"Densidad";"Density";"Stand density - general";"Stand density";"";"";122
+676;36;"Diversidad de setas";"Diversity of fungi";"Fungi biodiversity";"Biodiversity";"";"";9
+677;36;"Fijación de carbono a largo plazo";"Carbon sequestration in long term";"Carbon sequestration - long term";"Carbon sequestration in long term";"";"";17
+678;36;"Formación del suelo";"Soil formation";"Soil formation";"Soil formation";"";"";116
+679;36;"Mortalidad de pies";"Tree mortality";"Pines mortality";"Pines mortality";"";"";82
+680;36;"Potencial de uso de madera";"Wood use potential";"Wood use - potential";"Biomass & Wood & Firewood use";"";"";10
+681;36;"Probabilidad de colapso";"Probability of collapse";"Collapse probability";"Vulnerability against perturbations";"";"";140
+682;36;"Producción de pasto";"Pasture production";"Pastures";"Pastures & Shrubs & others as food sources";"";"";76
+683;36;"Protección del suelo";"Soil protection";"Soil protection against erosion";"Soil protection against erosion";"";"";117
+684;36;"Resiliencia";"Resilience";"Resilience";"Resilience";"";"";99
+685;36;"Sustitución por especies arbustivas";"Substitution by shrub species";"Main species substitution - shrubs";"Shrubland encroachment";"";"";106

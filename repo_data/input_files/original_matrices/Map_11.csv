@@ -1,0 +1,16 @@
+;Quality and quantity of wood;Thinning;Even-age;Weakening;Forest stand density;Growth stagnation;Vulnerability against fires;Provisioning ecosystem services production;Recruitment;Regeneration;Resilience & Adaptation;Similarity with plant provenance;Vulnerability against drought;Vulnerability against pests;Vulnerability against winds
+Quality and quantity of wood;;;;;;;;;;;;;;;
+Thinning;;;;;-0,8;;-0,5;;;;;;;;0,7
+Even-age;;;;;;;;;-0,8;;;;;;
+Weakening;;;;;;;;;;;;;;;
+Forest stand density;;;;;;1;;;-0,8;-0,8;;;;;
+Growth stagnation;-0,6;;;0,7;;;;;;;;;0,8;0,8;
+Vulnerability against fires;;;;;;;;;;;;;;;
+Provisioning ecosystem services production;;;;;;;;;;;;;;;
+Recruitment;;;;;;;;;;;;;;;
+Regeneration;;;;;;;;0,7;;;0,8;;;;
+Resilience & Adaptation;;;;;;;;;;;;;;;
+Similarity with plant provenance;;;;;;-0,6;;;;;;;;;
+Vulnerability against drought;;;;;;;;;;;;;;;
+Vulnerability against pests;;;;;;;;;;;;;;;
+Vulnerability against winds;;;;;;;;;;;;;;;

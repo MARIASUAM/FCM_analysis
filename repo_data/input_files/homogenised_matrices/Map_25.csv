@@ -1,0 +1,18 @@
+﻿;Thinning;Light entrance suddenness;Soil quality;Interspecific competition;Stand weakening;Stand density;Light availability;Soil protection against erosion;Native forest recruitment & regeneration;Soil formation;Fires risk;Underground runoff;Shrubland encroachment;Slope;Pines recruitment & regeneration;Coppice with standards & Pruning;Quercus planting
+Thinning;;;;;;-1;;;;;;;;;;;
+Light entrance suddenness;;;;;;;;;-0,5;;;;;;0,5;;
+Soil quality;;;;;;;;;;;;;;;;;
+Interspecific competition;;;;;;;;;-0,3;;;;;;-0,6;;
+Stand weakening;;;;;;;;;;;;;;;;;
+Stand density;;;;0,8;0,8;;-1;;;;;;;;;;
+Light availability;;;;-0,5;;;;;;0,3;;;0,7;;;;
+Soil protection against erosion;;;;;;;;;;;;0,5;;;;;
+Native forest recruitment & regeneration;;;;;;;;;;;;;;;;;
+Soil formation;;;;;;;;;;;;;;;;;
+Fires risk;;1;;;;;;;;;;;;;;;
+Underground runoff;;;0,6;;;;;0,5;;;;;;;;;
+Shrubland encroachment;;;;;;;;0,6;;;0,8;;;;;;
+Slope;;;;;;;;-1;;;;;;;;;
+Pines recruitment & regeneration;;;;;;;;;;;;;;;;;
+Coppice with standards & Pruning;;;;;;;;;0,5;;;;;;;;
+Quercus planting;;;;;;;;;0,5;;;;;;;;

@@ -1,0 +1,19 @@
+;Roots with the territory;Good physiological state;Ecosystem services - Capacity to shelter fauna;Vegetation cover;Weakening;Stand density;Stand density with crown tangency;Species and functional types diversification;Functional diversity;Regeneration possibility of sun-tolerant species;Regeneration possibility of shade-tolerant species;Fire propagation;Protection against erosion;Sense of belonging;Size of trait without trees;Ecosystem services - Recreational;Ecosystem services - Cultural services valorization;Vulnerability against perturbations
+Roots with the territory;;;;;;;;;;;;;;0,8;;;;
+Good physiological state;;;;;-1;;;;;;;;;;;;;
+Ecosystem services - Capacity to shelter fauna;;;;;;;;;;;;;;;;;;
+Vegetation cover;;;;;;;;;;;;;1;;;;;
+Weakening;;;;;;;;;;;;;;;;;;1
+Stand density;;;;;0,8;;;;;;;;;;-1;;;
+Stand density with crown tangency;;;;;;;;;;;;1;;;;;;
+Species and functional types diversification;;;;;;;;;0,9;;;;0,8;;;;;-0,9
+Functional diversity;;;0,7;;;;;;;;;;0,7;;;0,7;0,7;
+Regeneration possibility of sun-tolerant species;;;;;;;;;;;;;;;;;;
+Regeneration possibility of shade-tolerant species;;;;;;;;;;;;;;;;;;
+Fire propagation;;;;;;;;;;;;;;;;;;
+Protection against erosion;;;;;;;;;;;;;;;;;;
+Sense of belonging;;;;;;;;;;;;;;;;;0,5;
+Size of trait without trees;;;;;;;;;;1;-1;;;;;;;
+Ecosystem services - Recreational;;;;;;;;;;;;;;;;;;
+Ecosystem services - Cultural services valorization;;;;;;;;;;;;;;;;;;
+Vulnerability against perturbations;;;;;;;;;;;;;;;;;;

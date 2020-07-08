@@ -1,0 +1,24 @@
+﻿;Mycological overuse;Accesibility;Thinning;Rivers flow;Intraspecific competition;Social unrest;Stand weakening;Stand density;Slope;Economic benefit;Environmental education;Pests & diseases incidence;Public & Private investment;Vegetation biodiversity;Aromatic plants & Melliferous use;Biomass & Wood & Firewood use;Mycological use;Fires propagation;Biomass & Wood & Firewood use profitability;Temperature;Precipitation;Biomass & Wood & Firewood use promotion;Tourism
+Mycological overuse;;;;;;1;;;;-0,8;;;;;;;;;;;;;
+Accesibility;;;;;;;;;;;;;;;;0,8;0,8;;1;;;;
+Thinning;;;;;;;;-1;;;;;;;;;;;;;;;
+Rivers flow;;;;;;;;;;;;;;;;;;;;;;;
+Intraspecific competition;;;;;;;1;;;;;;;;;;;;;;;;
+Social unrest;;;;;;;;;;;;;;;;;;;;;;;
+Stand weakening;;;;;;;;;;;;;;;;;;;;;;;
+Stand density;;-1;;-0,7;1;;;;;;;1;;;-0,9;0,8;;0,8;-1;;;;
+Slope;;-0,8;;;;;;;;;;;;;;;;;;;;;
+Economic benefit;;;;;;;;;;;;;;;;;;;;;;;
+Environmental education;;;;;;;;;;;;;;;;;;;;;;;
+Pests & diseases incidence;;;;;;;;;;;;;;;;;;;;;;;
+Public & Private investment;;;1;;;;;;;0,8;;;;;;;;;;;;;
+Vegetation biodiversity;;;;;;;;;;;;-1;;;;;;;;;;;
+Aromatic plants & Melliferous use;;;;;;;;;;;;;;;;;;;;;;;
+Biomass & Wood & Firewood use;;;;;;;;;;;;;;;;;;;;;;;
+Mycological use;0,9;;;;;;;;;;0,3;;;;;;;;;;;;0,7
+Fires propagation;;;;;;;;;;;;;;;;;;;;;;;
+Biomass & Wood & Firewood use profitability;;;;;;;;;;;;;;;;;;;;;;;
+Temperature;;;;;0,8;;;;;;;0,8;;;;;;;;;;;
+Precipitation;;;;;-0,8;;;;;;;-0,8;;;;;;;;;;;
+Biomass & Wood & Firewood use promotion;;;1;;;;;;;0,8;;;;;;;;;;;;;
+Tourism;;;;;;;;;;0,8;;;;;;;;;;;;;

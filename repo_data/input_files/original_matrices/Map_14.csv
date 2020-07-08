@@ -1,0 +1,16 @@
+;Use (livestock + firewood);Climate change;Hidric competition;Stand weakening;Density;Deer removal;Pests incidence;Public investment;Research;Fire magnitude;Herbivory pressure;Protection against herbivory;Recruitment;Livestock overuse;Treatments
+Use (livestock + firewood);;;;;;;;;;-0,5;1;;;;
+Climate change;;;-0,9;-0,9;0,7;;;;;;;;;;
+Hidric competition;;;;0,7;;;0,7;;;;;;;;
+Stand weakening;;;;;;;0,7;;;;;;;;
+Density;;;0,9;0,6;;;0,8;;;0,8;;;;;
+Deer removal;;;;;;;;;;;-1;;;;
+Pests incidence;;;;0,7;;;;;;;;;;;
+Public investment;;;;;;;;;;;;;;;1
+Research;;;;;;;;;;;;;;;0,8
+Fire magnitude;;;;;;;;;;;;;;;
+Herbivory pressure;;;;0,8;;;;;;;;;-0,7;;
+Protection against herbivory;;;;;;;;;;;-0,3;;;;
+Recruitment;;;;;;;;;;;;;;;
+Livestock overuse;;;-0,6;0,8;;;;;;-0,8;;;-1;;
+Treatments;;;-0,8;;-1;;;;;-0,7;;;;;

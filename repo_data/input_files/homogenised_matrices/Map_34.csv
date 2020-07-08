@@ -1,0 +1,22 @@
+﻿;Fauna biodiversity;Pests & diseases abundance;Landscape & Tourism attraction;Fuel quantity & quality;Stand density;Fires intensity;Fires propagation;Stand density;Vegetation biodiversity;Employment;Vegetation biodiversity;Water availability;Public & Private investment;Public & Private investment;Pests & diseases abundance;Public & Private investment;Advertising;Public & Private investment;Pines water requirement;Signposting & posters;Tourism
+Fauna biodiversity;;;;;;;;;;;;;;;;;;;;;
+Pests & diseases abundance;;;;;;;;;;;;;;;;;;;;;
+Landscape & Tourism attraction;;;;;;;;;;;;;;;;;;;;;0,8
+Fuel quantity & quality;;;;;;0,9;0,9;;;;;;;;;;;;;;
+Stand density;;;;0,8;;;;;;;;;;;;;;;;;
+Fires intensity;;;;;;;;;;;;;;;;;;;;;
+Fires propagation;;;;;;;;;;;;;;;;;;;;;
+Stand density;;;;0,8;;;;;;;;;;;;;;;;;
+Vegetation biodiversity;0,9;;0,6;;;;;;;;0,9;;;;;;;;;;
+Employment;;;;;;;;;;;;;;;;;;;;;
+Vegetation biodiversity;0,7;-1;;;-1;;;;;;;;;;-0,7;;;;-0,8;;
+Water availability;;;1;-0,7;;;;;;;;;;;;;;;;;
+Public & Private investment;;-0,6;;;;;;;;;;;;;;;;;;;
+Public & Private investment;;;;;;;;;0,7;0,8;;;;;;;0,5;;;0,5;
+Pests & diseases abundance;;;;;;;;;;;;;;;;;;;;;
+Public & Private investment;;;0,6;;;;;;0,3;;;;;;;;;;;;
+Advertising;;;;;;;;;;;;;;;;;;;;;0,5
+Public & Private investment;;;;;;;;;;;;0,6;;;;;;;;;
+Pines water requirement;;;;;;;;;;;;-0,7;;;;;;;;;
+Signposting & posters;;;0,5;;;;;;;;;;;;;;;;;;
+Tourism;;;;;;;;;;;;;;;;;;;;;

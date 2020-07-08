@@ -1,0 +1,20 @@
+﻿;Biodiversity;Resilience;Game abundance;Interspecific competition;Temperature;Precipitation;Shrubland growth & regeneration;Pests & diseases incidence;Stand density;Stand density;Biomass & Wood & Firewood use promotion;Fires intensity;Pastures & Shrubs & others as food sources;Biomass & Wood & Firewood use;Fires propagation;Soil protection against erosion;Other actions;Resilience;Group or block treatments
+Biodiversity;;1;1;;;;;-0,6;;;;;;;;1;;1;
+Resilience;;;;;;;;;;;;;;;;;;;
+Game abundance;;;;;;;;;;;;;;;;;;;
+Interspecific competition;;;;;;;;1;;;;;;;;;;-0,7;
+Temperature;;;;1;;;;;;;;;;;;;;;
+Precipitation;;;;-1;;;;;;;;;;;;;;;
+Shrubland growth & regeneration;;1;;;;;;;;;;;;;1;1;;;
+Pests & diseases incidence;;;;;;;;;;-0,3;;;;;;;;;
+Stand density;;;;1;;;-0,4;;;;;;;;;;;-0,8;
+Stand density;-0,8;;-0,8;;;;-0,7;;;;;;-0,9;-0,8;;1;;;
+Biomass & Wood & Firewood use promotion;;;;;;;;;;;;;;0,5;;;;;
+Fires intensity;-1;-0,9;;;;;;;;;;;;-0,6;;-1;;-1;
+Pastures & Shrubs & others as food sources;;;;;;;;;;;;;;;;;;;
+Biomass & Wood & Firewood use;;;;;;;;;;;;;;;;;;;
+Fires propagation;;;;;;;;;;;;;;;;-0,4;;;
+Soil protection against erosion;;;;;;;;;;;;;;;;;;;
+Other actions;0,6;-0,1;;;;;-0,5;-0,6;-0,7;;;-0,8;;;-1;-0,4;;;
+Resilience;;;;;;;;;;;;;;;;;;;
+Group or block treatments;0,8;;;;;;0,5;-0,5;-0,2;-0,2;1;-0,2;0,5;;-0,8;-0,3;;;

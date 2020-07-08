@@ -1,0 +1,17 @@
+;Underground inputs;Climate change - temperature;River base flow;Thinning;Continuity of the stand with the villages;Density;Erosion and soil loss;Underground runoff (recharge of aquifer);Total runoff;Actual evapotranspiration;Fire magnitude;Number of channels to water pastures;Fire probability;Irrigation return;Plantation surface;Traditionally irrigated surface
+Underground inputs;;;1;;;;;;;;;;;;;
+Climate change - temperature;;;;;;;;;;0,8;;;;;;
+River base flow;;;;;;;;;;;;;;;;
+Thinning;;;;;;-1;;;;;;;;;-1;
+Continuity of the stand with the villages;;;;;;;;;;;;;0,4;;;
+Density;;;;;;;-0,5;;;1;0,4;;;;;
+Erosion and soil loss;;;;;;;;;;;;;;;;
+Underground runoff (recharge of aquifer);;;1;;;;;;;;;;;;;
+Total runoff;;;;;;;;0,8;;;;;;;;
+Actual evapotranspiration;;;;;;;;;-1;;;;;;;
+Fire magnitude;;;;;;;;;;;;;;;;
+Number of channels to water pastures;;;;;;;;;;;;;;0,8;;
+Fire probability;;;;;;;;;;;;;;;;
+Irrigation return;0,2;;;;;;;;;;;;;;;
+Plantation surface;;;;;;;-0,8;;;1;;;;;;
+Traditionally irrigated surface;;;;;;;;;;;;;;0,8;;

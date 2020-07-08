@@ -1,0 +1,14 @@
+﻿;Soil disturbance;Site class & Climatic fitness;Soil quality;Interspecific competition;Thinning;Stand weakening;Stand density;Temperature;Precipitation;Water stress;Pests & diseases incidence;Pines mortality;Fires risk
+Soil disturbance;;;-0,5;;;;;;;;;;
+Site class & Climatic fitness;;;;-0,8;;;;;;;;;
+Soil quality;;;;-1;;;;;;;;;
+Interspecific competition;;;;;;0,8;;;;1;;;
+Thinning;;;;;;;-1;;;;;;
+Stand weakening;;;;;;;;;;;0,8;;
+Stand density;;;;1;;;;;;;;;0,5
+Temperature;;-0,8;-0,7;;;;;;;;;;
+Precipitation;;0,8;0,7;;;;;;;;;;
+Water stress;;;;;;;;;;;;1;
+Pests & diseases incidence;;;;;;;;;;;;0,8;
+Pines mortality;;;;;;;;;;;;;
+Fires risk;;;;;;;;;;;;;

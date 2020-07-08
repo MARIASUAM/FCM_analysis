@@ -1,0 +1,11 @@
+﻿;Thinning intensity;Ecosystem services;Biodiversity;Decay;Stand density;Extensive livestock use;Pests & diseases incidence;Soil protection against erosion;Stagnation;Stand surface
+Thinning intensity;;0,6;1;-1;-1;1;-0,6;0,8;-1;
+Ecosystem services;;;;;;;;;;
+Biodiversity;;0,9;;-1;;;-1;;;
+Decay;;;;;;;;;;
+Stand density;;;;0,8;;;0,8;;1;
+Extensive livestock use;;;;;;;;;;
+Pests & diseases incidence;;;;;;;;;;
+Soil protection against erosion;;;;;;;;;;
+Stagnation;;;;;;;;;;
+Stand surface;;0,6;0,8;;;;;0,9;;

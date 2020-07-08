@@ -1,0 +1,17 @@
+;Forestry actions at zero-cost (use);Density reduction actions;Altitude;Altitudinal ascension of optimal values of each species;Knowledge and experience;Costs;Decay;Plantation density;Climate change effect (precipitation);Local initiative;Shrubland encroachment;Livestock pressure;Capacity to prioritise areas to treat;Social rejection;Native species regeneration;Main species substitution (Quercus and pines)
+Forestry actions at zero-cost (use);;;;;;;;-0,3;;;;;;0,2;;
+Density reduction actions;;;;;;0,5;;-0,3;;;;;;;;
+Altitude;;;;;;;;;-0,5;;-0,2;0,5;;;;
+Altitudinal ascension of optimal values of each species;;;;;;;;;;;;;;;;
+Knowledge and experience;0,7;0,5;;;;;;;;;;;0,9;;;
+Costs;;;;;;;;;;;;;;;;
+Decay;;;;;;;;-0,8;;;;;;;;0,4
+Plantation density;0,8;;;;;;;;0,7;;;;;;-0,7;
+Climate change effect (precipitation);;;;0,2;;;0,7;;;;;;;;;
+Local initiative;0,5;0,3;;;;;;;;;;;;;;
+Shrubland encroachment;;;;;;;;;;;;;;;;
+Livestock pressure;;;;;;;;;;;;;;;-0,2;
+Capacity to prioritise areas to treat;;;;;;;;;;;;;;;;
+Social rejection;;;;;;;;;;;;;;;;
+Native species regeneration;;;;;;;;;;;;;;;;
+Main species substitution (Quercus and pines);;;;;;;;;;;;;;;;

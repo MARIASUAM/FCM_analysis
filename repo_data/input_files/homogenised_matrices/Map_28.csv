@@ -1,0 +1,15 @@
+﻿;Shrubland growth & regeneration;Native forest recruitment & regeneration;Thinning;Prunings and cuttings remains;Pines growth;Water availability;Fauna biodiversity;Light availability;Stand density;Stand density;Employment;Fires propagation;Coppice with standards & Pruning;Fires risk
+Shrubland growth & regeneration;;;;;;;;;;;;;;
+Native forest recruitment & regeneration;;;;;;;;;;;;;;
+Thinning;;;;1;1;;;;;-1;1;;;
+Prunings and cuttings remains;;;;;;;;;;;;;;
+Pines growth;;;;;;;;;;;;;;
+Water availability;;;;;;;;;;;;;;
+Fauna biodiversity;;;;;;;;;;;;;;
+Light availability;0,5;0,8;;;;;;;;;;;;
+Stand density;;;;;;-0,8;;-0,5;;;;1;;0,6
+Stand density;;;;;;-0,8;;-0,5;;;;;;
+Employment;;;;;;;;;;;;;;
+Fires propagation;;;;;;;;;;;;;;
+Coppice with standards & Pruning;;;;0,2;0,5;;1;;-0,3;;1;;;
+Fires risk;;;;;;;;;;;;;;

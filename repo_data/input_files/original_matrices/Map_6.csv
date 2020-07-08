@@ -1,0 +1,17 @@
+;Thinning;Plantation density;Biological diversity;Structural diversity;Functional diversity;Economic resources spending;Wild and domestic herbivory;Improve planning;Wild and domestic overgrazing;Participation of social agents;Thorn shrubland planting actions;Pine planting actions;Protection against erosion;Spontaneous natural regeneration;Fires risk;Actions to promote natural formations (oaks and holm oaks)
+Thinning;;-0,7;;;;;;;;;;;;;;
+Plantation density;;;-1;;-0,8;;;;;;;;1;-1;1;
+Biological diversity;;;;0,8;1;;;;;;;;;;-1;
+Structural diversity;;;0,9;;1;;;;;;;;;;-1;
+Functional diversity;;;0,8;1;;;;;;;;;;;-0,7;
+Economic resources spending;;;;;;;;;;;;;;;;
+Wild and domestic herbivory;;;0,7;0,7;0,5;;;;;;;;;0,5;;
+Improve planning;;;1;1;1;-1;;;;0,8;;;;;;
+Wild and domestic overgrazing;;;-0,8;-0,9;-0,8;;;;;;;;-0,7;-0,7;;
+Participation of social agents;;;;;;;;1;;;;;;;;
+Thorn shrubland planting actions;;;;;;;;;;;;;1;0,8;;
+Pine planting actions;;;;;;;;;;;;;0,8;0,4;;
+Protection against erosion;;;;;;;;;;;;;;;;
+Spontaneous natural regeneration;;;1;1;1;;;;;;;;;;;
+Fires risk;;;;;;;;;;;;;;;;
+Actions to promote natural formations (oaks and holm oaks);;;0,8;0,8;0,7;;;;;;;;;0,8;;

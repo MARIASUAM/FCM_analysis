@@ -1,0 +1,17 @@
+﻿;Selective thinning;Light entrance suddenness;Soil quality;Competition;Stand weakening (health state);Density;Light availability;Erosion;Holm oaks establishment;Soil formation;Crown fires;Water infiltration;Shrubland encroachment;Slope;Pine mass regeneration;Holm oask coppice with standars, pruning and planting
+Selective thinning;;;;;;-1;;;;;;;;;;
+Light entrance suddenness;;;;;;;;;-0,5;;;;;;0,5;
+Soil quality;;;;;;;;;;;;;;;;
+Competition;;;;;;;;;-0,3;;;;;;-0,6;
+Stand weakening (health state);;;;;;;;;;;;;;;;
+Density;;;;0,8;0,8;;-1;;;;;;;;;
+Light availability;;;;-0,5;;;;;;0,3;;;0,7;;;
+Erosion;;;;;;;;;;;;-0,5;;;;
+Holm oaks establishment;;;;;;;;;;;;;;;;
+Soil formation;;;;;;;;;;;;;;;;
+Crown fires;;1;;;;;;;;;;;;;;
+Water infiltration;;;0,6;;;;;-0,5;;;;;;;;
+Shrubland encroachment;;;;;;;;-0,6;;;0,8;;;;;
+Slope;;;;;;;;1;;;;;;;;
+Pine mass regeneration;;;;;;;;;;;;;;;;
+Holm oask coppice with standars, pruning and planting;;;;;;;;;0,5;;;;;;;

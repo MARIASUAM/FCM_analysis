@@ -1,0 +1,17 @@
+﻿;Thinning intensity;Stand density;Biodiversity;Structural diversity;Functional diversity;Costs;Herbivory;Planning & projects quality;Herbivores overuse;Participated and democratic decision-making processes;Shrubland planting;Pines planting;Soil protection against erosion;Native forest recruitment & regeneration;Fires risk;Coppice with standards & Pruning
+Thinning intensity;;-0,7;;;;;;;;;;;;;;
+Stand density;;;-1;;-0,8;;;;;;;;1;-1;1;
+Biodiversity;;;;0,8;1;;;;;;;;;;-1;
+Structural diversity;;;0,9;;1;;;;;;;;;;-1;
+Functional diversity;;;0,8;1;;;;;;;;;;;-0,7;
+Costs;;;;;;;;;;;;;;;;
+Herbivory;;;0,7;0,7;0,5;;;;;;;;;0,5;;
+Planning & projects quality;;;1;1;1;-1;;;;0,8;;;;;;
+Herbivores overuse;;;-0,8;-0,9;-0,8;;;;;;;;-0,7;-0,7;;
+Participated and democratic decision-making processes;;;;;;;;1;;;;;;;;
+Shrubland planting;;;;;;;;;;;;;1;0,8;;
+Pines planting;;;;;;;;;;;;;0,8;0,4;;
+Soil protection against erosion;;;;;;;;;;;;;;;;
+Native forest recruitment & regeneration;;;1;1;1;;;;;;;;;;;
+Fires risk;;;;;;;;;;;;;;;;
+Coppice with standards & Pruning;;;0,8;0,8;0,7;;;;;;;;;0,8;;

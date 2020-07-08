@@ -1,0 +1,16 @@
+﻿;Resilience;Biodiversity;Thinning;Intraspecific competition;Stand density;Vigour;Shrubland planting;Quercus planting;Public & Private investment;Time limitation for wood and biomass use;Vegetation biodiversity;Slope;Biomass & Wood & Firewood use profitability;Social profitability & sustainability;Vulnerability against perturbations
+Resilience;;;;;;;;;;;;;;;
+Biodiversity;0,9;;;;;;;;;;;;-0,6;0,7;
+Thinning;;;;;-1;;;;;;;;;;
+Intraspecific competition;;;;;;-0,6;;;;;;;;;0,9
+Stand density;;;;0,9;;;;;;;;;;;
+Vigour;;;;;;;;;;;;;0,8;;
+Shrubland planting;;0,8;;;;;;;;;;;;;
+Quercus planting;;0,8;;;;;;;;;;;;;
+Public & Private investment;;;;;;;;;;;;;;;
+Time limitation for wood and biomass use;;;;;;;;;;;;;-0,4;;
+Vegetation biodiversity;;;;;;;;;;;;;;;-0,4
+Slope;;;;;;;;;;;;;-0,4;;
+Biomass & Wood & Firewood use profitability;;;0,6;;;;;;-0,6;;;;;;
+Social profitability & sustainability;;;;;;;;;;;;;;;
+Vulnerability against perturbations;;;;;;;;;;;;;;;

@@ -1,0 +1,14 @@
+﻿;Pines mortality;Stand weakening;Stand density;Fauna biodiversity;Fauna biodiversity;Pests & diseases incidence;Pests & diseases incidence;Pests & diseases incidence;Pines mortality;Social unrest;Underlying vegetation abundance & development degree;Safety;Thinning
+Pines mortality;;;;;;;;;;0,5;;-0,3;
+Stand weakening;0,6;;;;;0,9;0,9;0,9;;;;;
+Stand density;;;;;;0,9;0,9;0,9;;;-1;;
+Fauna biodiversity;;;;;;;;;;-0,9;-0,3;;
+Fauna biodiversity;;;;;;;;;;-0,9;0,9;;
+Pests & diseases incidence;;0,9;;;;;;;0,7;0,7;;;
+Pests & diseases incidence;;0,9;;;;;;;0,4;0,7;;;
+Pests & diseases incidence;;0,9;;;;;;;0,2;0,7;;-0,7;
+Pines mortality;;;-0,8;;;;;;;;;;
+Social unrest;;;;;;;;;;;;;
+Underlying vegetation abundance & development degree;;;;0,9;0,9;;;;;-0,6;;;
+Safety;;;;;;;;;;;;;
+Thinning;;;-1;;;;;;;;;;

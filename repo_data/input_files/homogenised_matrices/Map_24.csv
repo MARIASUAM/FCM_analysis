@@ -1,0 +1,25 @@
+﻿;Biomass & Wood & Firewood use;Biomass & Wood & Firewood use;Site class & Climatic fitness;Stand collapse;Fuel quantity & quality;Interspecific competition;Stand weakening;Stand density;Pests & diseases incidence;Pests & diseases incidence;Pests & diseases incidence;Public & Private investment;Soil quality;Mechanisation possibility for wood & biomass use;Local initiative on biomass & wood & firewood use;Fires propagation;Employment;Pines recruitment & regeneration;Native forest recruitment & regeneration;Shrubland growth & regeneration;Biomass & Wood & Firewood use profitability;Fires risk;Precipitation;Thinning
+Biomass & Wood & Firewood use;;;;;;;;-1;;;;;;;;;0,3;;;;;;;
+Biomass & Wood & Firewood use;;;;;;;;-1;;;;;;;;;0,3;;;;;;;
+Site class & Climatic fitness;;;;;;;-0,5;;;;;;;;;;;;;;;;;
+Stand collapse;;;;;;;;;;;;;;;;;;;;;;;;
+Fuel quantity & quality;;;;;;;;;;;;;;;;1;;;;;;1;;
+Interspecific competition;;;;;;;1;;;;;;;;;;;-0,9;-0,9;-0,9;;;;
+Stand weakening;;;;0,9;;;;;0,5;;1;;;;;;;;;;;;;
+Stand density;;;;;1;1;;;;;;;;;;;;;;;;;;
+Pests & diseases incidence;;;;1;;;;;;;;;;;;;;;;;;;;
+Pests & diseases incidence;;;;;;;0,3;;;;;;;;;;;;;;;;;
+Pests & diseases incidence;;;;0,5;;;;;;;;;;;;;;;;;;;;
+Public & Private investment;;;;;;;;;;;;;;;;;;;;;;;;1
+Soil quality;;;;;;;-0,8;;;;;;;;;;;1;1;1;;;;
+Mechanisation possibility for wood & biomass use;;;;;;;;;;;;;;;;;;;;;1;;;
+Local initiative on biomass & wood & firewood use;;;;;;;;;;;;;;;;;;;;;1;;;
+Fires propagation;;;;;;;;;;;;;;;;;;;;;;;;
+Employment;;;;;;;;;;;;;;;;;;;;;;;;
+Pines recruitment & regeneration;;;;;;;;;;;;;;;;;;;;;;;;
+Native forest recruitment & regeneration;;;;;;;;;;;;;;;;;;;;;;;;
+Shrubland growth & regeneration;;;;;;;;;;;;;;;;;;;;;;;;
+Biomass & Wood & Firewood use profitability;1;1;;;;;;;;;;;;;;;;;;;;;;
+Fires risk;;;;;;;;;;;;;;;;;;;;;;;;
+Precipitation;;;;;;;-0,5;;;;;;;;;;;0,8;0,8;0,8;;;;
+Thinning;;;;;;;;-1;;;;;;;;;0,8;;;;;;;

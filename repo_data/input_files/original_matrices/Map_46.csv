@@ -1,0 +1,12 @@
+;Progressive thinning;Climatic conditions - Humidity;Climatic conditions - Winter temperature;Density;Altitudinal expansion of pine processionary moth;Mistletoe and wood borers expansion;Introduction of native trees and shrublands;Conifers monospecificity;Pine processionary moth presence;Native forest natural regeneration;Big forest fires risk
+Progressive thinning;;;;-1;;;;;;;
+Climatic conditions - Humidity;;;;;;-0,7;;;;;
+Climatic conditions - Winter temperature;;;;;1;;;;;;
+Density;;;;;;0,8;;;0,5;-1;1
+Altitudinal expansion of pine processionary moth;;;;;;;;;;;
+Mistletoe and wood borers expansion;;;;;;;;;;;
+Introduction of native trees and shrublands;;;;;;;;;;0,8;
+Conifers monospecificity;;;;;;0,6;;;0,8;;0,5
+Pine processionary moth presence;;;;;;;;;;;
+Native forest natural regeneration;;;;;;;;-0,2;;;
+Big forest fires risk;;;;;;;;;;;

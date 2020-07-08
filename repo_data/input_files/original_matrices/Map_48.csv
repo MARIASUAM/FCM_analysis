@@ -1,0 +1,16 @@
+;Possibility of extensive mountain livestock production and other uses;Selective thinning;Biodiversity;Site class;Density;Diversity of fungi;Carbon sequestration in long term;Soil formation;Tree mortality;Wood use potential;Probability of collapse;Pasture production;Soil protection;Resilience;Substitution by shrub species
+Possibility of extensive mountain livestock production and other uses;;;;;;;;;;;;;;;
+Selective thinning;;;;;-1;;;;;;;;;;
+Biodiversity;;;;;;1;0,8;1;;;-0,8;;0,7;1;
+Site class;;;;;;;;;-1;1;;;;;-1
+Density;;;-1;;;;;;1;-0,5;1;-1;0,7;;
+Diversity of fungi;;;;;;;;;;;;;;;
+Carbon sequestration in long term;;;;;;;;;;;;;;;
+Soil formation;;;;;;;;;;;;;;;
+Tree mortality;;;;;-1;;;;;;;;;;
+Wood use potential;;;;;;;;;;;;;;;
+Probability of collapse;;;;;;;-0,5;;;;;;;;
+Pasture production;1;;;;;;;;;;;;;;
+Soil protection;;;;;;;;;;;;;;;
+Resilience;;;;;;;;;;;;;;;
+Substitution by shrub species;1;;1;;;;;;;;;;;;

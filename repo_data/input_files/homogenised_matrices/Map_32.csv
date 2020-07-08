@@ -1,0 +1,17 @@
+﻿;Underground runoff;Temperature;Rivers flow;Thinning intensity;Fuel quantity & quality;Stand density;Soil protection against erosion;Underground runoff;Total runoff;Actual evapotranspiration;Fires propagation;Mountain agriculture use;Fires risk;Underground runoff;Stand surface;Mountain agriculture use
+Underground runoff;;;1;;;;;;;;;;;;;
+Temperature;;;;;;;;;;0,8;;;;;;
+Rivers flow;;;;;;;;;;;;;;;;
+Thinning intensity;;;;;;-1;;;;;;;;;-1;
+Fuel quantity & quality;;;;;;;;;;;;;0,4;;;
+Stand density;;;;;;;0,5;;;1;0,4;;;;;
+Soil protection against erosion;;;;;;;;;;;;;;;;
+Underground runoff;;;1;;;;;;;;;;;;;
+Total runoff;;;;;;;;0,8;;;;;;;;
+Actual evapotranspiration;;;;;;;;;-1;;;;;;;
+Fires propagation;;;;;;;;;;;;;;;;
+Mountain agriculture use;;;;;;;;;;;;;;0,8;;
+Fires risk;;;;;;;;;;;;;;;;
+Underground runoff;0,2;;;;;;;;;;;;;;;
+Stand surface;;;;;;;0,8;;;1;;;;;;
+Mountain agriculture use;;;;;;;;;;;;;;0,8;;

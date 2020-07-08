@@ -1,0 +1,16 @@
+﻿;Ecosystem health;Temperature;Precipitation;Structural diversity;Thinning;Coppice with standards & Pruning;Brush-cutting;Group or block treatments;Economic benefit;Biomass & Wood & Firewood use;Decay;Pines recruitment & regeneration;Resistance;Fires risk;Main species substitution
+Ecosystem health;;;;;;;;;;;;;;;
+Temperature;;;;;;;;;;;1;;;;
+Precipitation;;;;;;;;;;;-1;;;;
+Structural diversity;;;;;;;;;;;;0,9;1;;0,9
+Thinning;;-0,3;0,3;1;;;;;;1;-0,9;1;1;-1;0,9
+Coppice with standards & Pruning;;-0,3;0,3;1;;;;;;1;-0,9;1;1;-1;0,9
+Brush-cutting;;-0,3;0,3;1;;;;;;1;-0,9;1;1;-1;0,9
+Group or block treatments;;-0,3;0,3;1;;;;;;1;-0,9;1;1;-1;0,9
+Economic benefit;;;;;;;;;;;;;;;
+Biomass & Wood & Firewood use;;;;;;;;;0,8;;;;;;
+Decay;;;;;;;;;;;;;;;
+Pines recruitment & regeneration;1;;;0,5;;;;;;;;;0,8;;
+Resistance;1;;;;;;;;;;;;;;
+Fires risk;;;;;;;;;;;;;;;
+Main species substitution;1;;;;;;;;;;;;;;

@@ -1,0 +1,17 @@
+;Sustainable wood/firewood use;Soil quality;Competition;Pines growth;Weakening;Density;Water availability;Dispersal fauna (birds);Wild and domestic herbivory;Maintenance of traditional irrigation network (sustainable);Pines mortality;Precipitations;Pests proliferation;Reforestations with natural species (botanic forest);Regeneration;Temperature
+Sustainable wood/firewood use;;;;;;-0,7;;;;;;;;;;
+Soil quality;;;;0,7;;;;;;;;;;;0,9;
+Competition;;;;-0,6;;;;;;;;;;;;
+Pines growth;;;;;-0,6;;;;;;;;;;;
+Weakening;;;;;;;;;;;0,8;;0,9;;;
+Density;;;0,7;;;;;;;;;;;;;
+Water availability;;;;;-1;;;;;;;;;;0,7;
+Dispersal fauna (birds);;;;;;;;;;;;;;;0,8;
+Wild and domestic herbivory;;;;;;;;;;;;;;;-0,8;
+Maintenance of traditional irrigation network (sustainable);;;;;;;0,5;0,8;;;;;;;;
+Pines mortality;;;;;;;;;;;;;;;;
+Precipitations;;;-0,9;;;;0,8;;;;;;;;;
+Pests proliferation;;;;;;;;;;;0,9;;;;;
+Reforestations with natural species (botanic forest);;;;;;;;;;;;;;;0,3;
+Regeneration;;;;;;;;;;;;;;;;
+Temperature;;;;;0,4;;;;;;;;0,7;;;

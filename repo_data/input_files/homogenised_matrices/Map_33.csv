@@ -1,0 +1,19 @@
+﻿;Biomass & Wood & Firewood use;Soil quality;Intraspecific competition;Pines growth;Stand weakening;Stand density;Water availability;Fauna biodiversity;Herbivores overuse;Mountain agriculture use;Pines mortality;Precipitation;Pests & diseases incidence;Shrubland planting;Quercus planting;Pines recruitment & regeneration;Native forest recruitment & regeneration;Temperature
+Biomass & Wood & Firewood use;;;;;;-0,7;;;;;;;;;;;;
+Soil quality;;;;0,7;;;;;;;;;;;;0,9;0,9;
+Intraspecific competition;;;;-0,6;;;;;;;;;;;;;;
+Pines growth;;;;;-0,6;;;;;;;;;;;;;
+Stand weakening;;;;;;;;;;;0,8;;0,9;;;;;
+Stand density;;;0,7;;;;;;;;;;;;;;;
+Water availability;;;;;-1;;;;;;;;;;;0,7;0,7;
+Fauna biodiversity;;;;;;;;;;;;;;;;0,8;0,8;
+Herbivores overuse;;;;;;;;;;;;;;;;-0,8;-0,8;
+Mountain agriculture use;;;;;;;0,5;0,8;;;;;;;;;;
+Pines mortality;;;;;;;;;;;;;;;;;;
+Precipitation;;;-0,9;;;;0,8;;;;;;;;;;;
+Pests & diseases incidence;;;;;;;;;;;0,9;;;;;;;
+Shrubland planting;;;;;;;;;;;;;;;;0,3;0,3;
+Quercus planting;;;;;;;;;;;;;;;;0,3;0,3;
+Pines recruitment & regeneration;;;;;;;;;;;;;;;;;;
+Native forest recruitment & regeneration;;;;;;;;;;;;;;;;;;
+Temperature;;;;;0,4;;;;;;;;0,7;;;;;

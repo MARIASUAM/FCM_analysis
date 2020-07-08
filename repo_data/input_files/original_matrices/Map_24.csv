@@ -1,0 +1,23 @@
+;Biomass use;Wood use;Site class;Stand collapse;Fuel;Competition among all species;Weakening;Density with crown tangency;Pests incidence - Matsucoccus;Pests incidence - Pine processionary moth;Pests incidence - Tomicus;Public investment;Soil poverty;Mechanisation possibility;Local industry presence;Fire propagation;Jobs;Regeneration;Economic profitability of biomass and wood use;Fires risk;Drought;Treatments
+Biomass use;;;;;;;;-1;;;;;;;;;0,3;;;;;
+Wood use;;;;;;;;-1;;;;;;;;;0,3;;;;;
+Site class;;;;;;;-0,5;;;;;;;;;;;;;;;
+Stand collapse;;;;;;;;;;;;;;;;;;;;;;
+Fuel;;;;;;;;;;;;;;;;1;;;;1;;
+Competition among all species;;;;;;;1;;;;;;;;;;;-0,9;;;;
+Weakening;;;;0,9;;;;;0,5;;1;;;;;;;;;;;
+Density with crown tangency;;;;;1;1;;;;;;;;;;;;;;;;
+Pests incidence - Matsucoccus;;;;1;;;;;;;;;;;;;;;;;;
+Pests incidence - Pine processionary moth;;;;;;;0,3;;;;;;;;;;;;;;;
+Pests incidence - Tomicus;;;;0,5;;;;;;;;;;;;;;;;;;
+Public investment;;;;;;;;;;;;;;;;;;;;;;1
+Soil poverty;;;;;;;0,8;;;;;;;;;;;-1;;;;
+Mechanisation possibility;;;;;;;;;;;;;;;;;;;1;;;
+Local industry presence;;;;;;;;;;;;;;;;;;;1;;;
+Fire propagation;;;;;;;;;;;;;;;;;;;;;;
+Jobs;;;;;;;;;;;;;;;;;;;;;;
+Regeneration;;;;;;;;;;;;;;;;;;;;;;
+Economic profitability of biomass and wood use;1;1;;;;;;;;;;;;;;;;;;;;
+Fires risk;;;;;;;;;;;;;;;;;;;;;;
+Drought;;;;;;;0,5;;;;;;;;;;;-0,8;;;;
+Treatments;;;;;;;;-1;;;;;;;;;0,8;;;;;

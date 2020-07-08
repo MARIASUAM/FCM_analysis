@@ -1,0 +1,20 @@
+﻿;Sense of belonging;Vigour;Capacity to shelter fauna;Vegetation cover;Stand weakening;Stand density;Stand density;Thinning;Coppice with standards & Pruning;Functional diversity;Pines recruitment & regeneration;Native forest recruitment & regeneration;Fires propagation;Soil protection against erosion;Sense of belonging;Stand density;Recreation;Cultural services;Vulnerability against perturbations
+Sense of belonging;;;;;;;;;;;;;;;0,8;;;;
+Vigour;;;;;-1;;;;;;;;;;;;;;
+Capacity to shelter fauna;;;;;;;;;;;;;;;;;;;
+Vegetation cover;;;;;;;;;;;;;;1;;;;;
+Stand weakening;;;;;;;;;;;;;;;;;;;1
+Stand density;;;;;0,8;;;;;;;;;;;1;;;
+Stand density;;;;;;;;;;;;;1;;;;;;
+Thinning;;;;;;;;;;0,9;;;;0,8;;;;;-0,9
+Coppice with standards & Pruning;;;;;;;;;;0,9;;;;0,8;;;;;-0,9
+Functional diversity;;;0,7;;;;;;;;;;;0,7;;;0,7;0,7;
+Pines recruitment & regeneration;;;;;;;;;;;;;;;;;;;
+Native forest recruitment & regeneration;;;;;;;;;;;;;;;;;;;
+Fires propagation;;;;;;;;;;;;;;;;;;;
+Soil protection against erosion;;;;;;;;;;;;;;;;;;;
+Sense of belonging;;;;;;;;;;;;;;;;;;0,5;
+Stand density;;;;;;;;;;;-1;1;;;;;;;
+Recreation;;;;;;;;;;;;;;;;;;;
+Cultural services;;;;;;;;;;;;;;;;;;;
+Vulnerability against perturbations;;;;;;;;;;;;;;;;;;;

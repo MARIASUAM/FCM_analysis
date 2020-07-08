@@ -1,0 +1,21 @@
+﻿;Extensive livestock use;Biomass & Wood & Firewood use;Temperature;Precipitation;Intraspecific competition;Stand weakening;Stand density;Deer population control hunting;Pests & diseases incidence;Public & Private investment;Scientific activity & knowledge;Fires propagation;Herbivores overuse;Other actions;Pines recruitment & regeneration;Herbivores overuse;Thinning;Quercus planting;Shrubland planting;Coppice with standards & Pruning
+Extensive livestock use;;;;;;;;;;;;-0,5;1;;;;;;;
+Biomass & Wood & Firewood use;;;;;;;;;;;;-0,5;1;;;;;;;
+Temperature;;;;;0,9;0,9;-0,7;;;;;;;;;;;;;
+Precipitation;;;;;-0,9;-0,9;0,7;;;;;;;;;;;;;
+Intraspecific competition;;;;;;0,7;;;0,7;;;;;;;;;;;
+Stand weakening;;;;;;;;;0,7;;;;;;;;;;;
+Stand density;;;;;0,9;0,6;;;0,8;;;0,8;;;;;;;;
+Deer population control hunting;;;;;;;;;;;;;-1;;;;;;;
+Pests & diseases incidence;;;;;;0,7;;;;;;;;;;;;;;
+Public & Private investment;;;;;;;;;;;;;;;;;1;1;1;1
+Scientific activity & knowledge;;;;;;;;;;;;;;;;;0,8;0,8;0,8;0,8
+Fires propagation;;;;;;;;;;;;;;;;;;;;
+Herbivores overuse;;;;;;0,8;;;;;;;;;-0,7;;;;;
+Other actions;;;;;;;;;;;;;-0,3;;;;;;;
+Pines recruitment & regeneration;;;;;;;;;;;;;;;;;;;;
+Herbivores overuse;;;;;-0,6;0,8;;;;;;-0,8;;;-1;;;;;
+Thinning;;;;;-0,8;;-1;;;;;-0,7;;;;;;;;
+Quercus planting;;;;;-0,8;;-1;;;;;-0,7;;;;;;;;
+Shrubland planting;;;;;-0,8;;-1;;;;;-0,7;;;;;;;;
+Coppice with standards & Pruning;;;;;-0,8;;-1;;;;;-0,7;;;;;;;;

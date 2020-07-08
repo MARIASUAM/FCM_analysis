@@ -1,0 +1,19 @@
+﻿;Carbon sequestration;Recreation;Pines mortality;Biodiversity;Temperature;Precipitation;Thinning;Vegetation cover;Stand density;Plantation age;Pests & diseases incidence;Public & Private investment;Hydraulic infrastructures;Soil protection against erosion;Soil protection against erosion;Soil formation;Stand density;Vulnerability against perturbations
+Carbon sequestration;;;;;;;;;;;;;;;;;;
+Recreation;;;;;;;;;;;;;;;;;;
+Pines mortality;;;;;;;;;-1;;;;;;;;;
+Biodiversity;-0,4;0,6;;;;;;;;;;;;;;;;
+Temperature;;;0,4;;;;;;;;0,7;;;;;;;0,6
+Precipitation;;;-0,4;;;;;;;;-0,7;;;;;;;-0,6
+Thinning;;;;;;;;;-1;;;;;;;;;
+Vegetation cover;;;;;;;;;;;;;;1;;1;;
+Stand density;0,8;;;-0,8;;;;;;;0,5;;;;;;;
+Plantation age;;;;;;;;;;;;;;0,2;;0,6;;
+Pests & diseases incidence;;;;;;;;;;;;;;;;;;
+Public & Private investment;;;;;;;0,5;;;;;;;;;;;
+Hydraulic infrastructures;;;;;;;;;;;;;;1;1;;;
+Soil protection against erosion;;;;;;;;;;;;;;;;;;
+Soil protection against erosion;;;;;;;;;;;;;;;;;;
+Soil formation;;;;;;;;;;;;;;;;;;
+Stand density;-0,9;;1;-0,8;;;;;;;;;;;;;;0,6
+Vulnerability against perturbations;;;;;;;;;;;;;;;;;;

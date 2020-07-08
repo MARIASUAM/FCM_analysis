@@ -1,0 +1,17 @@
+;Abundance of hunting - deers;Abundance of hunting - wild boars;Abundance of hunting - wood pigeons/ringdoves;Abundance of hunting - partridges;Abundance of hunting - thrushes/throstles;Accesibility & Visibility;Hunting use;Conflict with other uses;Stand density;Shelter function;Mycological use potential;Food production - pastures/shrubs;Food production - fungi;Uses regulation;Patch surface/Food source distance;Silvicultural treatments (thinning)
+Abundance of hunting - deers;;;;;;;;;;;;;;;;
+Abundance of hunting - wild boars;;;;;;;;;;;;;;;;
+Abundance of hunting - wood pigeons/ringdoves;;;;;;;;;;;;;;;;
+Abundance of hunting - partridges;;;;;;;;;;;;;;;;
+Abundance of hunting - thrushes/throstles;;;;;;;;;;;;;;;;
+Accesibility & Visibility;;;;;;;0,6;;;;;;;;;
+Hunting use;;;;;;;;0,8;;;;;;;;
+Conflict with other uses;;;;;;;;;;;;;;;;
+Stand density;;;;-1;;-0,6;;;;0,8;0,9;-1;0,9;;;
+Shelter function;0,5;0,8;0,3;;0,2;;;;;;;;;;;
+Mycological use potential;;;;;;;;;;;;;;;;
+Food production - pastures/shrubs;0,9;;;;;;;;;;;;;;;
+Food production - fungi;;0,2;;;;;;;;;;;;;;
+Uses regulation;;;;;;;;-0,9;;;;;;;;
+Patch surface/Food source distance;-0,6;-0,6;-0,6;;-0,6;;;;;;;;;;;
+Silvicultural treatments (thinning);;;;;;;;;-1;;;;;;;

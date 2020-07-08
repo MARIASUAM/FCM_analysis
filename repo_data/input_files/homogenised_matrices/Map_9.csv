@@ -1,0 +1,18 @@
+﻿;Economic benefit;Ecosystem services;Biodiversity;Site class & Climatic fitness;Resilience;Stand density;Material & human resources;Temperature;Precipitation;Pests & diseases expansion;Pests & diseases incidence;Pests & diseases incidence;Biomass & Wood & Firewood use;Promote natural vegetation;Stand stability;Thinning;Vigour
+Economic benefit;;;;;;;;;;;;;;;;0,8;
+Ecosystem services;;;;;;;;;;;;;;;;;
+Biodiversity;;;;;0,9;;;;;;;;;;;;
+Site class & Climatic fitness;;;;;;;;;;;-0,7;-0,7;;;;;0,8
+Resilience;;;;;;;;;;;;;;;0,9;;
+Stand density;;;-0,9;;;;;;;;;;;;;;-0,8
+Material & human resources;;;;;;;;;;;;;;;;0,8;
+Temperature;;;;;;;;;;;;0,6;;;-0,7;;
+Precipitation;;;;;;;;;;;;-0,6;;;0,7;;
+Pests & diseases expansion;;;;;;;;;;;;0,6;;;;;
+Pests & diseases incidence;;;;;;;;;;;;;;;;;
+Pests & diseases incidence;;;;;;;;;;;;;;;;;
+Biomass & Wood & Firewood use;0,8;;;;;;;;;;;;;;;;
+Promote natural vegetation;0,6;0,8;0,9;;;;;;;;;;;;;;
+Stand stability;;;;;;;;;;;;;;;;;
+Thinning;;;;;;-1;;;;;;;;;;;0,8
+Vigour;;;;;;;;;;;;;0,6;;0,9;;

@@ -1,0 +1,14 @@
+;Falling of trees;Weakening;Plantation density;Fauna diversity -  birds;Fauna diversity -  herbivores;Pests impact - Matsucoccus;Pests impact - Mistletoe;Pests impact - Pine processionary moth;Trees mortality;Negative perception;Ground vegetation presence;Safety;Silvicultural treatments
+Falling of trees;;;;;;;;;;0,5;;-0,3;
+Weakening;0,6;;;;;0,9;0,9;0,9;;;;;
+Plantation density;;;;;;0,9;0,9;0,9;;;-1;;
+Fauna diversity -  birds;;;;;;;;;;-0,9;-0,3;;
+Fauna diversity -  herbivores;;;;;;;;;;-0,9;0,9;;
+Pests impact - Matsucoccus;;0,9;;;;;;;0,7;0,7;;;
+Pests impact - Mistletoe;;0,9;;;;;;;0,4;0,7;;;
+Pests impact - Pine processionary moth;;0,9;;;;;;;0,2;0,7;;-0,7;
+Trees mortality;;;-0,8;;;;;;;;;;
+Negative perception;;;;;;;;;;;;;
+Ground vegetation presence;;;;0,9;0,9;;;;;-0,6;;;
+Safety;;;;;;;;;;;;;
+Silvicultural treatments;;;-1;;;;;;;;;;

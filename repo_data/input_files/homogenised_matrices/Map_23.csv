@@ -1,0 +1,17 @@
+﻿;Altitude;Fuel quantity & quality;Decay;Social unrest;Fires intensity;Thinning intensity;Thinning;Coppice with standards & Pruning;Participated and democratic decision-making processes;Precipitation;Intervention possibility;Fires risk;Temperature;Precipitation decrease impact;Main species substitution;Manager' link with territory
+Altitude;;;;;;;;;;;-0,5;;;;;
+Fuel quantity & quality;;;;;1;;;;;;;;;;;
+Decay;;;;;;;;;;;;;;;;
+Social unrest;;;;;;;;;;;;;;;;
+Fires intensity;;;;;;;;;;;;;;;;
+Thinning intensity;;-0,8;-1;;;;;;;;;;;;;
+Thinning;;-1;-1;;;;;;;;;;;;;
+Coppice with standards & Pruning;;-1;-1;;;;;;;;;;;;;
+Participated and democratic decision-making processes;;;;-1;;;;;;;;;;;;0,8
+Precipitation;;;;;;;;;;;-0,5;;;;;
+Intervention possibility;;;;;;;;;;;;;;;;
+Fires risk;;;;;;;;;;;;;;;;
+Temperature;;;;;1;;;;;;;0,8;;;1;
+Precipitation decrease impact;;;;;-1;;;;;;;-0,8;;;-1;
+Main species substitution;;;;;;;;;;;;;;;;
+Manager' link with territory;;;;;;;1;1;;;;;;;;

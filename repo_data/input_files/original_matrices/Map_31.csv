@@ -1,0 +1,13 @@
+;Uses;Tourism attraction;Biodiversity;Thinning;Holm oaks coppice with standars;Stand density;Stagnation;Fire extinction;Generation of employment;Holm oaks planting;Fire prevention (cleaning of the forest);Landscape value
+Uses;;;;;;;;;;;;
+Tourism attraction;0,8;;;;;;;;;;;
+Biodiversity;;0,8;;;;;;;;;;0,8
+Thinning;;;;;;-0,7;;;0,8;;;
+Holm oaks coppice with standars;;;;;;;;;0,8;;;
+Stand density;;;-0,7;;;;1;;;;;
+Stagnation;;;;;;;;;;;;
+Fire extinction;;;;;;;;;0,8;;;
+Generation of employment;;;;;;;;;;;;
+Holm oaks planting;;;0,7;;;;;;;;;
+Fire prevention (cleaning of the forest);;;;;;;;;0,8;;;
+Landscape value;0,3;;;;;;;;;;;
